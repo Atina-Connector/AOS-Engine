@@ -73,16 +73,16 @@ function plot_nodal_BES(param, Ql_sol)
       if abs(P_int_sol - P_req_sol) < tol || Ql_sol < 0.99 * Ql_max
           % Cruce exacto
           plot(Ql_sol * 86400, P_int_sol / 1e5, 'ko', 'MarkerSize', 10, 'LineWidth', 2);
-          legend({'P_{intake} disponible', 'P_{intake} requerida', 'Punto de operación'}, 'Location', 'best');
+          legend({'P_{intake} disponible', 'P_{intake} requerida', 'Punto de operación'}, 'Location', 'northeast');
           title(sprintf('Análisis Nodal BES – Ql = %.1f m³/d, P_intake = %.1f bar', Ql_sol*86400, P_int_sol/1e5));
       else
           % Limitado por yacimiento (bomba sobredimensionada)
           plot(Ql_sol * 86400, P_req_sol / 1e5, 'ko', 'MarkerSize', 10, 'LineWidth', 2);
-          legend({'P_{intake} disponible', 'P_{intake} requerida', 'Operación (Qmax yac.)'}, 'Location', 'best');
+          legend({'P_{intake} disponible', 'P_{intake} requerida', 'Operación (Qmax yac.)'}, 'Location', 'northeast');
           title(sprintf('Análisis Nodal BES – Ql = %.1f m³/d (limitado por yacimiento)', Ql_sol*86400));
       end
   else
-      legend({'P_{intake} disponible', 'P_{intake} requerida'}, 'Location', 'best');
+      legend({'P_{intake} disponible', 'P_{intake} requerida'}, 'Location', 'northeast');
       title('Análisis Nodal BES – Sin producción');
   end
 

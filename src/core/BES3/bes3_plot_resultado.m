@@ -15,7 +15,7 @@ function figs = bes3_plot_resultado(sol,visible)
       leg=[leg hp1 hp2];labels=[labels {'Disponible en referencia','Requerida en referencia'}];
     endif
   endif
-  legend(leg,labels,'Location','best');grid on;xlabel('Produccion liquida superficie (m3/d)');ylabel('Presion (bar)');
+  legend(leg,labels,'Location','northeast');grid on;xlabel('Produccion liquida superficie (m3/d)');ylabel('Presion (bar)');
   title(sprintf('BES3 nodal | %s | %.2f Hz | IPR %s | VLP %s (efectiva %s)',texto_local(sol,'modo_operacion'),num_local(sol,'frecuencia_efectiva_Hz'),texto_local(sol,'modelo_IPR'),texto_local(sol,'modelo_VLP'),texto_local(sol,'vlp_efectivo')),'Interpreter','none');
 
   subplot(2,1,2);hr=plot(q,sol.barrido_residuo_bar,'LineWidth',1.6);hold on;hz=plot([min(q) max(q)],[0 0],'k--','LineWidth',1.0);set(hz,'HandleVisibility','off');
@@ -39,7 +39,7 @@ function figs = bes3_plot_resultado(sol,visible)
   f2=figure('Visible',visible,'Name','BES3 - Bomba y secciones');
   subplot(2,1,1);hcurve=plot(sol.curva.Q_m3_d,sol.curva.head_m,'LineWidth',1.7);hold on;
   hp=plot(sol.Q_etapas_superiores_m3_d,sol.punto.head_m,'ko','MarkerFaceColor','k');grid on;ylabel('Head combinado (m)');
-  legend([hcurve hp],{'Curva total de referencia','Punto combinado por secciones'},'Location','best');
+  legend([hcurve hp],{'Curva total de referencia','Punto combinado por secciones'},'Location','northeast');
   title(sprintf('%s | %.1f Hz | %d etapas | toma etapa %d',sol.bomba.modelo,sol.curva.frecuencia_Hz,sol.num_etapas_total,sol.etapa_toma));
   subplot(2,1,2);bar([d.BEP_inferior_pct d.BEP_superior_pct]);hold on;
   plot([0.5 2.5],[100 100],'k--','HandleVisibility','off');set(gca,'XTick',[1 2],'XTickLabel',{'Etapas inferiores','Etapas superiores'});

@@ -62,7 +62,7 @@ function [ruta, estado] = aos_generar_imagen_aporte_punzados(param, Ql, carpeta)
     grid on;
     xlabel('Aporte (m3/d)');
     ylabel('MD medio (m)');
-    legend('Petroleo', 'Agua', 'Location', 'best');
+    legend('Petroleo', 'Agua', 'Location', 'northeast');
     title('Distribucion petroleo-agua');
 
     print(fig, '-dpng', '-r150', ruta);

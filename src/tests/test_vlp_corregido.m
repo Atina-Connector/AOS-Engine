@@ -62,4 +62,4 @@ plot(Perfil_DR/1e5, MD_DR, 'LineWidth', 1.5);
 set(gca, 'YDir', 'reverse'); grid on;
 xlabel('Presión [bar]'); ylabel('MD [m]');
 title('Comparación VLP corregida');
-legend('HB corregido', 'Duns & Ros corregido', 'Location', 'best');
+legend('HB corregido', 'Duns & Ros corregido', 'Location', 'northeast');

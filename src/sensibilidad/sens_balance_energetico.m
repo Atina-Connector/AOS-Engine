@@ -107,8 +107,8 @@ for i=1:npts
  ij='N/A';ig='N/A';jj='N/A';if isfinite(IndiceJ(i)),ij=sprintf('%.2f',IndiceJ(i));end;if isfinite(IndiceG(i)),ig=sprintf('%.2f',IndiceG(i));end;if isfinite(EficJetJ(i)),jj=sprintf('%.2f',EficJetJ(i));end
  fprintf('%6.0f | %7.2f | %7.2f | %9.2f | %7.2f | %7.2f | %12s | %12s | %10s | %7.2f/%7.2f | %4d | %s | %s\n',qvals(i)*86400,QlJ(i)*86400,QlG(i)*86400,Pcomp(i)/1000,PhJ(i)/1000,PhG(i)/1000,ij,ig,jj,Ptr(i)/1000,Pdisp(i)/1000,RJ.iteraciones(i),RJ.modos{i},RJ.estados{i});
 end
-figure;subplot(2,1,1);plot(qvals*86400,IndiceJ,'-o',qvals*86400,IndiceG,'--s','LineWidth',2);grid on;xlabel('Qiny (Sm3/d)');ylabel('Indice energetico bruto de fondo (%)');legend('JGL','GL','Location','best');title('Indice QP producido / QP inyectado en fondo (Qiny=0 es N/A)');
-subplot(2,1,2);plot(qvals*86400,PhJ/1000,'-o',qvals*86400,PhG/1000,'--s',qvals*86400,Pcomp/1000,'-','LineWidth',1.5);grid on;xlabel('Qiny (Sm3/d)');ylabel('Potencia (kW)');legend('QP producido fondo JGL','QP producido fondo GL','Compresor superficie ref.','Location','best');title('Indices de flujo-presion en fondo y potencia compresora de referencia');
+figure;subplot(2,1,1);plot(qvals*86400,IndiceJ,'-o',qvals*86400,IndiceG,'--s','LineWidth',2);grid on;xlabel('Qiny (Sm3/d)');ylabel('Indice energetico bruto de fondo (%)');legend('JGL','GL','Location','northeast');title('Indice QP producido / QP inyectado en fondo (Qiny=0 es N/A)');
+subplot(2,1,2);plot(qvals*86400,PhJ/1000,'-o',qvals*86400,PhG/1000,'--s',qvals*86400,Pcomp/1000,'-','LineWidth',1.5);grid on;xlabel('Qiny (Sm3/d)');ylabel('Potencia (kW)');legend('QP producido fondo JGL','QP producido fondo GL','Compresor superficie ref.','Location','northeast');title('Indices de flujo-presion en fondo y potencia compresora de referencia');
 exportar_grafico_modulo();
 
 SENS_BALANCE_ENERGETICO_AUDIT=struct('Qiny_Sm3_d',qvals*86400, ...
@@ -135,13 +135,13 @@ hayg=isfield(OPT_GL,'x_derivada_sm3d')&&~isempty(OPT_GL.x_derivada_sm3d);
 legd={};
 if hayj,plot(OPT_JGL.x_derivada_sm3d,OPT_JGL.derivada_rendimiento_pct_por_Sm3d,'-','LineWidth',2);hold on;legd{end+1}='JGL';endif
 if hayg,plot(OPT_GL.x_derivada_sm3d,OPT_GL.derivada_rendimiento_pct_por_Sm3d,'--','LineWidth',2);legd{end+1}='GL';endif
-if ~hayj&&~hayg,plot(NaN,NaN);text(0.1,0.5,'Derivadas no disponibles.');else,legend(legd,'Location','best');endif
+if ~hayj&&~hayg,plot(NaN,NaN);text(0.1,0.5,'Derivadas no disponibles.');else,legend(legd,'Location','northeast');endif
 grid on;xlabel('Qiny (Sm3/d)');ylabel('dI bruto/dQiny');title(sprintf('Derivada del indice - %s',tratamiento_curva.modo));
 exportar_grafico_modulo();
 if econ.habilitado
  figure;plot(OPT_JGL.economico.qiny_sm3d,OPT_JGL.economico.resultado_neto_dia,'-o','LineWidth',2);hold on;
  plot(OPT_GL.economico.qiny_sm3d,OPT_GL.economico.resultado_neto_dia,'--s','LineWidth',2);grid on;
- xlabel('Qiny (Sm3/d)');ylabel(sprintf('Resultado neto (%s/d)',econ.moneda));legend('JGL','GL','Location','best');title('Resultado economico de la inyeccion');exportar_grafico_modulo();
+ xlabel('Qiny (Sm3/d)');ylabel(sprintf('Resultado neto (%s/d)',econ.moneda));legend('JGL','GL','Location','northeast');title('Resultado economico de la inyeccion');exportar_grafico_modulo();
 endif
 
 % Exportacion transversal pre-AOS 0.1.0

@@ -107,7 +107,7 @@ grid on;
 xlabel('P_{wh} (bar)');
 ylabel('Liquido (m3/d)');
 title('JGL vs GL - sensibilidad a P_{wh}');
-legend('JGL', 'GL', 'Location', 'best');
+legend('JGL', 'GL', 'Location', 'northeast');
 y = [QlJ(isfinite(QlJ)), QlG(isfinite(QlG))];
 if ~isempty(y)
   r = max(y) - min(y);

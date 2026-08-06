@@ -31,13 +31,13 @@ function h = gibbs3_plot(res)
     leyenda = {'PR', 'Varilla fondo', 'Piston relativo'};
   end
   hold off; grid on; xlabel('Tiempo (s)'); ylabel('Desplazamiento (m)');
-  legend(leyenda, 'Location', 'best'); title('Transmision de carrera');
+  legend(leyenda, 'Location', 'northeast'); title('Transmision de carrera');
 
   subplot(2,2,4);
   plot(p.t_s, p.F_superficie_N/1000, 'LineWidth', 1.1); hold on;
   plot(p.t_s, p.F_bomba_N/1000, 'LineWidth', 1.1); hold off;
   grid on; xlabel('Tiempo (s)'); ylabel('Carga (kN)');
-  legend({'Superficie', 'Bomba'}, 'Location', 'best'); title('Cargas vs tiempo');
+  legend({'Superficie', 'Bomba'}, 'Location', 'northeast'); title('Cargas vs tiempo');
 
   h = h1;
   if isfield(res, 'diseno_sarta_espaciamiento')
@@ -122,7 +122,7 @@ function h2 = figura_diseno(res)
     plot(res.promedio.t_s, res.promedio.deltaP_LPP_Pa/1e5, 'LineWidth', 1.1); hold on;
     plot(res.promedio.t_s, res.promedio.F_LPP_N/1000, 'LineWidth', 1.1); hold off;
     grid on; xlabel('Tiempo (s)');
-    legend({'DeltaP LPP (bar)', 'Carga LPP (kN)'}, 'Location', 'best');
+    legend({'DeltaP LPP (bar)', 'Carga LPP (kN)'}, 'Location', 'northeast');
     title('Efecto hidraulico LPP');
   else
     axis off;

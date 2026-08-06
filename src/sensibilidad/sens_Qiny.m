@@ -462,7 +462,7 @@ grid on;
 xlabel('Qiny (Sm3/d)');
 ylabel('Liquido (m3/d)');
 title('Produccion GL/JGL: solver y tratamiento seleccionado');
-legend(leg,'Location','best');
+legend(leg,'Location','northeast');
 if ~isempty(y)
   rr = max(y) - min(y);
   pad = max(0.5, 0.15 * max(rr, 0.5));
@@ -478,7 +478,7 @@ grid on;
 xlabel('Qiny (Sm3/d)');
 ylabel('Ganancia de liquido (%)');
 title(sprintf('Ganancia respecto de Qiny %.0f Sm3/d', refJ.x));
-legend('JGL', 'GL', 'Location', 'best');
+legend('JGL', 'GL', 'Location', 'northeast');
 exportar_grafico_modulo();
 
 sens_jgl_graficar_presiones(PRESIONES_JGL,'JGL vs GL');
@@ -492,7 +492,7 @@ plot(x, IndiceBrutoG, '--s', 'LineWidth', 2);
 grid on;
 xlabel('Qiny (Sm3/d)');
 ylabel('Indice energetico bruto de fondo (%)');
-legend('JGL', 'GL', 'Location', 'best');
+legend('JGL', 'GL', 'Location', 'northeast');
 title('Indice energetico bruto');
 subplot(2,1,2);
 hay_der_j = isfield(OPT_JGL,'x_derivada_sm3d') && ~isempty(OPT_JGL.x_derivada_sm3d) && ...
@@ -511,7 +511,7 @@ endif
 if ~hay_der_j && ~hay_der_g
   plot(NaN,NaN); text(0.1,0.5,'Derivadas no disponibles: puntos validos insuficientes.');
 else
-  legend(legd,'Location','best');
+  legend(legd,'Location','northeast');
 endif
 grid on;
 xlabel('Qiny (Sm3/d)');
@@ -539,7 +539,7 @@ if econ.habilitado && isfield(OPT_JGL,'economico') && isfield(OPT_GL,'economico'
   grid on;
   xlabel('Qiny (Sm3/d)');
   ylabel(sprintf('Resultado neto (%s/d)', econ.moneda));
-  legend(lege,'Location','best');
+  legend(lege,'Location','northeast');
   title('Resultado economico de la inyeccion');
   exportar_grafico_modulo();
 endif

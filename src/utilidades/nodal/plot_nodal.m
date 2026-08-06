@@ -147,22 +147,22 @@ function plot_nodal(param, Ql_sol, tipo, sol_jgl)
 
     if abs(residuo_sol) <= tol
       plot(Ql_sol * 86400, P_req_sol / 1e5, 'ko', 'MarkerSize', 10, 'LineWidth', 2);
-      legend({leg1, 'VLP', 'Punto de operacion'}, 'Location', 'best');
+      legend({leg1, 'VLP', 'Punto de operacion'}, 'Location', 'northeast');
       title(sprintf('Analisis Nodal - %s (Ql = %.1f m3/d)', tipo, Ql_sol * 86400));
     elseif residuo_sol > tol
       plot(Ql_sol * 86400, P_req_sol / 1e5, 'ko', 'MarkerSize', 10, 'LineWidth', 2);
       plot(Ql_sol * 86400, P_entrega_sol / 1e5, 'k^', 'MarkerSize', 8, 'LineWidth', 1.5);
-      legend({leg1, 'VLP', 'Punto requerido', 'Capacidad disponible'}, 'Location', 'best');
+      legend({leg1, 'VLP', 'Punto requerido', 'Capacidad disponible'}, 'Location', 'northeast');
       title(sprintf('Analisis Nodal - %s (Ql = %.1f m3/d, limitado)', tipo, Ql_sol * 86400));
       fprintf('Nota: existe margen positivo; revisar si el caudal esta limitado por IPR o por otro componente.\n');
     else
       plot(Ql_sol * 86400, P_entrega_sol / 1e5, 'ks', 'MarkerSize', 10, 'LineWidth', 2);
-      legend({leg1, 'VLP', 'Punto solver (margen negativo)'}, 'Location', 'best');
+      legend({leg1, 'VLP', 'Punto solver (margen negativo)'}, 'Location', 'northeast');
       title(sprintf('Analisis Nodal - %s (Ql = %.1f m3/d, revisar)', tipo, Ql_sol * 86400));
       fprintf('ADVERTENCIA: margen negativo. El sistema no alcanza la VLP en ese caudal.\n');
     end
   else
-    legend({leg1, 'VLP'}, 'Location', 'best');
+    legend({leg1, 'VLP'}, 'Location', 'northeast');
     title(sprintf('Analisis Nodal - %s (sin produccion)', tipo));
   end
 

@@ -66,9 +66,9 @@ function R = bes3_sensibilidad_ejecutar(param,campo,valores)
     if isempty(ymin)||~isfinite(ymin),ymin=0;endif;if isempty(ymax)||~isfinite(ymax)||ymax<=ymin,ymax=ymin+1;endif
     xsep=0.5*min(valores(valores>0));hs=plot([xsep xsep],[ymin ymax],'k--');set(hs,'HandleVisibility','off');text(0,ymax,'Bomba apagada','VerticalAlignment','top');
   endif
-  legend([h1(:);h2(:);h3(:)],{'Produccion superficie','Recirculacion','Limite recirc (% Qnom)'},'Location','best');
+  legend([h1(:);h2(:);h3(:)],{'Produccion superficie','Recirculacion','Limite recirc (% Qnom)'},'Location','northeast');
   subplot(2,1,2);hb1=plot(valores,R.BEP_inferior_pct,'-o','LineWidth',1.4);hold on;hb2=plot(valores,R.BEP_superior_pct,'-s','LineWidth',1.4);
-  plot([min(valores) max(valores)],[100 100],'k--','HandleVisibility','off');grid on;xlabel(campo,'Interpreter','none');ylabel('BEP por seccion (%)');legend([hb1 hb2],{'Etapas inferiores','Etapas superiores'},'Location','best');title('Operacion de las secciones de la bomba');
+  plot([min(valores) max(valores)],[100 100],'k--','HandleVisibility','off');grid on;xlabel(campo,'Interpreter','none');ylabel('BEP por seccion (%)');legend([hb1 hb2],{'Etapas inferiores','Etapas superiores'},'Location','northeast');title('Operacion de las secciones de la bomba');
 
   R.headers={'Valor','Modo','N_etapas','Etapa_toma','Qprod_m3_d','Qrec_m3_d','Qnom_m3_d','Qrec_pct_nominal','Qinferior_m3_d','Qsuperior_m3_d','BEP_inferior_pct','BEP_superior_pct','Pintake_bar','Ptoma_bar','dPcapilar_bar','Tmotor_C','Psuperficie_kW','Rango_inferior','Rango_superior','Estado_secciones','Estado_diseno','Estado_operativo','Convergido','Aceptado_preliminar','Aceptado_certificado','Estado_solver'};
   R.units={unidad_campo_local(campo),'','','','m3/d','m3/d','m3/d','%','m3/d','m3/d','%','%','bar','bar','bar','C','kW','','','','','','','','',''};

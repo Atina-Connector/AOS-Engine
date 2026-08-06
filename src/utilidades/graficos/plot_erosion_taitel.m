@@ -80,7 +80,7 @@ function hfig = plot_erosion_taitel(arg1, varargin)
   plot(perfil.V_carga, MD, 'g--', 'LineWidth', 1.4);
   marcar_profundidad(perfil, 'MD');
   xlabel('Velocidad (m/s)'); ylabel('MD (m)');
-  legend('Vsg gas','Vsl liq','Vmix','Limite erosion','Turner carga','Location','best');
+  legend('Vsg gas','Vsl liq','Vmix','Limite erosion','Turner carga','Location','northeast');
   title('Velocidades y limites'); grid on; set(gca, 'YDir', 'reverse');
 
   % 3) Factores de seguridad / margen
@@ -92,7 +92,7 @@ function hfig = plot_erosion_taitel(arg1, varargin)
   xlim([min([xl(1), 0]) max([xl(2), 1.2])]);
   marcar_profundidad(perfil, 'MD');
   xlabel('Relacion adimensional'); ylabel('MD (m)');
-  legend('Vmix/Veros','Vsg/Vcarga','Limite 1.0','Location','best');
+  legend('Vmix/Veros','Vsg/Vcarga','Limite 1.0','Location','northeast');
   title('Margenes operativos'); grid on; set(gca, 'YDir', 'reverse');
 
   % 4) Taitel / regimen
@@ -108,7 +108,7 @@ function hfig = plot_erosion_taitel(arg1, varargin)
   plot(qgi, MD, 'm--', 'LineWidth', 1.4);
   marcar_profundidad(perfil, 'MD');
   xlabel('Gas [Sm3/d]'); ylabel('MD (m)');
-  legend('Gas total local std','Gas inyectado','Location','best');
+  legend('Gas total local std','Gas inyectado','Location','northeast');
   title('Perfil de gas usado'); grid on; set(gca, 'YDir', 'reverse');
 
   % 6) Resumen textual
@@ -143,7 +143,7 @@ function graficar_regimenes(perfil)
   h3 = fill(NaN, NaN, 'w', 'FaceColor', color_regimen('slug_severo'), 'EdgeColor', 'k');
   h4 = fill(NaN, NaN, 'w', 'FaceColor', color_regimen('transicion'), 'EdgeColor', 'k');
   h5 = fill(NaN, NaN, 'w', 'FaceColor', color_regimen('niebla'), 'EdgeColor', 'k');
-  legend([h1 h2 h3 h4 h5], {'Burbuja','Slug','Slug severo','Transicion','Niebla'}, 'Location', 'best');
+  legend([h1 h2 h3 h4 h5], {'Burbuja','Slug','Slug severo','Transicion','Niebla'}, 'Location', 'northeast');
 end
 
 function c = color_regimen(reg)

@@ -118,7 +118,7 @@ grid on;
 xlabel('Profundidad de inyeccion/eductor (m)');
 ylabel('Liquido (m3/d)');
 title('JGL vs GL - sensibilidad a profundidad');
-legend('JGL', 'GL', 'Location', 'best');
+legend('JGL', 'GL', 'Location', 'northeast');
 y = [QlJ(isfinite(QlJ)), QlG(isfinite(QlG))];
 if ~isempty(y)
   r = max(y) - min(y);

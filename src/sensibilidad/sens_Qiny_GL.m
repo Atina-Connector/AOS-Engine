@@ -377,7 +377,7 @@ xlabel('Caudal de gas inyectado [Sm3/d]');
 ylabel('Liquido (m3/d)');
 title('Produccion GL vs Q_{iny}: solver y tratamiento seleccionado');
 grid on;
-legend(leyendas,'Location','best');
+legend(leyendas,'Location','northeast');
 yf = Ql_GL(isfinite(Ql_GL));
 if tratamiento_curva.habilitado && exist('Aql_plot','var'), yf=[yf Aql_plot.y_grid(isfinite(Aql_plot.y_grid))]; endif
 if ~isempty(yf)
@@ -430,7 +430,7 @@ if econ.habilitado && isfield(OPT_GL, 'economico') && isfield(OPT_GL.economico, 
   xlabel('Qiny (Sm3/d)');
   ylabel(sprintf('Resultado neto (%s/d)', econ.moneda));
   title('GL: resultado economico de la inyeccion');
-  legend(leg_e,'Location','best');
+  legend(leg_e,'Location','northeast');
   exportar_grafico_modulo();
 endif
 

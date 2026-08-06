@@ -25,7 +25,7 @@ function h = sens_jgl_graficar_presiones(P, titulo)
   grid on;
   xlabel('Qiny (Sm3/d)'); ylabel('Presion (bar)');
   title([titulo ': presiones necesarias para operacion del eductor']);
-  legend(leg,'Location','best');
+  legend(leg,'Location','northeast');
 
   if isfield(P,'limite_presion') && isstruct(P.limite_presion) && ...
       P.limite_presion.evaluado && isfinite(P.limite_presion.Qiny_max_presion_Sm3_d)
@@ -49,5 +49,5 @@ function h = sens_jgl_graficar_presiones(P, titulo)
   grid on;
   xlabel('Qiny (Sm3/d)'); ylabel('Diferencial / margen (bar)');
   title('Descomposicion: Pm requerida = Ps + dP motriz');
-  legend(leg2,'Location','best');
+  legend(leg2,'Location','northeast');
 endfunction

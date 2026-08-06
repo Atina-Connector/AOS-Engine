@@ -172,7 +172,7 @@ aos_imprimir_balance_energia_sla(energia_sla,'JGL');
 
 
 if (!strcmpi(getenv("AOS_GRAPHICS_MODE"), "off"))
-  plot_nodal(param, Ql, 'JGL', sol_jgl);\
+  plot_nodal(param, Ql, 'JGL', sol_jgl);
 endif
  
 try

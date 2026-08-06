@@ -31,7 +31,7 @@ function C = bes3_comparar_on_off(param)
   if on.punto_operacion_valido,plot(on.Ql_m3_d,on.punto.Pdesc_disponible_Pa/1e5,'bo','MarkerFaceColor','b');endif
   grid on;xlabel('Ql superficie (m3/d)');ylabel('Presion (bar)');
   title(sprintf('BES3 ON/OFF | IPR %s | VLP %s',p.modelo_IPR,p.modelo_VLP),'Interpreter','none');
-  legend({'Disponible OFF','VLP requerida','Disponible ON','Punto OFF','Punto ON'},'Location','best');
+  legend({'Disponible OFF','VLP requerida','Disponible ON','Punto OFF','Punto ON'},'Location','northeast');
   subplot(2,1,2);bar([off.Ql_m3_d on.Ql_m3_d;0 potencia_local(on)]);
   set(gca,'XTickLabel',{'Produccion m3/d','Potencia kW'});legend({'OFF','ON'});grid on;
   title(sprintf('Delta Ql = %.2f m3/d',dQ));C.figures=f;

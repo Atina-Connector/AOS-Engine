@@ -269,7 +269,7 @@ endfunction
 function legend_local(con_punzados)
   if con_punzados
     try
-      legend('Survey', 'Punzados', 'Location', 'best');
+      legend('Survey', 'Punzados', 'Location', 'northeast');
     catch
     end_try_catch
   endif
