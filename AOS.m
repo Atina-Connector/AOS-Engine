@@ -2,13 +2,21 @@
 % Edicion: baseline modular de desarrollo distribuido.
 % Plataforma oficial: GNU Octave.
 
-root_dir = fileparts(mfilename('fullpath'));
-addpath(fullfile(root_dir, 'src'), '-begin');
-% Modo CLI/headless para Docker.
+root_dir = fileparts(mfilename("fullpath"));
+addpath(fullfile(root_dir, "src"), "-begin");
+cd(root_dir);
+
 aos_headless = strcmpi(getenv("AOS_HEADLESS"), "1");
+
 if (aos_headless)
   set(0, "defaultfigurevisible", "off");
 endif
-cd(root_dir);
+
+graphics_mode = lower(strtrim(getenv("AOS_GRAPHICS_MODE")));
+
+if (strcmpi(graphics_mode, "file"))
+  set(0, "defaultfigurevisible", "off");
+endif
+
 iniciar_aos();
 AOS_app();

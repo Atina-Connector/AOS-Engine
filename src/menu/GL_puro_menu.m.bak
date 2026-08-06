@@ -121,11 +121,7 @@ if ischar(diagnostico) && ~isempty(strtrim(diagnostico)), fprintf('Diagnostico G
 fprintf('====================================\n');
 aos_imprimir_balance_energia_sla(energia_sla,'GL');
 
-if (!strcmpi(getenv("AOS_GRAPHICS_MODE"), "off"))
-  plot_nodal(config, Ql, 'GL');
-else
-  fprintf("Grafico nodal omitido: modo CLI.\n");
-endif
+plot_nodal(config, Ql, 'GL');
 
 try
     opciones_tuberia = struct('Qgas_total_std', Qgas_total, 'D_inyeccion', config.D_iny, 'detalle', true);

@@ -170,8 +170,11 @@ if ischar(diagnostico) && ~isempty(strtrim(diagnostico)), fprintf('Diagnostico J
 fprintf('=============================================\n');
 aos_imprimir_balance_energia_sla(energia_sla,'JGL');
 
-plot_nodal(param, Ql, 'JGL', sol_jgl);
 
+if (!strcmpi(getenv("AOS_GRAPHICS_MODE"), "off"))
+  plot_nodal(param, Ql, 'JGL', sol_jgl);\
+endif
+ 
 try
     opciones_tuberia = struct('Qgas_total_std', Qgas_total, 'D_inyeccion', param.D_iny, 'detalle', true);
     diagnostico_tuberia = diagnostico_tuberia_produccion(param, 'JGL', Ql, Qiny, opciones_tuberia);

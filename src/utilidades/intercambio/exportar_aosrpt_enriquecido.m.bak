@@ -163,20 +163,12 @@ function [ruta, estado, id, titulo] = generar_principal_local(param, Ql, Qo, tip
       endif
       id = 'nodal';
       titulo = 'Analisis nodal JGL';
-      if (!strcmpi(getenv("AOS_GRAPHICS_MODE"), "off"))
-        plot_nodal(param, Ql, 'JGL', sol);
-      else
-        fprintf("Grafico nodal omitido: modo CLI.\n");
-      endif
+      plot_nodal(param, Ql, 'JGL', sol);
       fig = gcf();
     elseif strcmpi(tipo, 'GL')
       id = 'nodal';
       titulo = 'Analisis nodal GL';
-      if (!strcmpi(getenv("AOS_GRAPHICS_MODE"), "off"))
-        plot_nodal(param, Ql, 'GL');
-      else
-        fprintf("Grafico nodal omitido: modo CLI.\n");
-      endif
+      plot_nodal(param, Ql, 'GL');
       fig = gcf();
     else
       id = 'resumen';
