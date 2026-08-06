@@ -1,0 +1,17 @@
+AOS 0.1.1-alpha1 — INICIO DE PRUEBAS
+
+1. Abra GNU Octave en la carpeta raiz.
+2. Ejecute:
+     VERIFICAR_AOS_0_1_1_ALPHA
+3. Inicie AOS:
+     AOS
+4. Pruebe en este orden:
+     - BES > Simular BES V2
+     - Produccion y compresion de gas > Simular CGF
+     - Produccion y compresion de gas > Simular EGF
+5. Compare resultados, curvas, estados y reportes antes de calibrar coeficientes.
+
+IMPORTANTE:
+- Los catálogos BES2, CGF y EGF son genéricos de screening.
+- BES V1 permanece disponible como legado.
+- GL/JGL, Mandriles y BM no deben modificarse durante la primera evaluación.

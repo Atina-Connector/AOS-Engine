@@ -1,0 +1,1 @@
+disp('Verificacion AOS 0.0.12'); p=struct('P_iny_sup',100e5,'D_iny',2000,'P_res',150e5,'P_wh',10e5,'IP',1e-8,'WC',0.5,'GLR',50,'modelo_IPR','linear','modelo_VLP','simplified'); p=jgl_defaults(p); e=jgl_eductor_comun(p,100/86400,10000/86400,50e5); assert(e.deltaP>=0); assert(e.pot_trans<=e.pot_disp*(1+1e-8)); disp('OK');

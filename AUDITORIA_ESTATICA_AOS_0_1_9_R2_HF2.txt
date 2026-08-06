@@ -1,0 +1,30 @@
+AUDITORIA ESTATICA AOS 0.1.9 R2 HF2
+====================================================================
+Estado: APROBADA_ESTATICAMENTE
+files_total: 1011
+directories_total_including_root: 166
+m_files: 725
+physical_m_lines: 56592
+function_declarations: 2091
+active_m_audited: 651
+sn_prompts_classified: 61
+legacy_numeric_inputs_advisory: 348
+controlled_str2num_config_advisory: 2
+json_files: 15
+added_vs_hf1: 23
+modified_vs_hf1: 30
+removed_vs_hf1: 0
+
+Fallas de liberacion:
+- Ninguna
+
+Avisos de deuda controlada:
+- input() numerico legacy: 348
+- str2num en config interna: 2
+
+Comparacion con HF1:
+- agregados: 23
+- modificados: 30
+- eliminados: 0
+
+Limite: validacion dinamica pendiente en GNU Octave.

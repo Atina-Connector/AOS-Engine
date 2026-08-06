@@ -1,0 +1,198 @@
+{
+  "status": "APROBADA_ESTATICAMENTE",
+  "metrics": {
+    "Archivos totales": 1029,
+    "Carpetas incluyendo raiz": 167,
+    "Archivos GNU Octave .m": 741,
+    "Lineas fisicas .m": 58440,
+    "Lineas efectivas aproximadas": 51198,
+    "Comentarios completos": 2903,
+    "Lineas en blanco": 4339,
+    "Declaraciones function": 2173,
+    "Archivos agregados vs HF2": 22,
+    "Archivos modificados vs HF2": 27,
+    "Archivos eliminados vs HF2": 0,
+    "JSON validos": 15,
+    "JSON totales": 15,
+    "Archivos .mat": 0,
+    "Nombres .m duplicados en src": 0
+  },
+  "added_vs_hf2": [
+    "AUDITORIA_ESTATICA_AOS_0_1_9_R2_HF3.json",
+    "AUDITORIA_ESTATICA_AOS_0_1_9_R2_HF3.txt",
+    "AUDITORIA_TRANSVERSAL_PUNZADOS_AOS_0_1_9_R2_HF3.md",
+    "CHANGELOG_AOS_0_1_9_R2_HF3.md",
+    "REGRESIONES_AOS_0_1_9_R2_HF3.md",
+    "VERIFICAR_AOS_0_1_9_R2_HF3.m",
+    "datos/ejemplos/punzados/AOS_PUNZADOS_HF3_DEMO.aosdat",
+    "historial/HF2/README_HF2.md",
+    "src/geologia/punzados/aos_punzados_administrar.m",
+    "src/geologia/punzados/aos_punzados_commit.m",
+    "src/geologia/punzados/aos_punzados_desde_aosdat.m",
+    "src/geologia/punzados/aos_punzados_escribir_aosdat.m",
+    "src/geologia/punzados/aos_punzados_generar_regular.m",
+    "src/geologia/punzados/aos_punzados_normalizar.m",
+    "src/geologia/punzados/aos_punzados_operacion.m",
+    "src/geologia/punzados/aos_punzados_validar.m",
+    "src/tests/test_aos_menu_punzados_hf3.m",
+    "src/tests/test_aos_punzados_aosdat_roundtrip_hf3.m",
+    "src/tests/test_aos_punzados_consumidores_hf3.m",
+    "src/tests/test_aos_punzados_crud_hf3.m",
+    "src/tests/test_aos_punzados_sin_geologia_hf3.m",
+    "src/utilidades/config/aos_invalidar_resultados.m"
+  ],
+  "changed_vs_hf2": [
+    "AOS_VERSION.txt",
+    "MANIFEST_AOS_0_1_9_R2.txt",
+    "README.md",
+    "SHA256SUMS_AOS_0_1_9_R2.txt",
+    "VERIFICAR_AOS_0_1_9.m",
+    "VERSION",
+    "src/geologia/aos_geologia_administrar.m",
+    "src/geologia/aos_geologia_commit.m",
+    "src/geologia/aos_geologia_resolver_punzados.m",
+    "src/geologia/calcular_caudales_criticos.m",
+    "src/geologia/cargar_geologia_interactivo.m",
+    "src/geologia/cargar_intervalos_punzados.m",
+    "src/geologia/punzados/aos_distribuir_produccion_punzados.m",
+    "src/geologia/punzados/aos_obtener_punzados_activos.m",
+    "src/geologia/punzados/calcular_erosion_punzados.m",
+    "src/menu/AOS_app.m",
+    "src/menu/AOS_menu_datos_pozo.m",
+    "src/menu/AOS_menu_suite_config_diag.m",
+    "src/utilidades/config/aos_normalizar_config.m",
+    "src/utilidades/config/aos_normalizar_geologia.m",
+    "src/utilidades/config/aos_obtener_geometria_activa.m",
+    "src/utilidades/config/aos_sincronizar_geologia_activa.m",
+    "src/utilidades/config/aos_validar_geometria_pozo.m",
+    "src/utilidades/graficos/aos_visualizar_geometria_pozo.m",
+    "src/utilidades/graficos/plot_survey.m",
+    "src/utilidades/intercambio/exportar_aosdat.m",
+    "src/utilidades/intercambio/importar_aosdat.m"
+  ],
+  "removed_vs_hf2": [],
+  "json": [
+    {
+      "path": "AUDITORIA_ESTATICA_AOS_0_1_9_R2_HF3.json",
+      "ok": true,
+      "error": ""
+    },
+    {
+      "path": "datos/interfaz/verificacion/aos_menu_map.json",
+      "ok": true,
+      "error": ""
+    },
+    {
+      "path": "src/modulos/cad_topo/schema/AOSCAD_0_0_1_DEV1_SCHEMA.json",
+      "ok": true,
+      "error": ""
+    },
+    {
+      "path": "src/roadmap/aos_capability_contract_0_1_3_R2.json",
+      "ok": true,
+      "error": ""
+    },
+    {
+      "path": "src/roadmap/aos_frame_ribbon_contract_0_2_0.json",
+      "ok": true,
+      "error": ""
+    },
+    {
+      "path": "src/roadmap/aos_migration_map_0_1_9_to_0_2_0.json",
+      "ok": true,
+      "error": ""
+    },
+    {
+      "path": "src/roadmap/aos_roadmap_0_1_9.json",
+      "ok": true,
+      "error": ""
+    },
+    {
+      "path": "src/roadmap/aos_services_0_1_9.json",
+      "ok": true,
+      "error": ""
+    },
+    {
+      "path": "src/roadmap/aos_solvers_0_1_9.json",
+      "ok": true,
+      "error": ""
+    },
+    {
+      "path": "src/roadmap/aos_suite_products_0_1_9.json",
+      "ok": true,
+      "error": ""
+    },
+    {
+      "path": "src/roadmap/aos_workbenches_0_1_9.json",
+      "ok": true,
+      "error": ""
+    },
+    {
+      "path": "src/roadmap/aosbck_contract_0_1_9_r1.json",
+      "ok": true,
+      "error": ""
+    },
+    {
+      "path": "src/services/aosbck/schema/aosbck_manifest_example.json",
+      "ok": true,
+      "error": ""
+    },
+    {
+      "path": "src/services/fluids/aos_fluid_contract_0_2_0.json",
+      "ok": true,
+      "error": ""
+    },
+    {
+      "path": "src/services/geometry_3d/aos_asset_identity_0_2_0.json",
+      "ok": true,
+      "error": ""
+    }
+  ],
+  "duplicates": {},
+  "function_name_mismatches": [],
+  "pattern_hits": [],
+  "token_checks": [
+    {
+      "name": "menu gestor visible",
+      "ok": true,
+      "path": "src/menu/AOS_menu_datos_pozo.m",
+      "token": "ADMINISTRAR / GENERAR PUNZADOS"
+    },
+    {
+      "name": "menu despacha gestor",
+      "ok": true,
+      "path": "src/menu/AOS_menu_datos_pozo.m",
+      "token": "aos_punzados_administrar"
+    },
+    {
+      "name": "importa metadata",
+      "ok": true,
+      "path": "src/utilidades/intercambio/importar_aosdat.m",
+      "token": "PUNZADOS_META"
+    },
+    {
+      "name": "exporta metadata",
+      "ok": true,
+      "path": "src/utilidades/intercambio/exportar_aosdat.m",
+      "token": "aos_punzados_escribir_aosdat"
+    },
+    {
+      "name": "geologia independiente",
+      "ok": true,
+      "path": "src/geologia/aos_geologia_administrar.m",
+      "token": "punzados sin crear geologia"
+    },
+    {
+      "name": "invalidacion transversal",
+      "ok": true,
+      "path": "src/geologia/punzados/aos_punzados_commit.m",
+      "token": "aos_invalidar_resultados"
+    },
+    {
+      "name": "extras protegidos",
+      "ok": true,
+      "path": "src/geologia/punzados/aos_punzados_escribir_aosdat.m",
+      "token": "extras_json_pct"
+    }
+  ]
+}

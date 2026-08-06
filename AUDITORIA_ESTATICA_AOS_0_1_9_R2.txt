@@ -1,0 +1,65 @@
+AUDITORIA ESTATICA AOS 0.1.9 R2
+Fecha: 2026-07-29
+Motor objetivo: GNU Octave
+
+1. IDENTIFICACION
+Version declarada: 0.1.9-R2
+Baseline R1 ZIP SHA-256: 7032b765346828bb26dc8ceada580dbe3fc6166ff879db427b361d5fc6637cb3
+
+2. INVENTARIO
+Archivos: 981
+Carpetas incluyendo raiz: 164
+Archivos .m: 710
+Lineas fisicas .m: 55457
+Lineas efectivas aproximadas: 48520
+Lineas de comentario completas: 2837
+Lineas en blanco: 4100
+Declaraciones function: 2039
+Funciones unicas aproximadas: 1688
+JSON: 14
+
+3. CONSERVACION R1
+Archivos baseline R1: 950
+Rutas baseline ausentes en zona activa: 1
+Archivos agregados respecto de R1: 32
+Archivos modificados respecto de R1: 47
+Funciones unicas R1: 1625
+Funciones unicas R2: 1688
+Funciones R1 ausentes en R2: 0
+Funciones nuevas R2: 63
+Rutas retiradas del path activo:
+  - src/modulos/cad_topo/aos_verificar_requisitos_plataforma.m
+La unica ruta retirada era una copia duplicada. Su contenido se conserva en historial/codigo_retirado_R2 como texto no ejecutable; la interfaz publica equivalente permanece activa.
+
+4. CONTROLES ESTATICOS
+JSON con errores: 0
+Archivos .mat: 0
+Basenames .m duplicados dentro de src: 0
+Archivos .m modificados/nuevos tokenizados: 51
+Errores lexicos Pygments Octave: 0
+Nombre de funcion principal distinto del archivo: 0
+genpath en iniciar_aos: NO
+Borrados recursivos no protegidos en src: 0
+Evidencias historicas R1 ausentes: 0
+menu universal: OK
+viewer ultimo: OK
+BES3 conectado: OK
+catalog contract: OK
+no genpath: OK
+
+5. CORRECCIONES INTEGRADAS
+- Apertura/importacion universal y contextual.
+- Prioridad del .aosdat activo sobre defaults.
+- Catalogos AOS_CATALOGO_R2 y fusion no destructiva.
+- Galeria de mandriles y galerias CAD.
+- BES3 conectado al menu BES.
+- Verificador semantico sin numeracion rigida.
+- Limpieza AOSBCK no interactiva y segura.
+- Path controlado sin funciones publicas duplicadas.
+- Exportacion STEP con candidatos FreeCAD silenciosos.
+- Evidencia R1 interna y ZIP historico externo con hash de baseline.
+
+6. DICTAMEN ESTATICO
+APROBADO
+
+La auditoria estatica no sustituye la ejecucion en GNU Octave. La aprobacion dinamica debe cerrarse con VERIFICAR_AOS_0_1_9_R2(true).

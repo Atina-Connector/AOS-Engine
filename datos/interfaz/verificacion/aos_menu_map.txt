@@ -1,0 +1,142 @@
+AOS MENU MAP
+Version: AOS 0.1.2 - Hito Bombeo Mecanico
+AESIR Oilfield Simulation
+Plataforma objetivo: GNU Octave
+Fecha de consolidacion: 2026-07-18
+
+Hito principal:
+- Primer resultado fisicamente coherente de Bombeo Mecanico con Gibbs Foundation 2.
+- GF2 congelado como benchmark dorado BM_GF2_GOLDEN_CASE_001.
+- Gibbs Foundation 3 incorporado de forma nativa como linea BETA de desarrollo.
+- Menu BM modular basado en registro, sin edicion manual para futuras Foundations.
+
+Base heredada:
+- AOS 0.1.1-R1 CLEAN como base funcional consolidada.
+- GL/JGL, mandriles V2, BES, BM operativo, reportes, Viewer y utilidades.
+- Importacion .aosdat unica, automatica e indiferenciada.
+- Normalizacion Qiny, energia GL/JGL, economia y registro dinamico de graficos.
+- Menu visible de survey, punzados y completacion.
+
+Roadmap instalado:
+- Los menus de inyectores, mallas, baterias, fluidos, red electrica, secuencia de arranque y SCADA representan arquitectura y contratos futuros.
+- Los modulos BETA, DESARROLLO o PLANIFICADO no deben interpretarse como solvers validados.
+Generado: 2026-07-18T15:17:14
+Raiz: AOS_app
+
+[AOS_app] AOS - AESIR Oilfield Simulation 0.1.2 - Hito Bombeo Mecanico\n
+  Archivo: src/menu/AOS_app.m
+
+[aos_leer_opcion] aos leer opcion
+  Archivo: src/menu/aos_leer_opcion.m
+
+[AOS_menu_analisis_integral] \n--- ANALISIS INTEGRAL DEL YACIMIENTO %s ---\n
+  Archivo: src/menu/AOS_menu_analisis_integral.m
+
+[AOS_menu_baterias] \n--- BATERIAS E INSTALACIONES %s ---\n
+  Archivo: src/menu/AOS_menu_baterias.m
+
+[AOS_menu_BES] \n--- BOMBEO ELECTROSUMERGIBLE (BES) %s ---\n
+  Archivo: src/menu/AOS_menu_BES.m
+
+[AOS_menu_BM] \n--- BOMBEO MECANICO (BM) %s ---\n
+  Archivo: src/menu/AOS_menu_BM.m
+
+[AOS_menu_catalogos] \n--- ADMINISTRACION DE CATALOGOS ---\n
+  Archivo: src/menu/AOS_menu_catalogos.m
+
+[AOS_menu_CGF] \n--- CGF - COMPRESION DE GAS EN FONDO %s ---\n
+  Archivo: src/menu/AOS_menu_CGF.m
+
+[AOS_menu_comparacion_sla] \n--- COMPARACION DE SISTEMAS SLA ---\n
+  Archivo: src/menu/AOS_menu_comparacion_sla.m
+
+[AOS_menu_configuracion] \n--- CONFIGURACION GENERAL ---\n
+  Archivo: src/menu/AOS_menu_configuracion.m
+
+[AOS_menu_datos_pozo] \n--- POZO: SURVEY, PUNZADOS Y COMPLETACION ---\n
+  Archivo: src/menu/AOS_menu_datos_pozo.m
+
+[AOS_menu_EGF] \n--- EGF - EDUCTOR GAS-GAS DE FONDO %s ---\n
+  Archivo: src/menu/AOS_menu_EGF.m
+
+[AOS_menu_fluidos] \n--- FLUIDOS Y ASEGURAMIENTO DE FLUJO %s ---\n
+  Archivo: src/menu/AOS_menu_fluidos.m
+
+[AOS_menu_formatos_externos] \n--- FORMATOS EXTERNOS Y PLANILLAS ---\n
+  Archivo: src/menu/AOS_menu_formatos_externos.m
+
+[AOS_menu_gas_fondo] \n--- PRODUCCION Y COMPRESION DE GAS EN FONDO ---\n
+  Archivo: src/menu/AOS_menu_gas_fondo.m
+
+[AOS_menu_GL_JGL] \n--- GAS LIFT / JET GAS LIFT %s ---\n
+  Archivo: src/menu/AOS_menu_GL_JGL.m
+
+[AOS_menu_herramientas] \n--- HERRAMIENTAS Y UTILIDADES GENERALES ---\n
+  Archivo: src/menu/AOS_menu_herramientas.m
+
+[AOS_menu_herramientas_sla] \n--- HERRAMIENTAS COMUNES DE SLA ---\n
+  Archivo: src/menu/AOS_menu_herramientas_sla.m
+
+[AOS_menu_importar_exportar] \n--- IMPORTAR / EXPORTAR ---\n
+  Archivo: src/menu/AOS_menu_importar_exportar.m
+
+[aos_menu_imprimir_resumen_config] \n*** CONFIGURACION BASE IMPORTADA (.aosdat, no es la ultima corrida) ***\n
+  Archivo: src/menu/aos_menu_imprimir_resumen_config.m
+
+[aos_menu_imprimir_ultima_corrida] aos menu imprimir ultima corrida
+  Archivo: src/menu/aos_menu_imprimir_ultima_corrida.m
+
+[AOS_menu_intercambio] AOS menu intercambio
+  Archivo: src/menu/AOS_menu_intercambio.m
+
+[AOS_menu_LDL] \n--- LDL - SISTEMA PROPIETARIO AESIR %s ---\n
+  Archivo: src/menu/AOS_menu_LDL.m
+
+[AOS_menu_mallas_niveles] \n--- MALLAS Y NIVELES %s ---\n
+  Archivo: src/menu/AOS_menu_mallas_niveles.m
+
+[AOS_menu_operacion_yacimiento] \n--- SIMULACION Y OPERACION DEL YACIMIENTO ---\n
+  Archivo: src/menu/AOS_menu_operacion_yacimiento.m
+
+[AOS_menu_otros_sistemas] \n--- OTROS SISTEMAS DE LEVANTAMIENTO ---\n
+  Archivo: src/menu/AOS_menu_otros_sistemas.m
+
+[AOS_menu_PCP] \n--- PCP - BOMBEO POR CAVIDADES PROGRESIVAS %s ---\n
+  Archivo: src/menu/AOS_menu_PCP.m
+
+[AOS_menu_pozos_inyectores] \n--- POZOS INYECTORES %s ---\n
+  Archivo: src/menu/AOS_menu_pozos_inyectores.m
+
+[AOS_menu_redes_electricas] \n--- REDES ELECTRICAS %s ---\n
+  Archivo: src/menu/AOS_menu_redes_electricas.m
+
+[AOS_menu_reportes] \n--- REPORTES Y AOS VIEWER ---\n
+  Archivo: src/menu/AOS_menu_reportes.m
+
+[AOS_menu_scada] \n--- SCADA Y OPERACION EN TIEMPO REAL %s ---\n
+  Archivo: src/menu/AOS_menu_scada.m
+
+[AOS_menu_secuencia_arranque] \n--- SECUENCIA DE ARRANQUE DEL YACIMIENTO %s ---\n
+  Archivo: src/menu/AOS_menu_secuencia_arranque.m
+
+[AOS_menu_SLA] \n--- SISTEMAS DE LEVANTAMIENTO ARTIFICIAL - SLA ---\n
+  Archivo: src/menu/AOS_menu_SLA.m
+
+[BES_app] \n--- CATÁLOGO DE BOMBAS BES ---\n
+  Archivo: src/menu/BES_app.m
+
+[BM_menu] AOS 0.1.2 - BOMBEO MECANICO\n
+  Archivo: src/menu/BM_menu.m
+
+[BM_operativo_menu] \n--- BOMBEO MECANICO / GIBBS ---\n
+  Archivo: src/menu/BM_operativo_menu.m
+
+[GL_puro_menu] \n--- PARAMETROS ACTUALES ---\n
+  Archivo: src/menu/GL_puro_menu.m
+
+[JGL_menu] \n--- PARAMETROS ACTUALES ---\n
+  Archivo: src/menu/JGL_menu.m
+
+[menu_sensibilidad] \n--- ANÁLISIS DE SENSIBILIDAD ---\n
+  Archivo: src/menu/menu_sensibilidad.m
+

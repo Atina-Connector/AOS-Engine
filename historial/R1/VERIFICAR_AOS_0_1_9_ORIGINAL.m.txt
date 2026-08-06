@@ -1,0 +1,118 @@
+function ok = VERIFICAR_AOS_0_1_9(ejecutar_tests)
+% VERIFICAR_AOS_0_1_9 Verifica AOS 0.1.9 puerta a 0.2.0.
+  if nargin < 1, ejecutar_tests = false; endif
+  ok = true;
+  raiz = fileparts(mfilename('fullpath'));
+  addpath(fullfile(raiz, 'src'), '-begin');
+  addpath(genpath(fullfile(raiz, 'src')), '-begin');
+
+  fprintf('\n================================================================\n');
+  fprintf(' VERIFICACION AOS SUITE 0.1.9 - PUERTA A 0.2.0\n');
+  fprintf('================================================================\n');
+
+  requeridos = { ...
+    'AOS.m','src/iniciar_aos.m','src/menu/AOS_app.m', ...
+    'src/menu/AOS_menu_SLA.m','src/menu/AOS_menu_wells.m', ...
+    'src/menu/AOS_menu_cad_topologia.m','src/menu/AOS_menu_networks.m', ...
+    'src/menu/AOS_menu_electrical.m','src/menu/AOS_menu_facilities.m', ...
+    'src/menu/AOS_menu_geology.m','src/menu/AOS_menu_fluidos.m', ...
+    'src/menu/AOS_menu_scada.m','src/menu/AOS_menu_maintenance.m', ...
+    'src/menu/AOS_menu_data.m','src/menu/AOS_menu_solvers.m', ...
+    'src/menu/AOS_menu_global.m','src/menu/AOS_menu_roadmap.m', ...
+    'src/menu/AOS_menu_suite_config_diag.m','src/menu/AOS_menu_viewer.m', ...
+    'src/menu/AOS_menu_3d_core.m','src/menu/aos_solvers_registro.m', ...
+    'src/roadmap/aos_workbenches_0_1_9.json', ...
+    'src/roadmap/aos_solvers_0_1_9.json', ...
+    'src/roadmap/aos_services_0_1_9.json', ...
+    'src/roadmap/aos_roadmap_0_1_9.json', ...
+    'src/roadmap/aos_frame_ribbon_contract_0_2_0.json', ...
+    'src/modulos/cad_topo/aos_cad_hidraulica_menu.m', ...
+    'src/modulos/cad_topo/aos_cad_hidraulica_dominio_menu.m', ...
+    'src/core/common/redes_hidraulicas/aos_cad_hidraulica_resolver.m', ...
+    'src/core/BES3/BES3_menu.m','src/menu/BM_menu.m','src/menu/JGL_menu.m'};
+  for i=1:numel(requeridos)
+    ruta=fullfile(raiz,requeridos{i});
+    if exist(ruta,'file')==2, fprintf('OK   %s\n',requeridos{i});
+    else, fprintf(2,'FALTA %s\n',requeridos{i}); ok=false; endif
+  endfor
+
+  checks={ ...
+    'src/menu/AOS_app.m','1 - AOS SLA','AOS SLA visible'; ...
+    'src/menu/AOS_app.m','8 - AOS FLUIDS','AOS Fluids visible'; ...
+    'src/menu/AOS_app.m','12 - AOS SOLVERS','AOS Solvers visible'; ...
+    'src/menu/AOS_app.m','14 - ROADMAP GENERAL','Roadmap visible'; ...
+    'src/menu/AOS_app.m','16 - AOS VIEWER','Viewer ultimo'; ...
+    'src/modulos/cad_topo/aos_cad_hidraulica_menu.m','SELECCIONAR DOMINIO','dominio hidraulico visible'; ...
+    'src/modulos/cad_topo/aos_cad_topologia_menu_impl.m','AOS 3D Core transversal','3D Core accesible desde CAD'};
+  for i=1:size(checks,1)
+    ok=comprobar_texto_local(fullfile(raiz,checks{i,1}),checks{i,2},checks{i,3},ok);
+  endfor
+
+  residuos=listar_extension_local(raiz,'.mat');
+  if isempty(residuos), fprintf('OK   arquitectura sin archivos .mat\n');
+  else
+    fprintf(2,'FALLO: se encontraron archivos .mat:\n');
+    for i=1:numel(residuos),fprintf(2,'  %s\n',residuos{i});endfor
+    ok=false;
+  endif
+
+  productos=aos_suite_registro_productos();
+  if numel(productos)==14 && all([productos.disponible])
+    fprintf('OK   catorce workbenches registrados y con entrada disponible\n');
+  else
+    fprintf(2,'FALLO: registro de workbenches incompleto o con entradas faltantes\n');
+    ok=false;
+  endif
+
+  sr=aos_solvers_registro();
+  if numel(sr)>=30
+    fprintf('OK   registro transversal de solvers (%d entradas)\n',numel(sr));
+  else
+    fprintf(2,'FALLO: registro de solvers insuficiente\n'); ok=false;
+  endif
+
+  if ejecutar_tests
+    fprintf('\n--- SELFTESTS OPCIONALES ---\n');
+    ok=ejecutar_test_local('test_aos_cad_menu_hidraulica',ok);
+    ok=ejecutar_test_local('test_aos_cad_dominio_hidraulico',ok);
+    ok=ejecutar_test_local('test_aos_cad_hidraulica_dxf',ok);
+    ok=ejecutar_test_local('bes3_selftest',ok);
+  endif
+
+  fprintf('\n================================================================\n');
+  if ok, fprintf('RESULTADO: AOS SUITE 0.1.9 APROBADO\n');
+  else, fprintf(2,'RESULTADO: AOS SUITE 0.1.9 NO APROBADO\n'); endif
+  fprintf('================================================================\n');
+endfunction
+
+function ok=comprobar_texto_local(ruta,patron,etiqueta,ok)
+  try
+    txt=fileread(ruta);
+    if isempty(strfind(txt,patron)),fprintf(2,'FALLO: %s no contiene "%s"\n',etiqueta,patron);ok=false;
+    else,fprintf('OK   %s\n',etiqueta);endif
+  catch err
+    fprintf(2,'FALLO: no se pudo leer %s: %s\n',ruta,err.message);ok=false;
+  end_try_catch
+endfunction
+
+function lista=listar_extension_local(carpeta,extension)
+  lista={}; entradas=dir(carpeta);
+  for i=1:numel(entradas)
+    nombre=entradas(i).name;
+    if strcmp(nombre,'.')||strcmp(nombre,'..'),continue;endif
+    ruta=fullfile(carpeta,nombre);
+    if entradas(i).isdir,lista=[lista,listar_extension_local(ruta,extension)];
+    else,[~,~,ext]=fileparts(nombre);if strcmpi(ext,extension),lista{end+1}=ruta;endif;endif
+  endfor
+endfunction
+
+function ok=ejecutar_test_local(nombre,ok)
+  if exist(nombre,'file')~=2,fprintf(2,'FALLO: selftest no encontrado: %s\n',nombre);ok=false;return;endif
+  try
+    resultado=feval(nombre);
+    if isempty(resultado)||logical(resultado),fprintf('OK   selftest %s\n',nombre);
+    else,fprintf(2,'FALLO: selftest sin aprobacion: %s\n',nombre);ok=false;endif
+  catch err
+    fprintf(2,'FALLO: selftest %s: %s\n',nombre,err.message);ok=false;
+  end_try_catch
+endfunction

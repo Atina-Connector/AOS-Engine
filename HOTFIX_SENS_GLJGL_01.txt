@@ -1,0 +1,18 @@
+AOS Suite 0.2.0 DEV1 ENV-02
+Hotfix cientifico: SENS-GLJGL-01
+Fecha: 5 de agosto de 2026
+Motor oficial: GNU Octave
+
+OBJETIVO
+Corregir la regresion en sensibilidades GL/JGL donde los puntos del barrido no
+reproducian las simulaciones puntuales, aparecian caudales cero o negativos y
+las curvas mezclaban metodos/resoluciones.
+
+ALCANCE
+- Orquestacion y publicacion de sensibilidades GL/JGL.
+- No se reescriben las ecuaciones de GL_sim ni del balance nodal puntual.
+- Se conserva el resultado crudo para auditoria.
+- Solo se publican y optimizan puntos numerica y fisicamente aceptados.
+
+ESTADO
+CANDIDATO_A_VALIDACION_DINAMICA_EN_GNU_OCTAVE

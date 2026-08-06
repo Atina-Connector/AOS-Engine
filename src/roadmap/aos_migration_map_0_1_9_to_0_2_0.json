@@ -1,0 +1,41 @@
+{
+  "schema": "AOS_0_1_9_TO_0_2_0_MIGRATION_MAP",
+  "policy": "No physical solver is moved during 0.1.9. New namespaces and registries prepare the 0.2.0 migration.",
+  "mappings": [
+    {
+      "current": "src/menu",
+      "target": "src/workbenches/*/ui"
+    },
+    {
+      "current": "src/core/common/redes_hidraulicas",
+      "target": "src/solvers/hydraulic"
+    },
+    {
+      "current": "src/core/common/electrico_fondo",
+      "target": "src/solvers/electrical and src/services"
+    },
+    {
+      "current": "src/core/common/pvt",
+      "target": "src/services/fluids and src/solvers/fluids"
+    },
+    {
+      "current": "src/modulos/cad_topo",
+      "target": "src/workbenches/cad and src/services/geometry_3d"
+    },
+    {
+      "current": "src/core/BM",
+      "target": "src/solvers/mechanical"
+    },
+    {
+      "current": "src/core/JGL and src/core/GL",
+      "target": "src/solvers/production"
+    },
+    {
+      "current": "src/menu/AOS_menu_gestion_ambiental.m and AMBIENTAL registry entries",
+      "target": "src/workbenches/environmental",
+      "policy": "independent runtime entrypoint implemented; retain legacy alias until environmental data contracts and adapters are validated"
+    }
+  ],
+  "architecture_revision": "ENV-02",
+  "decision": "ADR-AOS-2026-001"
+}

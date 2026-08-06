@@ -1,0 +1,3 @@
+Salidas AOSCAD 0.0.1 DEV1 posteriores a simulacion.
+Cada archivo .aoscad es JSON UTF-8 autosuficiente y editable.
+No existen archivos auxiliares autoritativos.

@@ -1,0 +1,8 @@
+# config_BES/curva_bomba.txt – Curva de una bomba electrosumergible típica
+# Caudales en m³/d, Head en metros (por etapa), Potencia en kW (por etapa)
+# Número de etapas: multiplica cabeza y potencia.
+
+Q_bomba = [0, 50, 100, 150, 200, 250, 300, 350, 400, 450, 500]
+head_bomba = [120, 119, 116, 111, 104, 95, 84, 71, 56, 39, 20]
+potencia_bomba = [15, 17, 20, 24, 29, 35, 42, 50, 59, 69, 80]
+num_etapas = 100

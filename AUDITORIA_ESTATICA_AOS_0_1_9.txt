@@ -1,0 +1,145 @@
+AUDITORIA ESTATICA AOS SUITE 0.1.9 - PUERTA A 0.2.0
+
+OK | JSON aos_capability_contract_0_1_3_R2.json
+OK | JSON aos_frame_ribbon_contract_0_2_0.json
+OK | JSON aos_migration_map_0_1_9_to_0_2_0.json
+OK | JSON aos_roadmap_0_1_9.json
+OK | JSON aos_services_0_1_9.json
+OK | JSON aos_solvers_0_1_9.json
+OK | JSON aos_suite_products_0_1_9.json
+OK | JSON aos_workbenches_0_1_9.json
+OK | JSON src/services/fluids/aos_fluid_contract_0_2_0.json
+OK | JSON src/services/geometry_3d/aos_asset_identity_0_2_0.json
+OK | Sin archivos .mat
+OK | 14 workbenches registrados | 14
+OK | Entrypoint SLA | src/menu/AOS_menu_SLA.m
+OK | Entrypoint WELLS | src/menu/AOS_menu_wells.m
+OK | Entrypoint CAD | src/menu/AOS_menu_cad_topologia.m
+OK | Entrypoint NETWORKS | src/menu/AOS_menu_networks.m
+OK | Entrypoint ELECTRICAL | src/menu/AOS_menu_electrical.m
+OK | Entrypoint FACILITIES | src/menu/AOS_menu_facilities.m
+OK | Entrypoint GEOLOGY | src/menu/AOS_menu_geology.m
+OK | Entrypoint FLUIDS | src/menu/AOS_menu_fluidos.m
+OK | Entrypoint SCADA | src/menu/AOS_menu_scada.m
+OK | Entrypoint MAINTENANCE | src/menu/AOS_menu_maintenance.m
+OK | Entrypoint DATA | src/menu/AOS_menu_data.m
+OK | Entrypoint SOLVERS | src/menu/AOS_menu_solvers.m
+OK | Entrypoint GLOBAL | src/menu/AOS_menu_global.m
+OK | Entrypoint VIEWER | src/menu/AOS_menu_viewer.m
+OK | Viewer ultimo en ribbon | SLA > WELLS > CAD > NETWORKS > ELECTRICAL > FACILITIES > GEOLOGY > FLUIDS > SCADA > MAINTENANCE > DATA > SOLVERS > GLOBAL > VIEWER
+OK | Workbench visible FLUIDS
+OK | Workbench visible SOLVERS
+OK | Workbench visible WELLS
+OK | Workbench visible NETWORKS
+OK | Workbench visible ELECTRICAL
+OK | Workbench visible FACILITIES
+OK | Workbench visible GEOLOGY
+OK | Workbench visible GLOBAL
+OK | Viewer opcion 16
+OK | Roadmap opcion 14
+OK | Fluids opcion 8
+OK | Solvers opcion 12
+OK | Registro >=30 solvers | 35
+OK | Solver entrypoint HYD_DARCY | aos_cad_hidraulica_evaluar_monofasico
+OK | Solver entrypoint HYD_HB | vlp_HB_full
+OK | Solver entrypoint HYD_DR | vlp_duns_ros
+OK | Solver entrypoint HYD_SIMPLE | vlp_simplified_corregida
+OK | Solver entrypoint HYD_TREE | aos_cad_hidraulica_resolver
+OK | Selftest HYD_TREE | test_aos_cad_hidraulica_dxf
+OK | Solver entrypoint HYD_DOMAIN | aos_cad_hidraulica_dominio_filtrar_modelo
+OK | Selftest HYD_DOMAIN | test_aos_cad_dominio_hidraulico
+OK | Solver entrypoint ELEC_PM | aos_motor_pm_evaluar
+OK | Solver entrypoint ELEC_CABLE | aos_cable_evaluar
+OK | Solver entrypoint ELEC_VSD | aos_vsd_evaluar
+OK | Solver entrypoint MECH_GIBBS1 | gibbs18_run_case
+OK | Solver entrypoint MECH_GIBBS2 | gibbs2_run_case
+OK | Solver entrypoint MECH_GIBBS3 | gibbs3_run_case
+OK | Solver entrypoint THERM_DOWNHOLE | aos_termica_fondo
+OK | Solver entrypoint GEO_CONING | aos_conificacion_generica
+OK | Solver entrypoint GEO_CRITICAL | calcular_caudales_criticos
+OK | Solver entrypoint RES_IPR | ipr
+OK | Solver entrypoint PROD_JGL_ITER | jgl_solver_iterativo
+OK | Solver entrypoint PROD_JGL_DIRECT | jgl_solver_directo
+OK | Solver entrypoint PROD_BES2 | bes2_solver
+OK | Solver entrypoint PROD_BES3 | bes3_solver
+OK | Selftest PROD_BES3 | bes3_selftest
+OK | Solver entrypoint PROD_CGF | cgf_solver
+OK | Solver entrypoint GRAPH_PATH | aos_cad_hidraulica_encontrar_caminos
+OK | Solver entrypoint OPT_SENS | menu_sensibilidad
+OK | Solver entrypoint FLUID_PVT | pvt_calcular
+OK | Solver entrypoint FLUID_GAS | aos_gas_props
+OK | AOSCAD R9.1 activo
+OK | Dominio hidraulico visible
+OK | 3D Core desde AOS CAD
+OK | Namespace src/workbenches
+OK | Namespace src/solvers
+OK | Namespace src/services
+OK | Balance function src/menu/AOS_app.m | 3/3
+OK | Nombre funcion src/menu/AOS_app.m | AOS_app
+OK | Balance function src/menu/aos_suite_registro_productos.m | 2/2
+OK | Nombre funcion src/menu/aos_suite_registro_productos.m | aos_suite_registro_productos
+OK | Balance function src/menu/aos_suite_mostrar_versiones.m | 1/1
+OK | Nombre funcion src/menu/aos_suite_mostrar_versiones.m | aos_suite_mostrar_versiones
+OK | Balance function src/menu/aos_suite_registro_servicios.m | 2/2
+OK | Nombre funcion src/menu/aos_suite_registro_servicios.m | aos_suite_registro_servicios
+OK | Balance function src/menu/aos_workbench_mostrar_ficha.m | 3/3
+OK | Nombre funcion src/menu/aos_workbench_mostrar_ficha.m | aos_workbench_mostrar_ficha
+OK | Balance function src/menu/AOS_menu_wells.m | 1/1
+OK | Nombre funcion src/menu/AOS_menu_wells.m | AOS_menu_wells
+OK | Balance function src/menu/AOS_menu_networks.m | 1/1
+OK | Nombre funcion src/menu/AOS_menu_networks.m | AOS_menu_networks
+OK | Balance function src/menu/AOS_menu_electrical.m | 2/2
+OK | Nombre funcion src/menu/AOS_menu_electrical.m | AOS_menu_electrical
+OK | Balance function src/menu/AOS_menu_facilities.m | 1/1
+OK | Nombre funcion src/menu/AOS_menu_facilities.m | AOS_menu_facilities
+OK | Balance function src/menu/AOS_menu_geology.m | 2/2
+OK | Nombre funcion src/menu/AOS_menu_geology.m | AOS_menu_geology
+OK | Balance function src/menu/AOS_menu_fluidos.m | 3/3
+OK | Nombre funcion src/menu/AOS_menu_fluidos.m | AOS_menu_fluidos
+OK | Balance function src/menu/AOS_menu_3d_core.m | 4/4
+OK | Nombre funcion src/menu/AOS_menu_3d_core.m | AOS_menu_3d_core
+OK | Balance function src/menu/aos_solvers_registro.m | 2/2
+OK | Nombre funcion src/menu/aos_solvers_registro.m | aos_solvers_registro
+OK | Balance function src/menu/aos_solvers_menu_disciplina.m | 7/7
+OK | Nombre funcion src/menu/aos_solvers_menu_disciplina.m | aos_solvers_menu_disciplina
+OK | Balance function src/menu/AOS_menu_solvers.m | 4/4
+OK | Nombre funcion src/menu/AOS_menu_solvers.m | AOS_menu_solvers
+OK | Balance function src/menu/AOS_menu_suite_config_diag.m | 4/4
+OK | Nombre funcion src/menu/AOS_menu_suite_config_diag.m | AOS_menu_suite_config_diag
+OK | Balance function src/menu/AOS_menu_roadmap.m | 8/8
+OK | Nombre funcion src/menu/AOS_menu_roadmap.m | AOS_menu_roadmap
+OK | Balance function src/menu/AOS_menu_global.m | 1/1
+OK | Nombre funcion src/menu/AOS_menu_global.m | AOS_menu_global
+OK | Balance function src/menu/AOS_menu_data.m | 3/3
+OK | Nombre funcion src/menu/AOS_menu_data.m | AOS_menu_data
+OK | Balance function src/menu/AOS_menu_diagnosticos_suite.m | 1/1
+OK | Nombre funcion src/menu/AOS_menu_diagnosticos_suite.m | AOS_menu_diagnosticos_suite
+OK | Balance function src/menu/aos_registro_modulos.m | 2/2
+OK | Nombre funcion src/menu/aos_registro_modulos.m | aos_registro_modulos
+OK | Balance function VERIFICAR_AOS_0_1_9.m | 4/4
+OK | Nombre funcion VERIFICAR_AOS_0_1_9.m | VERIFICAR_AOS_0_1_9
+OK | Sin sombra nueva aos_suite_registro_servicios.m | src/menu/aos_suite_registro_servicios.m
+OK | Sin sombra nueva aos_suite_mostrar_versiones.m | src/menu/aos_suite_mostrar_versiones.m
+OK | Sin sombra nueva aos_menu_solvers.m | src/menu/AOS_menu_solvers.m
+OK | Sin sombra nueva aos_menu_geology.m | src/menu/AOS_menu_geology.m
+OK | Sin sombra nueva aos_workbench_mostrar_ficha.m | src/menu/aos_workbench_mostrar_ficha.m
+OK | Sin sombra nueva aos_menu_electrical.m | src/menu/AOS_menu_electrical.m
+OK | Sin sombra nueva aos_menu_facilities.m | src/menu/AOS_menu_facilities.m
+OK | Sin sombra nueva aos_suite_registro_productos.m | src/menu/aos_suite_registro_productos.m
+OK | Sin sombra nueva aos_app.m | src/menu/AOS_app.m
+OK | Sin sombra nueva aos_menu_wells.m | src/menu/AOS_menu_wells.m
+OK | Sin sombra nueva aos_menu_roadmap.m | src/menu/AOS_menu_roadmap.m
+OK | Sin sombra nueva aos_menu_3d_core.m | src/menu/AOS_menu_3d_core.m
+OK | Sin sombra nueva verificar_aos_0_1_9.m | VERIFICAR_AOS_0_1_9.m
+OK | Sin sombra nueva aos_menu_data.m | src/menu/AOS_menu_data.m
+OK | Sin sombra nueva aos_menu_networks.m | src/menu/AOS_menu_networks.m
+OK | Sin sombra nueva aos_menu_fluidos.m | src/menu/AOS_menu_fluidos.m
+OK | Sin sombra nueva aos_solvers_menu_disciplina.m | src/menu/aos_solvers_menu_disciplina.m
+OK | Sin sombra nueva aos_menu_diagnosticos_suite.m | src/menu/AOS_menu_diagnosticos_suite.m
+OK | Sin sombra nueva aos_menu_suite_config_diag.m | src/menu/AOS_menu_suite_config_diag.m
+OK | Sin sombra nueva aos_menu_global.m | src/menu/AOS_menu_global.m
+OK | Sin sombra nueva aos_registro_modulos.m | src/menu/aos_registro_modulos.m
+OK | Sin sombra nueva aos_solvers_registro.m | src/menu/aos_solvers_registro.m
+
+RESULTADO: APROBADO ESTATICAMENTE
+NOTA: no hay GNU Octave disponible en el entorno de ensamblado; la validacion dinamica final debe ejecutarse con VERIFICAR_AOS_0_1_9 en GNU Octave.

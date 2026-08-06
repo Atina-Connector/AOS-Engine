@@ -1,0 +1,144 @@
+Contrato Viewer <-> AOSCAD-0.0.1-DEV1
+======================================
+
+Estado
+------
+Primera version de desarrollo. PROTOTIPO_NO_VALIDADO.
+Motor objetivo unico: GNU Octave.
+Fuente canonica unica: archivo .aoscad en JSON UTF-8.
+No existen representaciones binarias paralelas ni archivos auxiliares autoritativos.
+info.schema permanece exactamente AOSCAD-0.0.1-DEV1.
+
+Equivalencias
+-------------
+DXF de instalacion = geometria tipo survey + metadatos completos de tuberias,
+redes electricas, equipos y condiciones de borde.
+DXF de galerias = geometria + topologia equivalente a un modelo de galerias.
+AOSCAD = modelo editable + configuracion + simulacion + tablas + validaciones.
+AOSCAD enriquecido = el mismo modelo + recursos visuales regenerables.
+
+Prioridad de contenido (obligatoria)
+------------------------------------
+1. tablas_entrada y tablas_resultados;
+2. validaciones, advertencias y trazabilidad;
+3. geometria y topologia;
+4. recursos_visuales (planos, graficos, mapas, PNG).
+
+El Viewer construye su menu desde el contenido real del archivo. Cada tabla,
+plano, topologia, grafico o ficha no vacia genera su propia pantalla.
+Una seccion ausente o vacia no debe mostrarse.
+Un .aoscad legacy sin recursos_visuales es valido; el Viewer no debe advertir
+ni exigir esa seccion.
+
+Reglas de edicion
+-----------------
+- Todos los campos de entrada pueden editarse en AOS Suite.
+- Una edicion invalida los resultados previos y los recursos derivados
+  (vigente=false / obsoletos=true) de forma atomica.
+- No se permite guardar como corrida vigente hasta recalcular.
+- Los resultados y recursos visuales nunca reemplazan a las tablas fuente.
+- SIMPLE y ENRIQUECIDO comparten exactamente el mismo contrato de datos.
+- El Viewer NO debe presentar recursos con vigente=false u obsoletos=true
+  como si fueran vigentes.
+
+Archivos de referencia
+----------------------
+schema/AOSCAD_0_0_1_DEV1_SCHEMA.json
+LEEME_MODULO.txt
+LEEME_METADATOS_DXF.txt
+
+Extension hidraulica DXF DEV1
+-----------------------------
+Cuando simulacion.motor = AOSCAD-HIDRAULICA-0.0.1-DEV1, el Viewer debe crear
+pantallas tabulares independientes para:
+  tablas_entrada.fluids / tablas_entrada.fluidos
+  tablas_entrada.nodos
+  tablas_entrada.tramos
+  tablas_entrada.condiciones_borde
+  tablas_resultados.resumen
+  tablas_resultados.nodos
+  tablas_resultados.tramos
+Las tablas son primarias. El plano coloreado por presion/caudal es secundario.
+
+R9 - DOMINIO HIDRAULICO SELECTIVO
+---------------------------------
+Tabla primaria opcional: tablas_entrada.dominios_hidraulicos
+
+El Viewer debe mostrar una pantalla por dominio existente. Campos principales:
+- id
+- tipo
+- nodo_inicio
+- nodo_fin
+- nodos_seleccionados
+- tramos_seleccionados
+- cantidad_caminos_detectados
+- longitud_total_m
+- condicion_extremos
+- estado_solver
+
+La representacion grafica es secundaria. La tabla del dominio y la tabla de
+condiciones_borde son las fuentes auditables.
+
+R14 - GEOMETRIA 3D / INDICE STEP / VINCULO (aditivo)
+----------------------------------------------------
+info.schema permanece exactamente AOSCAD-0.0.1-DEV1.
+Las secciones siguientes son opcionales; un .aoscad previo sin ellas sigue
+siendo valido. El Viewer no debe exigirlas ni fallar si faltan.
+
+Secciones opcionales (dato, no graficos):
+- step_indice_geometrico / geometria.indice_step
+  productos, ocurrencias (geometry_id), placements y bbox en metros (SI),
+  unidades con factor y origen trazables.
+- escena_3d
+  objetos tipados (NODO, TRAMO, POZO, EQUIPO_3D) con asset_id / geometry_id,
+  bbox_global en metros; construida por aos_cad_escena_3d (dato puro).
+- vinculo_3d
+  mapa bidireccional por_asset_id <-> por_geometry_id; n_vinculados y
+  conteos de huerfanos. Cada activo puede llevar geometry_id / geometry_ids.
+
+Orden de prioridad de lectura del Viewer (3D):
+1. tablas_entrada / tablas_resultados / validaciones (sin cambio);
+2. vinculo_3d y geometry_id en activos (identidad ocurrencia);
+3. step_indice_geometrico (placements / bbox / jerarquia);
+4. escena_3d como representacion secundaria;
+5. recursos_visuales / PNG del visor headless (regenerables, nunca autoritarios).
+
+Reglas:
+- asset_id de productos STEP no cambia (clave STEP:<product_name>).
+- geometry_id identifica la ocurrencia: STEPOCC:<archivo>:<ruta_nauo>.
+- Relacion uno a muchos: un asset_id puede mapear a varios geometry_id.
+- Escena invalidada por edicion de tablas o mtime de DXF/STEP
+  (ESCENA_3D_INVALIDADA_POR_EDICION); no servir desactualizada.
+- Documentacion: LEEME_INDICE_STEP_Y_VISOR_3D.md
+
+R15 - OVERLAY DE RESULTADOS (entregado)
+---------------------------------------
+Overlay de resultados sobre escena 3D: ENTREGADO (Sprint 6 / R15).
+- Se aplica solo con simulacion vigente (EJECUTADA / EJECUTADA_CON_ADVERTENCIAS)
+  y tablas_resultados no vacias.
+- Es representacion secundaria; no recalcula fisica.
+- Al invalidar simulacion/edicion, overlay y recursos dejan de ser vigentes.
+
+R16 / Sprint 7 - RECURSOS VISUALES (secundarios / regenerables)
+--------------------------------------------------------------
+Perfil ENRIQUECIDO puede incluir recursos_visuales con estructura minima:
+
+  recursos_visuales.tipo = 'RECURSOS_VIEWER'
+  recursos_visuales.planos[] / graficos[]
+  recursos_visuales.vigente (bool)
+  recursos_visuales.obsoletos (bool)
+  recursos_visuales.nota (texto informativo)
+
+Cada recurso:
+  id, tipo, titulo, formato='PNG', unidades='m',
+  origen='REGENERABLE_AOSCAD', ruta_relativa, vigente, asset_scope
+
+Reglas Viewer:
+- Prioridad fija: tablas > validaciones > geometria > recursos.
+- PNG y rutas relativas son regenerables; nunca fuente de verdad.
+- Si vigente=false u obsoletos=true: no presentar como vigente;
+  ofrecer regeneracion o indicar obsoleto.
+- SIMPLE: recursos_visuales vacio ({}); sin payload visual.
+- ENRIQUECIDO: al guardar, AOS regenera recursos si faltan u obsoletos.
+- Fallo de PNG no debe corromper el .aoscad ni ocultar tablas/validaciones.
+- Legacy sin la seccion: abrir sin advertencias nuevas.

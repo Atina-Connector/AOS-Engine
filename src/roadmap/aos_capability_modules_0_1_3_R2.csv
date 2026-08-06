@@ -1,0 +1,21 @@
+id,name,group,status,phase_target,proprietary_aesir,capabilities
+GL_JGL,Gas Lift / Jet Gas Lift,SLA,OPERATIVO,0.1.3,1,Simulacion | Sensibilidades | Diseno de mandriles | Calibracion | Comparacion GL/JGL
+BES,Bombeo Electrosumergible,SLA,DESARROLLO,0.1.4,0,BES1 legado | BES2 foundation | BES3 | Frecuencia cero / flujo natural | Recirculacion capilar | Motor/cable/VSD/termica
+BM,Bombeo Mecanico,SLA,OPERATIVO,0.1.3,0,Foundation 1 | GF2 | GF3 | Tuberia anclada/libre | Sarta y barras | Espaciamiento | Cartas
+PCP,Bombeo por Cavidades Progresivas,SLA,DESARROLLO,0.3.x,0,Simulacion PCP | Sensibilidades | Diseno | Calibracion | Diagnostico | Energia | Economia
+LDL,LDL - Presion y temperatura de fondo sin sensores,PCP,DESARROLLO,0.3.x,1,Modelo LDL | Calculo P/T | SCADA | Calibracion | Historicos | Incertidumbre
+CGF,Compresion de Gas en Fondo,SLA,BETA,0.2.x,1,Compresor axial | Motor PM | Mapa | Sensibilidades | Reporte
+EGF,Eductor Gas-Gas de Fondo,SLA,PLANIFICADO,0.3.x,1,Eductor gas-gas | Sensibilidades | Reporte
+INYECTORES,Pozos inyectores,YACIMIENTO,PLANIFICADO,0.2.x,0,Agua | Gas | Polimeros | Inyectividad | Perfil | Compatibilidad | Energia | Diagnostico
+MALLAS,Mallas y niveles,YACIMIENTO,PLANIFICADO,0.2.x,0,Nodos | Conexiones | Elevaciones | Malla | Presiones | Restricciones | Escenarios | Conectividad
+BATERIAS,Baterias e instalaciones,YACIMIENTO,PLANIFICADO,0.2.x,0,Separadores | Tanques | Bombas | Compresores | Tratamientos | Gas | Capacidad | Balance | Restricciones
+FLUIDOS,Fluidos y aseguramiento de flujo,YACIMIENTO,PLANIFICADO,0.2.x,0,PVT | Petroleo | Gas | Agua | Emulsiones | Carbonatos | Sales | Parafinas | Hidratos | Corrosion | Tratamientos
+RED_ELECTRICA,Redes electricas,YACIMIENTO,PLANIFICADO,0.2.x,0,Generacion | Subestaciones | Transformadores | Alimentadores | Cargas | Motores | VSD | Protecciones | Flujo de carga | Contingencias
+ARRANQUE,Secuencia de arranque del yacimiento,YACIMIENTO,PLANIFICADO,0.2.x,0,Escenario de corte | Inventario | Prioridades | Restricciones | Secuencia automatica | Simulacion | Procedimiento
+SCADA,SCADA y operacion en tiempo real,YACIMIENTO,DESARROLLO,0.2.x,0,AOSDAT manual | Recepcion automatica | Comunicaciones | Variables | Historicos | Alarmas | Tags | Validacion | Calibracion | Recomendaciones
+INTEGRAL,Analisis integral del yacimiento,YACIMIENTO,PLANIFICADO,1.0,0,Balance integral | Restricciones | Escenarios | Recomendaciones
+CAD_TOPO,"CAD, topografia y topologia",TRANSVERSAL,PLANIFICADO,0.2.x,0,DXF/LibreCAD | STEP/FreeCAD | Topologia | Topografia | Interferencias | Open CASCADE
+AMBIENTAL,Gestion ambiental,TRANSVERSAL,PLANIFICADO,0.3.x,0,Emisiones | Derrames | Agua producida | Residuos | HSE | Cumplimiento
+INTEGRIDAD,Integridad y confiabilidad,TRANSVERSAL,PLANIFICADO,0.3.x,0,Corrosion | Erosion | Integridad mecanica | Riesgo | Confiabilidad | Criticidad | Vida remanente
+PULLING,Mantenimiento y Pulling Intelligence,TRANSVERSAL,PLANIFICADO,0.3.x,1,Activos | Ordenes | Scores | Pulling Priority Score | Campanas | Recomendaciones
+ECONOMIA,Economia y optimizacion,TRANSVERSAL,PLANIFICADO,0.3.x,0,CAPEX | OPEX | Ingreso incremental | Payback | VAN | TIR | Optimizacion | Campanas

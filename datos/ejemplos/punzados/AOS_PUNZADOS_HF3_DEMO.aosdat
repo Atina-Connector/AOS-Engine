@@ -1,0 +1,47 @@
+[AOS_DATA]
+version=0.1.9-R2-HF3
+pozo=DEMO_PUNZADOS_HF3
+descripcion=Ejemplo de punzados independientes, editables y con metadatos
+
+[CONFIG]
+P_res_bar=200
+P_wh_bar=10
+D_res_m=1600
+
+# Formato compatible con versiones anteriores
+[PUNZADOS]
+1500,1508,13,0.011
+1512,1518,0,0.010
+
+# Metadatos completos HF3
+[PUNZADOS_META]
+schema=AOS_PUNZADOS_META_1.0
+n=2
+id_1=PZ-001
+nombre_1=Arena_productora
+MD_desde_1=1500
+MD_hasta_1=1508
+densidad_tpm_1=13
+diametro_punzado_m_1=0.011
+activo_1=true
+fase_deg_1=60
+penetracion_m_1=0.32
+tipo_disparo_1=TCP
+formacion_1=ARENA_A
+permeabilidad_mD_1=18
+skin_1=1.2
+estado_validacion_1=VALIDADO
+observaciones_1=Tramo_principal
+origen_1=MANUAL
+extras_json_1={"proveedor_cargas":"AESIR","lote":42}
+id_2=PZ-002
+nombre_2=Reserva_inactiva
+MD_desde_2=1512
+MD_hasta_2=1518
+densidad_tpm_2=10
+diametro_punzado_m_2=0.010
+activo_2=false
+formacion_2=ARENA_B
+estado_validacion_2=REVISAR
+observaciones_2=Conservado_sin_aporte_al_solver
+origen_2=ESTADO_MECANICO

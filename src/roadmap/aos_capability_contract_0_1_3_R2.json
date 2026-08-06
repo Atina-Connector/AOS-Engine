@@ -1,0 +1,401 @@
+{
+  "schema": "AOS-CAPABILITY-CONTRACT-1.0",
+  "aos_version": "0.1.3-R2",
+  "purpose": "Mapa completo de capacidades presentes y futuras para Octave y el frame C#.",
+  "status_definitions": {
+    "OPERATIVO": "Disponible para el alcance declarado.",
+    "BETA": "Disponible con validacion ampliada pendiente.",
+    "DESARROLLO": "Interfaz o solver en construccion.",
+    "PLANIFICADO": "Contrato y menu definidos; solver no publicado.",
+    "LEGADO": "Conservado como referencia o compatibilidad."
+  },
+  "phases": [
+    {
+      "id": "P1",
+      "version": "0.1.3",
+      "name": "Estabilizacion",
+      "scope": "GL/JGL y BM operativos; BES en evolucion; formatos y servicios comunes."
+    },
+    {
+      "id": "P2",
+      "version": "0.1.4",
+      "name": "BES3 y consolidacion",
+      "scope": "BES3, frecuencia cero, flujo natural, recirculacion y consolidacion."
+    },
+    {
+      "id": "P3",
+      "version": "0.2.x",
+      "name": "Infraestructura y SCADA",
+      "scope": "CAD-TOP, redes, baterias, inyectores, fluidos, arranque y SCADA."
+    },
+    {
+      "id": "P4",
+      "version": "0.3.x",
+      "name": "Inteligencia operativa",
+      "scope": "Ambiental, integridad, mantenimiento, pulling y economia."
+    },
+    {
+      "id": "P5",
+      "version": "1.0",
+      "name": "Plataforma integral",
+      "scope": "Orquestacion unificada, motor CAD interno y soporte de decision trazable."
+    }
+  ],
+  "platform_dependencies": {
+    "scientific_engine": {
+      "required": "GNU Octave",
+      "official": "GNU Octave",
+      "policy": "motor cientifico unico; desarrollos nuevos Octave-first"
+    },
+    "full_cad_initial": [
+      "LibreCAD",
+      "FreeCAD"
+    ],
+    "cad_exchange": [
+      "DXF",
+      "STEP"
+    ],
+    "future_internal_engine": "Open CASCADE Technology"
+  },
+  "modules": [
+    {
+      "id": "GL_JGL",
+      "name": "Gas Lift / Jet Gas Lift",
+      "group": "SLA",
+      "status": "OPERATIVO",
+      "phase_target": "0.1.3",
+      "proprietary_aesir": true,
+      "capabilities": [
+        "Simulacion",
+        "Sensibilidades",
+        "Diseno de mandriles",
+        "Calibracion",
+        "Comparacion GL/JGL"
+      ]
+    },
+    {
+      "id": "BES",
+      "name": "Bombeo Electrosumergible",
+      "group": "SLA",
+      "status": "DESARROLLO",
+      "phase_target": "0.1.4",
+      "proprietary_aesir": false,
+      "capabilities": [
+        "BES1 legado",
+        "BES2 foundation",
+        "BES3",
+        "Frecuencia cero / flujo natural",
+        "Recirculacion capilar",
+        "Motor/cable/VSD/termica"
+      ]
+    },
+    {
+      "id": "BM",
+      "name": "Bombeo Mecanico",
+      "group": "SLA",
+      "status": "OPERATIVO",
+      "phase_target": "0.1.3",
+      "proprietary_aesir": false,
+      "capabilities": [
+        "Foundation 1",
+        "GF2",
+        "GF3",
+        "Tuberia anclada/libre",
+        "Sarta y barras",
+        "Espaciamiento",
+        "Cartas"
+      ]
+    },
+    {
+      "id": "PCP",
+      "name": "Bombeo por Cavidades Progresivas",
+      "group": "SLA",
+      "status": "DESARROLLO",
+      "phase_target": "0.3.x",
+      "proprietary_aesir": false,
+      "capabilities": [
+        "Simulacion PCP",
+        "Sensibilidades",
+        "Diseno",
+        "Calibracion",
+        "Diagnostico",
+        "Energia",
+        "Economia"
+      ]
+    },
+    {
+      "id": "LDL",
+      "name": "LDL - Presion y temperatura de fondo sin sensores",
+      "group": "PCP",
+      "status": "DESARROLLO",
+      "phase_target": "0.3.x",
+      "proprietary_aesir": true,
+      "capabilities": [
+        "Modelo LDL",
+        "Calculo P/T",
+        "SCADA",
+        "Calibracion",
+        "Historicos",
+        "Incertidumbre"
+      ]
+    },
+    {
+      "id": "CGF",
+      "name": "Compresion de Gas en Fondo",
+      "group": "SLA",
+      "status": "BETA",
+      "phase_target": "0.2.x",
+      "proprietary_aesir": true,
+      "capabilities": [
+        "Compresor axial",
+        "Motor PM",
+        "Mapa",
+        "Sensibilidades",
+        "Reporte"
+      ]
+    },
+    {
+      "id": "EGF",
+      "name": "Eductor Gas-Gas de Fondo",
+      "group": "SLA",
+      "status": "PLANIFICADO",
+      "phase_target": "0.3.x",
+      "proprietary_aesir": true,
+      "capabilities": [
+        "Eductor gas-gas",
+        "Sensibilidades",
+        "Reporte"
+      ]
+    },
+    {
+      "id": "INYECTORES",
+      "name": "Pozos inyectores",
+      "group": "YACIMIENTO",
+      "status": "PLANIFICADO",
+      "phase_target": "0.2.x",
+      "proprietary_aesir": false,
+      "capabilities": [
+        "Agua",
+        "Gas",
+        "Polimeros",
+        "Inyectividad",
+        "Perfil",
+        "Compatibilidad",
+        "Energia",
+        "Diagnostico"
+      ]
+    },
+    {
+      "id": "MALLAS",
+      "name": "Mallas y niveles",
+      "group": "YACIMIENTO",
+      "status": "PLANIFICADO",
+      "phase_target": "0.2.x",
+      "proprietary_aesir": false,
+      "capabilities": [
+        "Nodos",
+        "Conexiones",
+        "Elevaciones",
+        "Malla",
+        "Presiones",
+        "Restricciones",
+        "Escenarios",
+        "Conectividad"
+      ]
+    },
+    {
+      "id": "BATERIAS",
+      "name": "Baterias e instalaciones",
+      "group": "YACIMIENTO",
+      "status": "PLANIFICADO",
+      "phase_target": "0.2.x",
+      "proprietary_aesir": false,
+      "capabilities": [
+        "Separadores",
+        "Tanques",
+        "Bombas",
+        "Compresores",
+        "Tratamientos",
+        "Gas",
+        "Capacidad",
+        "Balance",
+        "Restricciones"
+      ]
+    },
+    {
+      "id": "FLUIDOS",
+      "name": "Fluidos y aseguramiento de flujo",
+      "group": "YACIMIENTO",
+      "status": "PLANIFICADO",
+      "phase_target": "0.2.x",
+      "proprietary_aesir": false,
+      "capabilities": [
+        "PVT",
+        "Petroleo",
+        "Gas",
+        "Agua",
+        "Emulsiones",
+        "Carbonatos",
+        "Sales",
+        "Parafinas",
+        "Hidratos",
+        "Corrosion",
+        "Tratamientos"
+      ]
+    },
+    {
+      "id": "RED_ELECTRICA",
+      "name": "Redes electricas",
+      "group": "YACIMIENTO",
+      "status": "PLANIFICADO",
+      "phase_target": "0.2.x",
+      "proprietary_aesir": false,
+      "capabilities": [
+        "Generacion",
+        "Subestaciones",
+        "Transformadores",
+        "Alimentadores",
+        "Cargas",
+        "Motores",
+        "VSD",
+        "Protecciones",
+        "Flujo de carga",
+        "Contingencias"
+      ]
+    },
+    {
+      "id": "ARRANQUE",
+      "name": "Secuencia de arranque del yacimiento",
+      "group": "YACIMIENTO",
+      "status": "PLANIFICADO",
+      "phase_target": "0.2.x",
+      "proprietary_aesir": false,
+      "capabilities": [
+        "Escenario de corte",
+        "Inventario",
+        "Prioridades",
+        "Restricciones",
+        "Secuencia automatica",
+        "Simulacion",
+        "Procedimiento"
+      ]
+    },
+    {
+      "id": "SCADA",
+      "name": "SCADA y operacion en tiempo real",
+      "group": "YACIMIENTO",
+      "status": "DESARROLLO",
+      "phase_target": "0.2.x",
+      "proprietary_aesir": false,
+      "capabilities": [
+        "AOSDAT manual",
+        "Recepcion automatica",
+        "Comunicaciones",
+        "Variables",
+        "Historicos",
+        "Alarmas",
+        "Tags",
+        "Validacion",
+        "Calibracion",
+        "Recomendaciones"
+      ]
+    },
+    {
+      "id": "INTEGRAL",
+      "name": "Analisis integral del yacimiento",
+      "group": "YACIMIENTO",
+      "status": "PLANIFICADO",
+      "phase_target": "1.0",
+      "proprietary_aesir": false,
+      "capabilities": [
+        "Balance integral",
+        "Restricciones",
+        "Escenarios",
+        "Recomendaciones"
+      ]
+    },
+    {
+      "id": "CAD_TOPO",
+      "name": "CAD, topografia y topologia",
+      "group": "TRANSVERSAL",
+      "status": "PLANIFICADO",
+      "phase_target": "0.2.x",
+      "proprietary_aesir": false,
+      "capabilities": [
+        "DXF/LibreCAD",
+        "STEP/FreeCAD",
+        "Topologia",
+        "Topografia",
+        "Interferencias",
+        "Open CASCADE"
+      ]
+    },
+    {
+      "id": "AMBIENTAL",
+      "name": "Gestion ambiental",
+      "group": "TRANSVERSAL",
+      "status": "PLANIFICADO",
+      "phase_target": "0.3.x",
+      "proprietary_aesir": false,
+      "capabilities": [
+        "Emisiones",
+        "Derrames",
+        "Agua producida",
+        "Residuos",
+        "HSE",
+        "Cumplimiento"
+      ]
+    },
+    {
+      "id": "INTEGRIDAD",
+      "name": "Integridad y confiabilidad",
+      "group": "TRANSVERSAL",
+      "status": "PLANIFICADO",
+      "phase_target": "0.3.x",
+      "proprietary_aesir": false,
+      "capabilities": [
+        "Corrosion",
+        "Erosion",
+        "Integridad mecanica",
+        "Riesgo",
+        "Confiabilidad",
+        "Criticidad",
+        "Vida remanente"
+      ]
+    },
+    {
+      "id": "PULLING",
+      "name": "Mantenimiento y Pulling Intelligence",
+      "group": "TRANSVERSAL",
+      "status": "PLANIFICADO",
+      "phase_target": "0.3.x",
+      "proprietary_aesir": true,
+      "capabilities": [
+        "Activos",
+        "Ordenes",
+        "Scores",
+        "Pulling Priority Score",
+        "Campanas",
+        "Recomendaciones"
+      ]
+    },
+    {
+      "id": "ECONOMIA",
+      "name": "Economia y optimizacion",
+      "group": "TRANSVERSAL",
+      "status": "PLANIFICADO",
+      "phase_target": "0.3.x",
+      "proprietary_aesir": false,
+      "capabilities": [
+        "CAPEX",
+        "OPEX",
+        "Ingreso incremental",
+        "Payback",
+        "VAN",
+        "TIR",
+        "Optimizacion",
+        "Campanas"
+      ]
+    }
+  ]
+}

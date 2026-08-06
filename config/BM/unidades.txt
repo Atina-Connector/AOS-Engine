@@ -1,0 +1,11 @@
+# Catálogo de Unidades de Bombeo Mecánico
+# Formato: modelo, tipo, carrera_max_m, vel_max_gpm, torque_max_klb_in, peso_kg
+
+C-912-305-168, Convencional, 5.18, 20, 912, 45000
+C-640-305-144, Convencional, 4.27, 20, 640, 32000
+M-1280-427-240, MarkII, 6.10, 15, 1280, 68000
+M-912-365-192, MarkII, 5.49, 15, 912, 50000
+R-800-400-200, Rotaflex, 6.10, 12, 800, 42000
+R-500-300-144, Rotaflex, 4.27, 15, 500, 28000
+H-400-360-168, Hidraulico, 5.49, 10, 400, 35000
+H-250-240-120, Hidraulico, 3.66, 12, 250, 22000

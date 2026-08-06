@@ -1,0 +1,18 @@
+{
+  "schema": "AOS_REPORT_TABLES_CONTRACT_1.0",
+  "version": "0.1.9-R2-HF3.5",
+  "data_policy": "ALWAYS_PRESERVE",
+  "profiles": ["EXECUTIVE", "TECHNICAL", "AUDIT", "CUSTOM"],
+  "render_modes": [
+    "FULL_BODY",
+    "SUMMARY",
+    "SAMPLED",
+    "FULL_APPENDIX",
+    "VIEWER_ONLY",
+    "EXCLUDED_EXPORT"
+  ],
+  "visible_index": "TABLE_INDEX",
+  "archive_index": "TABLE_ARCHIVE_INDEX",
+  "sensitivity_default": "FULL_BODY",
+  "viewer_rule": "Archive tables remain available as data but are not rendered automatically in PDF."
+}

@@ -1,0 +1,86 @@
+{
+  "schema": "AOS_ENVIRONMENTAL_WORKBENCH_0_2_0_DEV1",
+  "architecture_revision": "ENV-02",
+  "decision": "ADR-AOS-2026-001",
+  "id": "ENVIRONMENTAL",
+  "name": "AOS Environmental",
+  "state": "ROADMAP_RUNTIME_SHELL",
+  "runtime_available": true,
+  "compatibility": {
+    "legacy_alias": "AMBIENTAL",
+    "legacy_entrypoint": "AOS_menu_gestion_ambiental",
+    "legacy_host": "MAINTENANCE"
+  },
+  "ribbon": {
+    "after": "SCADA",
+    "before": "MAINTENANCE",
+    "viewer_last": true
+  },
+  "responsibility": {
+    "owns": [
+      "environmental_sources",
+      "environmental_events",
+      "measurements",
+      "emission_and_spill_quantification",
+      "environmental_risk",
+      "mitigation_tracking",
+      "environmental_reporting",
+      "indirect_emission_calculation"
+    ],
+    "does_not_own": [
+      "geometry",
+      "topology",
+      "fluid_properties",
+      "scada_raw_data",
+      "maintenance_execution",
+      "global_optimization"
+    ]
+  },
+  "authorities": {
+    "spatial_identity": "AOS_CAD_3D_CORE",
+    "fluid_properties": "AOS_FLUIDS",
+    "measurements_and_histories": "AOS_SCADA",
+    "corrective_execution": "AOS_MAINTENANCE",
+    "environmental_event_and_result": "AOS_ENVIRONMENTAL"
+  },
+  "dependencies": [
+    "AOS_CAD",
+    "AOS_3D_CORE",
+    "AOSBCK",
+    "AOS_WELLS",
+    "AOS_NETWORKS",
+    "AOS_ELECTRICAL",
+    "AOS_FACILITIES",
+    "AOS_FLUIDS",
+    "AOS_SCADA",
+    "AOS_DATA",
+    "REPORTING"
+  ],
+  "consumers": [
+    "AOS_MAINTENANCE",
+    "PULLING_INTELLIGENCE",
+    "AOS_GLOBAL",
+    "AOS_VIEWER"
+  ],
+  "approved_scope": [
+    "fugitive_CH4_CO2_H2S",
+    "direct_operational_emissions",
+    "spills_and_liquid_losses",
+    "produced_water_waste_and_chemicals",
+    "energy_activity_and_indirect_emissions",
+    "environmental_HSE_risk",
+    "mitigation_compliance_and_reporting"
+  ],
+  "contract_design_status": "PENDING",
+  "runtime_implementation_status": "SHELL_ONLY",
+  "no_runtime_code_in_env01": true,
+  "entrypoint": "AOS_menu_environmental",
+  "runtime_shell_revision": "ENV-02",
+  "runtime_scope": [
+    "independent_entrypoint",
+    "suite_menu_registration",
+    "cross_workbench_navigation",
+    "legacy_alias"
+  ],
+  "scientific_calculations_available": false
+}

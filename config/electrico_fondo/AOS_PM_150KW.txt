@@ -1,0 +1,13 @@
+modelo = AOS_PM_150KW
+origen = GENERICO_AOS_SCREENING
+motor_pm_potencia_nominal_kW = 150
+motor_pm_rpm_nominal = 3600
+motor_pm_eta_nominal = 0.93
+motor_pm_factor_potencia = 0.92
+motor_pm_Tmax_C = 150
+voltaje_superficie_V = 4160
+vsd_eta = 0.97
+cable_resistencia_ohm_km_20C = 0.45
+cable_alpha_C = 0.00393
+cable_T_C = 80
+cable_caida_max_pct = 8

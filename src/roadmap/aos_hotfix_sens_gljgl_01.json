@@ -1,0 +1,35 @@
+{
+  "schema": "AOS_SCIENTIFIC_HOTFIX_1.0",
+  "id": "SENS-GLJGL-01",
+  "suite": "0.2.0-DEV1",
+  "architecture_revision": "ENV-02",
+  "date": "2026-08-05",
+  "status": "CANDIDATE_DYNAMIC_VALIDATION",
+  "scope": [
+    "GL_SENSITIVITY_ORCHESTRATION",
+    "JGL_SENSITIVITY_ORCHESTRATION",
+    "POINT_PUBLICATION_CONTRACT",
+    "SENSITIVITY_REPORTING"
+  ],
+  "solver_core_changes": {
+    "GL_sim": false,
+    "aos_nodal_balance_gl": false,
+    "aos_buscar_cruce_nodal": false,
+    "jgl_solver_directo": false,
+    "jgl_solver_iterativo": false
+  },
+  "rules": [
+    "freeze_effective_configuration",
+    "same_qiny_same_point_evaluator",
+    "uniform_method_per_curve",
+    "preserve_raw_reject_publication",
+    "accepted_points_only_for_optimization",
+    "explicit_state_residual_and_rejection_reason",
+    "no_artificial_smoothing"
+  ],
+  "verification": {
+    "quick": "VERIFICAR_SENS_GLJGL_01(false)",
+    "deep": "VERIFICAR_SENS_GLJGL_01(true)",
+    "field_case_required": true
+  }
+}

@@ -1,0 +1,25 @@
+SENS-GLJGL-03
+AOS Suite 0.2.0 DEV1 ENV-02
+Fecha: 2026-08-06
+Estado: CANDIDATO A VALIDACION DINAMICA EN GNU OCTAVE
+
+OBJETIVO
+Corregir la sensibilidad JGL cuando Qiny se fuerza y P_iny_sup es cero o no esta informada. El cero importado se conserva; el usuario selecciona explicitamente si desea derivar la presion minima requerida, ingresar una presion disponible o confirmar ausencia de presion motriz.
+
+CAPACIDADES
+- Condicion motriz JGL explicita y visible.
+- La simulacion puntual con Qiny fijo comparte el mismo menu explicito.
+- Presion motriz de fondo requerida: Pm_req = Ps + DeltaP_motriz_req.
+- Presion superficial requerida mediante inversion del modelo de columna y perdidas.
+- Comparacion contra presion superficial disponible.
+- Margen y Qiny maximo por presion.
+- Grafica de presiones absolutas y componentes a lo largo del barrido.
+- Auditoria separada de presion importada, configurada, disponible, requerida y efectiva.
+- Tabla y seccion .aosrpt JGL_MOTIVE_PRESSURE.
+
+BASE ACUMULADA
+Incluye SENS-GLJGL-01 y SENS-GLJGL-02. No es necesario instalar SENS02 por separado cuando se utiliza la distribucion completa SENS03 o el parche acumulativo desde SENS01.
+
+VERIFICACION
+VERIFICAR_SENS_GLJGL_03(false)
+VERIFICAR_SENS_GLJGL_03(true)

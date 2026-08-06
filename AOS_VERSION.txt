@@ -1,0 +1,37 @@
+AOS Suite 0.2.0 DEV1
+Edicion: primera baseline de desarrollo distribuido de AOS 0.2.0
+Motor cientifico oficial: GNU Octave
+Arquitectura: workbenches independientes + servicios comunes + solvers versionados + AOS Global
+Baseline heredada: AOS 0.1.9 R2 HF3.4-CAD-R16
+Integracion adicional: composicion transversal de tablas HF3.5
+AOSCAD integrado: 0.0.1 DEV1 R16 CANDIDATO_REVISION_JEFE
+AOSBCK integrado: 0.1.9 R1 BETA
+Reportes: perfiles Ejecutivo/Tecnico/Auditoria/Personalizado; datos completos siempre preservados
+Gestion de casos: universal y contextual; .aosdat conserva prioridad
+Punzados: CRUD transaccional, generacion manual/regular e importacion/exportacion
+Geologia: commit idempotente incluso con campos NaN
+GF3 tubing libre: elongacion positiva, barril negativo y rigidez E*A/L positiva
+GF3 espaciamiento: contrato publico unificado
+AOS 3D Core: activo en CAD R16; ensamblaje completo continua en roadmap
+PROMOCION_AOSCAD: PENDIENTE_APROBACION_JEFE
+Estado de release: DESARROLLO - NO CONGELAR COMO VERSION OPERATIVA SIN VERIFICACION DINAMICA
+Revision de arquitectura: ENV-02
+Decision: ADR-AOS-2026-001 - AOS Environmental como banco independiente
+AOS Environmental: ROADMAP_RUNTIME_SHELL; entrypoint independiente disponible
+Orden objetivo: SCADA -> ENVIRONMENTAL -> MAINTENANCE
+Cambios runtime ENV-02: menu, entrypoint, registro, alias y selftest; calculos pendientes
+Revision cientifica base: SENS-GLJGL-01
+Sensibilidades GL/JGL: snapshot fisico inmutable, evaluador canonico y metodo uniforme
+Publicacion: resultados no convergidos permanecen raw y se publican como NaN
+Revision cientifica base acumulada: SENS-GLJGL-02
+Curvas: DISCRETO, POLINOMICO_INFORMATIVO y POLINOMICO_VERIFICADO
+Polinomios: AUTO controlado y grados 2, 3, 4 y 5 historico
+Optimizacion: derivada cero solo se recomienda tras recalculo fisico convergido
+Paridad requerida: punto GL individual = mismo Qiny dentro del barrido
+Revision cientifica vigente: SENS-GLJGL-03
+Condicion motriz JGL: seleccion visible entre presion derivada, disponible o ausencia confirmada
+Qiny forzado con P_iny_sup no informada: deriva la presion minima requerida sin sobrescribir el dato importado
+Presiones JGL: Ps, diferencial motriz, Pm de fondo, columna de gas, friccion y P superficial requerida
+Factibilidad: margen de presion y Qiny maximo por presion disponible
+Grafica SENS03: presiones absolutas y componentes frente a Qiny
+Validacion: candidato; requiere VERIFICAR_SENS_GLJGL_03 en GNU Octave y benchmark MDM-2064

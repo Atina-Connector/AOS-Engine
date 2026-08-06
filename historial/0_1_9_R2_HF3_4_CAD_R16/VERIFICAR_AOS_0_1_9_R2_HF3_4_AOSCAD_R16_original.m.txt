@@ -1,0 +1,137 @@
+function ok = VERIFICAR_AOS_0_1_9_R2_HF3_4_AOSCAD_R16(profundo)
+% VERIFICAR_AOS_0_1_9_R2_HF3_4_AOSCAD_R16
+% Verifica el parche AOSCAD R16 sobre Suite R3 HF3.4.
+  if nargin < 1, profundo = false; endif
+  raiz = fileparts(mfilename('fullpath'));
+  if exist(fullfile(raiz, 'AOS.m'), 'file') ~= 2
+    cand = fileparts(raiz);
+    if exist(fullfile(cand, 'AOS.m'), 'file') == 2
+      raiz = cand;
+    elseif exist(fullfile(raiz, 'payload', 'VERSION'), 'file') == 2
+      % Ejecutado desde el paquete del parche: no hay raiz AOS aqui.
+      % El instalador lo invoca ya con la raiz en el path.
+    endif
+  endif
+  if exist(fullfile(raiz, 'AOS.m'), 'file') == 2
+    cd(raiz);
+    addpath(raiz, '-begin');
+    addpath(fullfile(raiz, 'src'), '-begin');
+  endif
+  if exist('iniciar_aos', 'file') == 2
+    iniciar_aos(true);
+  endif
+
+  fprintf('\n================================================================\n');
+  fprintf(' VERIFICACION AOS 0.1.9 R2 HF3.4 + AOSCAD R16\n');
+  fprintf('================================================================\n');
+
+  ok = true;
+  requeridos = { ...
+    'src/modulos/cad_topo/VERSION_AOSCAD.txt', ...
+    'src/modulos/cad_topo/aos_cad_sincronizar_2d_3d.m', ...
+    'src/modulos/cad_topo/aos_aoscad_generar_recursos_visuales.m', ...
+    'src/modulos/cad_topo/aos_cad_invalidar_simulacion.m', ...
+    'src/modulos/cad_topo/aos_cad_topologia_menu_impl.m', ...
+    'src/core/common/redes_hidraulicas/aos_cad_hidraulica_resolver_lazos.m', ...
+    'src/services/geometry_3d/aos_escena_federada.m', ...
+    'src/services/units/aos_units_factor_a_metros.m', ...
+    'src/menu/AOS_menu_3d_core.m', ...
+    'src/menu/AOS_menu_aosbck.m', ...
+    'datos/catalogos/aos_bombas_catalogo_0_0_1.json', ...
+    'VERIFICAR_AOSCAD_0_0_1_DEV1.m', ...
+    'VERIFICAR_AOS_0_1_9_R2_HF3_4.m'};
+  for i = 1:numel(requeridos)
+    ruta = fullfile(raiz, requeridos{i});
+    if exist(ruta, 'file') == 2
+      fprintf('OK   %s\n', requeridos{i});
+    else
+      fprintf(2, 'FALLO: falta %s\n', requeridos{i});
+      ok = false;
+    endif
+  endfor
+
+  ver = fullfile(raiz, 'src', 'modulos', 'cad_topo', 'VERSION_AOSCAD.txt');
+  if exist(ver, 'file') == 2
+    txt = fileread(ver);
+    if isempty(strfind(txt, 'AOSCAD-0.0.1-DEV1-R16'))
+      fprintf(2, 'FALLO: VERSION_AOSCAD no es R16\n');
+      ok = false;
+    else
+      fprintf('OK   etiqueta AOSCAD-0.0.1-DEV1-R16\n');
+    endif
+    if ~isempty(strfind(txt, 'ESTADO=BETA')) || ~isempty(strfind(upper(txt), 'PROMOCION=BETA'))
+      fprintf(2, 'FALLO: promocion BETA indebida en VERSION_AOSCAD\n');
+      ok = false;
+    else
+      fprintf('OK   sin promocion BETA en VERSION_AOSCAD\n');
+    endif
+  endif
+
+  vsuite = fullfile(raiz, 'VERSION');
+  if exist(vsuite, 'file') == 2
+    vt = strtrim(fileread(vsuite));
+    if isempty(strfind(vt, 'HF3.4-CAD-R16'))
+      fprintf(2, 'FALLO: VERSION suite no es HF3.4-CAD-R16 (%s)\n', vt);
+      ok = false;
+    else
+      fprintf('OK   VERSION suite %s\n', vt);
+    endif
+  endif
+
+  menu = fullfile(raiz, 'src', 'modulos', 'cad_topo', 'aos_cad_topologia_menu_impl.m');
+  if exist(menu, 'file') == 2
+    mt = fileread(menu);
+    if isempty(strfind(mt, 'case 9')) || isempty(strfind(mt, 'case 10'))
+      fprintf(2, 'FALLO: menu CAD sin opciones 9/10 (caso/galerias)\n');
+      ok = false;
+    else
+      fprintf('OK   menu CAD conserva 9/10\n');
+    endif
+    if isempty(strfind(mt, 'AOSBCK'))
+      fprintf(2, 'FALLO: menu CAD sin entradas AOSBCK\n');
+      ok = false;
+    else
+      fprintf('OK   menu CAD conserva AOSBCK\n');
+    endif
+    if isempty(strfind(mt, 'aos_cad_sincronizar_2d_3d'))
+      fprintf(2, 'FALLO: menu CAD sin sync 2D/3D R16\n');
+      ok = false;
+    else
+      fprintf('OK   menu CAD sync 2D/3D ACTIVO\n');
+    endif
+  endif
+
+  if exist(fullfile(raiz, 'src', 'menu', 'AOS_app.m'), 'file') == 2
+    fprintf('OK   AOS_app.m presente (no reemplazado por CAD)\n');
+  else
+    fprintf(2, 'FALLO: falta AOS_app.m\n');
+    ok = false;
+  endif
+
+  if ok
+    try
+      r = aos_cad_verificar_rutas_unicas(false);
+      ok = ok && logical(r);
+      if logical(r), fprintf('OK   rutas unicas CAD\n'); endif
+    catch err
+      fprintf(2, 'FALLO rutas unicas: %s\n', err.message);
+      ok = false;
+    end_try_catch
+  endif
+
+  if profundo && ok
+    try
+      r = VERIFICAR_AOSCAD_0_0_1_DEV1(true);
+      ok = ok && logical(r);
+    catch err
+      fprintf(2, 'FALLO AOSCAD DEV1 profundo: %s\n', err.message);
+      ok = false;
+    end_try_catch
+  endif
+
+  if ok
+    fprintf('RESULTADO: AOS 0.1.9 R2 HF3.4 + AOSCAD R16 APROBADO\n');
+  else
+    fprintf(2, 'RESULTADO: AOS 0.1.9 R2 HF3.4 + AOSCAD R16 NO APROBADO\n');
+  endif
+endfunction

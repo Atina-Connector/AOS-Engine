@@ -1,0 +1,25 @@
+% Crear estructura param con los datos del Pozo 1 de Manantiales Behr
+param = struct();
+param.P_res = 184.7e5;
+param.IP = 3.0 * 1.1574e-10;
+param.WC = 0.45;
+param.GLR = 33.8;
+param.P_wh = 12.8e5;
+param.P_iny_sup = 92.3e5;
+param.D_bomba = 1890.6;
+param.D_res = 3299;
+param.diam_tbg = 0.062;
+param.rho_o = 850;
+param.rho_w = 1000;
+param.rho_g_std = 0.80;
+param.T_sup = 331.15;
+param.T_fondo = 360.15;
+param.API = 35;
+param.gamma_g = 0.7;
+param.R_gas = 519.6;
+param.modelo_VLP = 'HB';
+param.modelo_IPR = 'Vogel';
+param.survey = [];
+
+% Exportar a .aosdat en la carpeta de importación
+exportar_aosdat(param, 'config/importados/Manantiales_Behr_1.aosdat');

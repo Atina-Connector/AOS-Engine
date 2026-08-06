@@ -1,0 +1,83 @@
+{
+  "schema": "AOS_SOLVERS_0_1_9",
+  "rule": "Solvers are independent from workbench menus and visualization.",
+  "disciplines": [
+    "HYDRAULIC",
+    "ELECTRICAL",
+    "MECHANICAL",
+    "THERMAL",
+    "GEOLOGICAL",
+    "RESERVOIR",
+    "PRODUCTION",
+    "MULTIPHYSICS",
+    "NETWORK_GRAPH",
+    "OPTIMIZATION",
+    "ECONOMICS",
+    "RELIABILITY",
+    "FLUIDS"
+  ],
+  "requirements": [
+    "versioned_input_contract",
+    "versioned_output_contract",
+    "units",
+    "data_origin",
+    "convergence",
+    "warnings",
+    "benchmark",
+    "regression"
+  ],
+  "notable_solvers": [
+    {
+      "id": "HYD_TREE",
+      "state": "DEV1",
+      "entrypoint": "aos_cad_hidraulica_resolver",
+      "selftest": "test_aos_cad_hidraulica_dxf",
+      "benchmark": "test_aos_cad_benchmark_red",
+      "notes": "AOSCAD-0.0.1-DEV1-R16 CANDIDATO_REVISION_JEFE; sin promocion BETA"
+    },
+    {
+      "id": "HYD_DOMAIN",
+      "state": "DEV1",
+      "entrypoint": "aos_cad_hidraulica_dominio_filtrar_modelo",
+      "selftest": "test_aos_cad_dominio_hidraulico",
+      "benchmark": "test_aos_cad_dominio_condiciones",
+      "notes": "AOSCAD-0.0.1-DEV1-R16 CANDIDATO_REVISION_JEFE; sin promocion BETA"
+    },
+    {
+      "id": "HYD_LOOP",
+      "state": "DESARROLLO",
+      "entrypoint": "aos_cad_hidraulica_resolver_lazos",
+      "target": "0.0.1-DEV1-R13",
+      "principles": [
+        "sum_Q_equals_zero",
+        "sum_deltaP_equals_zero"
+      ],
+      "selftest": "test_hyd_loop_selftest",
+      "benchmark": "test_aos_cad_red_lazos",
+      "notes": "AOSCAD-0.0.1-DEV1-R16 CANDIDATO_REVISION_JEFE; estado DESARROLLO sin cambio; sin promocion BETA"
+    },
+    {
+      "id": "MECH_GIBBS3",
+      "state": "BETA",
+      "entrypoint": "gibbs3_run_case",
+      "version": "3.3",
+      "selftest": "test_gf3_signo_tuberia_libre_hf3_3",
+      "tubing_sign_schema": "GF3_TUBING_SIGN_1_8"
+    },
+    {
+      "id": "PROD_JGL_ITER",
+      "state": "BETA",
+      "entrypoint": "jgl_solver_iterativo"
+    },
+    {
+      "id": "PROD_BES3",
+      "state": "DESARROLLO",
+      "entrypoint": "bes3_solver"
+    },
+    {
+      "id": "FLUID_PVT",
+      "state": "BETA",
+      "entrypoint": "pvt_calcular"
+    }
+  ]
+}

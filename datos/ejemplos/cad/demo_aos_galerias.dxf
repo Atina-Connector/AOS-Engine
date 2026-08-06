@@ -1,0 +1,212 @@
+0
+SECTION
+  2
+HEADER
+  9
+$ACADVER
+  1
+AC1015
+  9
+$INSUNITS
+ 70
+6
+  0
+ENDSEC
+  0
+SECTION
+  2
+TABLES
+  0
+TABLE
+  2
+LAYER
+ 70
+4
+  0
+LAYER
+  2
+0
+ 70
+0
+ 62
+7
+  6
+CONTINUOUS
+  0
+LAYER
+  2
+AOS_CAMARAS
+ 70
+0
+ 62
+1
+  6
+CONTINUOUS
+  0
+LAYER
+  2
+AOS_RAMALES
+ 70
+0
+ 62
+3
+  6
+CONTINUOUS
+  0
+LAYER
+  2
+AOS_ACCESOS
+ 70
+0
+ 62
+5
+  6
+CONTINUOUS
+  0
+LAYER
+  2
+AOS_META
+ 70
+0
+ 62
+2
+  6
+CONTINUOUS
+  0
+ENDTAB
+  0
+ENDSEC
+  0
+SECTION
+  2
+ENTITIES
+  0
+CIRCLE
+  5
+200
+  8
+AOS_CAMARAS
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+3.0
+  0
+CIRCLE
+  5
+201
+  8
+AOS_CAMARAS
+ 10
+50.0
+ 20
+0.0
+ 30
+0.0
+ 40
+2.5
+  0
+LINE
+  5
+202
+  8
+AOS_RAMALES
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 11
+50.0
+ 21
+0.0
+ 31
+0.0
+  0
+TEXT
+  5
+203
+  8
+AOS_ACCESOS
+ 10
+25.0
+ 20
+5.0
+ 30
+0.0
+ 40
+1.5
+  1
+ACC-01
+  0
+TEXT
+  5
+204
+  8
+AOS_META
+ 10
+0.0
+ 20
+3.5
+ 30
+0.0
+ 40
+0.8
+  1
+AOS TIPO=CAMARA ID=CAM-A
+  0
+TEXT
+  5
+205
+  8
+AOS_META
+ 10
+50.0
+ 20
+3.0
+ 30
+0.0
+ 40
+0.8
+  1
+AOS TIPO=CAMARA ID=CAM-B
+  0
+TEXT
+  5
+206
+  8
+AOS_META
+ 10
+25.0
+ 20
+1.0
+ 30
+0.0
+ 40
+0.8
+  1
+AOS TIPO=RAMAL ID=RAM-01
+  0
+TEXT
+  5
+207
+  8
+AOS_META
+ 10
+25.0
+ 20
+6.2
+ 30
+0.0
+ 40
+0.8
+  1
+AOS TIPO=ACCESO ID=ACC-01
+  0
+ENDSEC
+  0
+EOF

@@ -1,0 +1,33 @@
+AUDITORIA ESTATICA AOS 0.1.9 R2 HF3.4
+==========================================================
+RESULTADO: APROBADA_ESTATICAMENTE
+
+files: 1071
+directories_including_root: 170
+m_files: 753
+m_physical_lines: 59319
+m_effective_lines: 51948
+m_comment_lines: 2965
+m_blank_lines: 4406
+function_declarations: 2193
+json_files: 20
+mat_files: 0
+duplicate_m_basenames_in_src: 0
+
+Agregados respecto de HF3.3: 10
+Modificados respecto de HF3.3: 18
+Eliminados respecto de HF3.3: 0
+
+OK  geologia_usa_isequaln
+OK  geologia_no_usa_isequal_directo
+OK  spacing_publica_valido_calculo
+OK  spacing_publica_mensaje_validacion
+OK  migrador_reconstruye_aliases
+OK  validador_acepta_alias_historico
+OK  reporte_acepta_aliases
+OK  selftest_diagnostico_detallado
+OK  regresion_geologia_presente
+OK  regresion_gf3_presente
+OK  verificador_hf34_presente
+
+LIMITACION: no se ejecuto GNU Octave en este entorno.

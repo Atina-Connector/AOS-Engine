@@ -1,0 +1,103 @@
+{
+  "schema": "AOS_FRAME_RIBBON_CONTRACT_0_2_0",
+  "source_release": "0.2.0 DEV1",
+  "layout": {
+    "top": "workbench ribbon",
+    "left": "project tree",
+    "center": "2D_3D_tables_charts",
+    "right": "properties",
+    "bottom": "status_warnings_solver_units_origin"
+  },
+  "ribbon": {
+    "source": "aos_workbenches_0_2_0_dev1.json",
+    "show_roadmap_modules": true,
+    "viewer_last": true,
+    "environmental_position": "AFTER_SCADA_BEFORE_MAINTENANCE",
+    "target_workbench_count": 15,
+    "runtime_workbench_count_env01": 14,
+    "environmental_runtime_available": true,
+    "runtime_workbench_count_env02": 15
+  },
+  "shared_context": [
+    "active_galleries",
+    "active_catalogs",
+    "active_aosdat",
+    "active_case",
+    "active_project",
+    "active_asset",
+    "active_fluid_id",
+    "active_geometry",
+    "active_solver",
+    "active_results",
+    "active_component_id",
+    "active_instance_id",
+    "active_aosbck"
+  ],
+  "services": [
+    "CASE_MANAGEMENT",
+    "AOS_3D_CORE",
+    "AOSBCK_SERVICE",
+    "AOS_FLUIDS_SERVICE",
+    "UNITS",
+    "CATALOGS",
+    "REPORTING",
+    "VALIDATION"
+  ],
+  "solver_registry": "aos_solvers_0_2_0_dev1.json",
+  "asset_identity": {
+    "key": "asset_id",
+    "used_by": [
+      "tables",
+      "3D",
+      "topology",
+      "solver",
+      "SCADA",
+      "environmental",
+      "maintenance",
+      "reports",
+      "global"
+    ],
+    "component_layers": {
+      "part_number": "commercial type",
+      "component_id": "catalog object",
+      "instance_id": "physical occurrence"
+    }
+  },
+  "home_ribbon": [
+    "New",
+    "Open",
+    "Import",
+    "Save",
+    "Save As",
+    "Recent",
+    "Reload"
+  ],
+  "contextual_import": true,
+  "service_registry": "aos_services_0_2_0_dev1.json",
+  "release_manifest": "aos_release_0_2_0_dev1.json",
+  "report_composition_contract": "aos_report_tables_contract_hf3_5.json",
+  "architecture_revision": "ENV-02",
+  "architecture_decision": "ADR-AOS-2026-001",
+  "environmental_spatial_rule": {
+    "asset_id_required_when_available": true,
+    "free_text_only_not_sufficient": true,
+    "authority": "AOS_CAD_3D_CORE",
+    "supported_reference_types_planned": [
+      "component_id",
+      "instance_id",
+      "port",
+      "subcomponent",
+      "node",
+      "segment_station",
+      "XYZ",
+      "well_MD_TVD"
+    ]
+  },
+  "energy_environmental_rule": {
+    "activity_publisher": "CONSUMING_WORKBENCH",
+    "emission_factor_owner": "AOS_ENVIRONMENTAL",
+    "co2e_calculation_owner": "AOS_ENVIRONMENTAL",
+    "double_counting_control_required": true
+  },
+  "runtime_shell_revision": "ENV-02"
+}

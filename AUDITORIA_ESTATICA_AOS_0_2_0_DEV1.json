@@ -1,0 +1,58 @@
+{
+  "root": "/mnt/data/aos020_release/AOS_0_2_0_DEV1",
+  "version": "0.2.0-DEV1",
+  "files_total": 1244,
+  "directories_including_root": 186,
+  "stats": {
+    "distribution": {
+      "m_files": 858,
+      "physical_lines": 82216,
+      "code_lines": 72297,
+      "comment_lines": 3971,
+      "blank_lines": 5948,
+      "function_declarations": 2824
+    },
+    "active_src": {
+      "m_files": 798,
+      "physical_lines": 78320,
+      "code_lines": 68884,
+      "comment_lines": 3794,
+      "blank_lines": 5642,
+      "function_declarations": 2708
+    }
+  },
+  "json_total": 29,
+  "json_invalid": [],
+  "mat_files": [],
+  "duplicate_m_basenames_active_src": {},
+  "function_balance_flags": [],
+  "aos_prefixed_calls_count": 311,
+  "aos_prefixed_unresolved": [],
+  "workbench_count": 14,
+  "ribbon_order": [
+    "SLA",
+    "WELLS",
+    "CAD",
+    "NETWORKS",
+    "ELECTRICAL",
+    "FACILITIES",
+    "GEOLOGY",
+    "FLUIDS",
+    "SCADA",
+    "MAINTENANCE",
+    "DATA",
+    "SOLVERS",
+    "GLOBAL",
+    "VIEWER"
+  ],
+  "viewer_last": true,
+  "merged_aoscad_writer": {
+    "hf35_table_composition": true,
+    "r16_visual_resources": true
+  },
+  "iniciar_aos_uses_genpath": false,
+  "required_missing": [],
+  "baseline_source_sha256_file": "addcee6e609aac769794fada358f9d8246539378a806e69a1b035818949ac421  AOS_0_1_9_R2_HF3_4_CAD_R16_AUDIT.zip",
+  "blocking_findings": [],
+  "static_status": "APROBADA_ESTATICAMENTE"
+}

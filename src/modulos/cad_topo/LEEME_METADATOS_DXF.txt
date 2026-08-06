@@ -1,0 +1,132 @@
+Convencion de metadatos DXF para AOSCAD (LibreCAD-compatible)
+==============================================================
+
+Modulo: src/modulos/cad_topo/
+Objetivo: leer diametro, material, rugosidad y campos afines desde el plano
+con trazabilidad origen/validacion. LibreCAD no garantiza XDATA; por eso la
+fuente primaria son TEXT/MTEXT.
+
+Prioridad de fuentes (de mayor a menor)
+---------------------------------------
+1. TEXT / MTEXT en capa AOS_META (o misma capa del tramo/nodo),
+   asociados por proximidad al centro del segmento / nodo
+   (tolerancia default: 2.0 m, prefs: meta_tol_m).
+2. Sufijos de capa, ej.: AOS_FLOWLINES_D100_ACERO
+3. ATTRIB / ATTDEF de INSERT (si el DXF los trae)
+4. DEFAULT_MODULO (si falta el dato)
+
+Formato de etiqueta (una linea)
+-------------------------------
+AOS D=0.1016 MAT=ACERO EPS=4.5e-5 ID=FL-01
+AOS UNIDADES=mm
+AOS D_MM=101.6 MAT=ACERO EPS=4.5e-5 ID=FL-01
+AOS D_IN=4 MAT=ACERO
+AOS D_M=0.1016 MAT=ACERO
+
+Tambien se aceptan claves largas:
+  ID_MM=101.6  MATERIAL=ACERO  ROUGHNESS_MM=0.045  AOS_OBJECT_ID=FL-01
+  P=1.5e6      Q=0.02
+
+Claves -> campos de tabla
+-------------------------
+UNIDADES           -> factor de escala del plano (mm|cm|m|in|ft); prioridad sobre $INSUNITS
+D_M                -> diametro_m (metros explicitos, sin heuristica)
+D_MM               -> diametro_m (milimetros /1000, sin heuristica)
+D_IN               -> diametro_m (pulgadas *0.0254, sin heuristica)
+D / ID_MM / DN     -> diametro_m   (m; si ID_MM o valor>1 se interpreta mm;
+                     advertencia META_UNIDAD_HEURISTICA cuando D/DN>1)
+MAT / MATERIAL     -> material     (string)
+EPS / ROUGHNESS_MM -> rugosidad    (m; ROUGHNESS_MM convierte mm->m)
+ID / AOS_OBJECT_ID -> id/etiqueta  (string)
+P                  -> BC PRESION   (Pa) cerca de un nodo
+Q                  -> BC CAUDAL    (m3/s) cerca de un nodo
+TIPO               -> VALVULA|BOMBA|CODO|TEE|REDUCCION|CAMARA|RAMAL|ACCESO
+KV                 -> Kv de valvula (m3/h tipico)
+ESTADO             -> ABIERTA|CERRADA (valvula)
+
+Curva head-caudal de bomba (Sprint 3 Linea B)
+--------------------------------------------
+IMPORTANTE: las listas usan separador | (NO coma). parse_keys_local
+parte tokens por espacio/;/, asi que CURVA_Q=0,50,100 se rompe.
+
+CURVA_Q=0|50|100|150     -> caudales de la curva (default m3/d)
+CURVA_H=120|110|85|40    -> head (m de columna de liquido); misma longitud que CURVA_Q
+CURVA_Q_UNIDAD=m3/d      -> unidad de CURVA_Q (default m3/d; tambien m3/s)
+BOMBA_MODELO=AOS_B_100_40 -> resuelve curva desde datos/catalogos/aos_bombas_catalogo_0_0_1.json
+BOMBA_ESTADO=ENCENDIDA|APAGADA
+  APAGADA => head=0 sin advertencia de falta de curva
+
+Precedencia de resolucion en el tramo:
+  1) curva inline CURVA_Q + CURVA_H
+  2) BOMBA_MODELO (catalogo JSON en disco)
+  3) sin curva => advertencia EQUIPO_ACTIVO_SIN_CURVA_NO_APORTA_HEAD_DEV1
+
+Ejemplo:
+  AOS TIPO=BOMBA ID=B-01 CURVA_Q=0|50|100|150 CURVA_H=120|110|85|40 BOMBA_ESTADO=ENCENDIDA
+  AOS TIPO=BOMBA ID=B-02 BOMBA_MODELO=AOS_B_100_40
+
+Unidades del plano ($INSUNITS / UNIDADES=)
+-----------------------------------------
+Prioridad: metadato AOS UNIDADES= > $INSUNITS del HEADER > preferencia > default m.
+La geometria se normaliza a metros SI una sola vez en aos_cad_mapear_objetos.
+La exportacion *_AOS_REV escribe $INSUNITS=6 y un TEXT "AOS UNIDADES=m".
+
+Tipos de objeto (capa o TIPO= cerca del nodo)
+--------------------------------------------
+VALVULA  -> tablas_entrada.valvulas  (capas AOS_VALVULAS / texto VALV)
+BOMBA    -> tablas_entrada.equipos   (tipo BOMBA; capas AOS_BOMBAS / PUMP;
+             campos opcionales curva_bomba / bomba_modelo / bomba_estado)
+CODO|TEE|REDUCCION -> tablas_entrada.accesorios
+Si hay al menos un P/Q explicito en AOS_META, NO se inventan BC por default.
+
+Trazabilidad (aos_aoscad_campo)
+-------------------------------
+origen:
+  TEXTO_AOS_META  — leido de TEXT/MTEXT AOS_META
+  CAPA            — leido de sufijo de capa
+  DXF             — leido de ATTRIB u otro dato DXF directo
+  DEFAULT_MODULO  — valor por defecto del modulo
+  USUARIO         — editado en Suite
+  SIMULACION      — resultado de corrida
+
+estado_de_validacion:
+  OK          — parseo correcto desde el plano
+  ADVERTENCIA — clave presente pero valor ilegible
+  PENDIENTE   — default u origen no validado
+  ERROR       — inconsistencia grave
+
+Ejemplo en LibreCAD
+--------------------
+1. Crear capa AOS_META.
+2. Dibujar LINE en AOS_FLOWLINES de (0,0) a (100,0).
+3. Colocar TEXT en AOS_META cerca del centro (50, 1):
+   AOS D=0.1016 MAT=ACERO EPS=4.5e-5 ID=FL-01
+4. Importar DXF (opcion 2) y reconocer (opcion 5).
+5. El tramo debe mostrar diametro/material/rugosidad con origen TEXTO_AOS_META.
+6. Export REV (opcion 18) reescribe textos AOS_META desde las tablas.
+
+Demo de prueba:
+  datos/ejemplos/cad/demo_aos_wells_meta.dxf
+  datos/ejemplos/cad/demo_aos_galerias.dxf  (capas AOS_CAMARAS / AOS_RAMALES / AOS_ACCESOS)
+  datos/ejemplos/cad/demo_aos_unidades_mm.dxf  (misma red en mm + UNIDADES=mm)
+  datos/ejemplos/cad/demo_aos_bloques.dxf      (capas PROCESO/INSTRUMENTACION + BLOCKS)
+
+Metadatos hidraulicos AOSCAD HID DEV1
+-------------------------------------
+MODELO / MODEL / VLP -> AUTOMATICO | MONOFASICO_DARCY |
+                        MULTIFASICO_HB | MULTIFASICO_DR |
+                        MULTIFASICO_SIMPLIFICADO
+API                  -> gravedad API del petroleo
+WC / WATER_CUT       -> fraccion 0..1 o porcentaje 0..100
+GLR / GOR            -> Sm3/m3
+GAMMA_G / SG_GAS     -> gravedad especifica del gas
+RHO_O / RHO_W        -> kg/m3
+RHO_G_STD            -> kg/m3
+MU / MU_L / MU_G     -> Pa.s
+T_K / TEMP_K         -> K
+TIPO=FLUIDO          -> identifica una etiqueta de propiedades de fluido
+
+Demo hidraulica:
+  datos/ejemplos/cad/demo_aos_hidraulica_dev1.dxf
+Documentacion:
+  LEEME_HIDRAULICA_DXF_DEV1.md

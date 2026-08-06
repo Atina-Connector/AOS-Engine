@@ -1,0 +1,28 @@
+{
+  "version": "0.0.1",
+  "descripcion": "Catalogo sintetico de bombas AOSCAD HID DEV1. No son datos de fabricante real.",
+  "bombas": [
+    {
+      "modelo": "AOS_B_100_40",
+      "fabricante": "AOS_SINTETICO",
+      "curva_Q_m3d": [0, 50, 100, 150, 200],
+      "curva_H_m": [40, 38, 32, 22, 8],
+      "rango_valido": {
+        "Q_min_m3d": 0,
+        "Q_max_m3d": 200
+      },
+      "fuente": "SINTETICO_AOS_DEV1"
+    },
+    {
+      "modelo": "AOS_B_200_80",
+      "fabricante": "AOS_SINTETICO",
+      "curva_Q_m3d": [0, 100, 200, 300, 400],
+      "curva_H_m": [80, 75, 65, 45, 15],
+      "rango_valido": {
+        "Q_min_m3d": 0,
+        "Q_max_m3d": 400
+      },
+      "fuente": "SINTETICO_AOS_DEV1"
+    }
+  ]
+}

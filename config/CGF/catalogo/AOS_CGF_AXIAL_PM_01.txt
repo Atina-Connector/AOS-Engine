@@ -1,0 +1,18 @@
+# Compresor axial de fondo generico AOS - screening
+modelo = AOS_CGF_AXIAL_PM_01
+tipo = AXIAL_PM
+origen = GENERICO_AOS_SCREENING
+rpm_base = 30000
+rpm_min = 18000
+rpm_max = 42000
+Qcorr_Sm3_d = [500,1000,1500,2000,2500,3000,3500,4000,4500]
+PR_base = [2.45,2.35,2.22,2.08,1.93,1.76,1.57,1.36,1.12]
+eta_p = [0.58,0.66,0.73,0.78,0.81,0.80,0.76,0.68,0.52]
+Q_surge_Sm3_d = 800
+Q_choke_Sm3_d = 4300
+presion_max_bar = 350
+temperatura_max_C = 190
+fraccion_liquida_max = 0.03
+motor_pm_potencia_nominal_kW = 250
+motor_pm_eta_nominal = 0.94
+motor_pm_rpm_nominal = 30000

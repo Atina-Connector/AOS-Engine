@@ -1,0 +1,142 @@
+======================================================================
+AOS – AESIR Oilfield Simulation
+Ajuste de coeficientes a y b del eductor JGL AESIR
+======================================================================
+
+ACLARACION TECNICA IMPORTANTE
+El JGL de AESIR no debe interpretarse como una bomba jet liquido-liquido
+convencional. El sistema utiliza un eductor de fondo accionado por gas,
+equipado con una tobera aerospike de 12 mm2 de area de salida y flujo
+supersonico.
+
+El gas inyectado cumple una doble funcion:
+1. Actua como fluido motriz del eductor de fondo.
+2. Contribuye al alivianamiento de la columna de produccion, como en un
+   sistema de Gas Lift.
+
+Por este motivo, el JGL se considera una solucion hibrida entre Gas Lift
+convencional y Jet Pump, pero su modelo no debe documentarse como bomba jet
+liquido-liquido ni como jet pump convencional.
+
+======================================================================
+1. ¿QUE SON a Y b?
+======================================================================
+Dentro de la funcion local "eductor_jgl" en el archivo JGLsim.m, el
+comportamiento del eductor de fondo accionado por gas se aproxima con la
+ecuacion empirica:
+
+   delta_p_adim = a - b * M
+
+donde:
+   delta_p_adim = (P_d - P_s) / (P_m - P_s)
+                  ganancia de presion adimensional
+   M            = m_dot_s / m_dot_m
+                  relacion entre flujo masico succionado y flujo masico
+                  motriz de gas
+   a, b         = coeficientes empiricos dependientes de la geometria
+                  del eductor JGL
+
+- "a" representa la capacidad efectiva de recuperacion/adicion de presion
+  del eductor para una determinada geometria.
+- "b" representa la perdida de capacidad a medida que aumenta el caudal
+  succionado respecto del gas motriz.
+
+Estos coeficientes no deben interpretarse como coeficientes universales de
+una jet pump convencional. Son una representacion empirica del eductor
+JGL AESIR con gas como fluido motriz.
+
+======================================================================
+2. ¿COMO SE CALCULAN ACTUALMENTE?
+======================================================================
+Los coeficientes se definen inicialmente como:
+
+   a = 0.002 * R
+   b = 0.0001 * R
+
+con:
+
+   R = A_t / A_n
+
+Donde:
+   A_t = area de la garganta del eductor
+   A_n = area de salida de la tobera aerospike
+
+Para la geometria base:
+   A_n = 12 mm2
+   d_t = 38 mm
+   R   ≈ 94.5
+
+se obtiene aproximadamente:
+   a ≈ 0.189
+   b ≈ 0.00945
+
+======================================================================
+3. EFECTO DE LOS COEFICIENTES
+======================================================================
+- Aumentar "a": incrementa la recuperacion/adicion de presion estimada
+  por el eductor, por lo que el JGL tiende a producir mas caudal.
+
+- Disminuir "a": reduce la ventaja estimada del JGL frente al Gas Lift
+  convencional.
+
+- Aumentar "b": hace que la capacidad del eductor caiga mas rapido al
+  aumentar el caudal succionado.
+
+- Disminuir "b": genera una curva de rendimiento mas plana y un
+  comportamiento mas cercano al alivianamiento por gas lift.
+
+======================================================================
+4. COMO CALIBRARLOS CON DATOS DE CAMPO
+======================================================================
+Para reproducir un incremento observado en campo, por ejemplo una mejora
+del JGL frente al Gas Lift convencional:
+
+1. Ejecutar "corrida" para simular el JGL.
+2. Ejecutar "GL_puro" para simular Gas Lift convencional.
+3. Comparar la relacion observada:
+
+      R_obs = Qo_JGL / Qo_GL
+
+4. Si el modelo sobreestima el incremento, reducir el factor de "a".
+5. Si el modelo subestima el incremento, aumentar el factor de "a".
+6. Ajustar "b" solamente si se necesita corregir la forma de la curva.
+
+Ejemplo:
+   Datos de campo: JGL = 304 bopd, GL = 245 bopd
+   Relacion observada: 304 / 245 = 1.24
+
+   Si con a = 0.002 * R se obtiene relacion 1.19,
+   se puede probar a = 0.0025 * R.
+
+======================================================================
+5. DONDE SE MODIFICAN
+======================================================================
+En el archivo JGLsim.m, dentro de la funcion local "eductor_jgl", buscar:
+
+   a = 0.002 * R;
+   b = 0.0001 * R;
+
+Tambien existe la misma aproximacion en JGLsim_fixedQ.m para los barridos
+con caudal de gas fijo.
+
+======================================================================
+6. NOTAS IMPORTANTES
+======================================================================
+- La tobera del JGL es una tobera aerospike con 12 mm2 de area de salida.
+- El fluido motriz es gas, no liquido.
+- El flujo de gas en la tobera se considera critico/supersonico en el
+  modelo base.
+- El sistema debe describirse como eductor de fondo accionado por gas.
+- El JGL se comporta como hibrido Gas Lift / Jet Pump.
+- Los coeficientes a y b requieren validacion con datos de campo.
+- La calibracion debe realizarse para una misma condicion de pozo,
+  presion, corte de agua, GOR y geometria.
+
+======================================================================
+7. REFERENCIAS INTERNAS
+======================================================================
+- Documentacion interna AESIR.
+- Modelo JGL AESIR: eductor de fondo accionado por gas con tobera
+  aerospike.
+- AOS: AESIR Oilfield Simulation.
+======================================================================

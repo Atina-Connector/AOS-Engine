@@ -1,0 +1,188 @@
+{
+  "files_total": 1111,
+  "dirs_total": 172,
+  "m_files": 785,
+  "m_physical_lines": 60807,
+  "m_code_lines_approx": 53308,
+  "function_declarations": 2294,
+  "json_total": 22,
+  "json_errors": [],
+  "mat_files": [],
+  "duplicate_m_basenames": {},
+  "unresolved_report_calls": {},
+  "new_function_filename_mismatches": [],
+  "new_function_endfunction_imbalances": [],
+  "added_files": [
+    "AUDITORIA_ESTATICA_AOS_0_1_9_R2_HF3_5.json",
+    "AUDITORIA_ESTATICA_AOS_0_1_9_R2_HF3_5.txt",
+    "AUDITORIA_TRANSVERSAL_REPORTES_AOS_0_1_9_R2_HF3_5.md",
+    "CHANGELOG_AOS_0_1_9_R2_HF3_5.md",
+    "REGRESIONES_AOS_0_1_9_R2_HF3_5.md",
+    "VERIFICAR_AOS_0_1_9_R2_HF3_5.m",
+    "documentos/CONTRATO_REPORTES_TABLAS_AOS_HF3_5.md",
+    "historial/HF3_4/README_HF3_4.md",
+    "src/core/BES2/bes2_report_build_tables.m",
+    "src/core/BES3/bes3_report_build_tables.m",
+    "src/core/BM/gibbs_foundation3/gibbs3_report_build_tables.m",
+    "src/core/CGF/cgf_report_build_tables.m",
+    "src/modulos/cad_topo/aos_aoscad_report_composition.m",
+    "src/roadmap/aos_report_tables_contract_hf3_5.json",
+    "src/tests/test_aos_aoscad_report_composition_hf3_5.m",
+    "src/tests/test_aos_report_composition_hf3_5.m",
+    "src/tests/test_aos_report_coverage_hf3_5.m",
+    "src/tests/test_aos_report_module_tables_hf3_5.m",
+    "src/tests/test_aos_report_sensitivity_hf3_5.m",
+    "src/utilidades/reportes/aos_report_append_tables.m",
+    "src/utilidades/reportes/aos_report_apply_profile.m",
+    "src/utilidades/reportes/aos_report_build_punzados_distribution_table.m",
+    "src/utilidades/reportes/aos_report_collect_standard_tables.m",
+    "src/utilidades/reportes/aos_report_composition_stats.m",
+    "src/utilidades/reportes/aos_report_configure_tables.m",
+    "src/utilidades/reportes/aos_report_estimar_paginas_tabla.m",
+    "src/utilidades/reportes/aos_report_parse_native_tables.m",
+    "src/utilidades/reportes/aos_report_prepare_tables.m",
+    "src/utilidades/reportes/aos_report_print_native_tables.m",
+    "src/utilidades/reportes/aos_report_table_find.m",
+    "src/utilidades/reportes/aos_report_table_from_matrix.m",
+    "src/utilidades/reportes/aos_report_table_from_structs.m",
+    "src/utilidades/reportes/aos_report_table_mandriles.m",
+    "src/utilidades/reportes/aos_report_table_mode.m",
+    "src/utilidades/reportes/aos_report_table_normalize.m",
+    "src/utilidades/reportes/aos_report_table_sample.m",
+    "src/utilidades/reportes/aos_report_table_summary.m",
+    "src/utilidades/reportes/aos_report_write_manifest.m",
+    "src/utilidades/reportes/aos_report_write_reference.m",
+    "src/utilidades/reportes/aos_version_actual.m"
+  ],
+  "removed_files": [],
+  "changed_files": [
+    "AOS_VERSION.txt",
+    "LEEME_PRIMERO.txt",
+    "MANIFEST_AOS_0_1_9_R2.txt",
+    "README.md",
+    "SHA256SUMS_AOS_0_1_9_R2.txt",
+    "VERIFICAR_AOS_0_1_9.m",
+    "VERIFICAR_AOS_0_1_9_R2_HF3.m",
+    "VERIFICAR_AOS_0_1_9_R2_HF3_1.m",
+    "VERIFICAR_AOS_0_1_9_R2_HF3_2.m",
+    "VERIFICAR_AOS_0_1_9_R2_HF3_3.m",
+    "VERIFICAR_AOS_0_1_9_R2_HF3_4.m",
+    "VERSION",
+    "src/core/BES2/bes2_exportar_reporte.m",
+    "src/core/BES3/bes3_exportar_comparacion_core.m",
+    "src/core/BES3/bes3_exportar_reporte.m",
+    "src/core/BM/gibbs_foundation3/gibbs3_export_aosrpt_enriched.m",
+    "src/core/BM/gibbs_foundation3/gibbs3_export_aosrpt_simple.m",
+    "src/core/BM/gibbs_foundation3/gibbs3_report_append_sections.m",
+    "src/core/BM/gibbs_foundation3/gibbs3_report_context.m",
+    "src/core/CGF/cgf_exportar_reporte.m",
+    "src/core/EGF/egf_exportar_reporte.m",
+    "src/menu/AOS_app.m",
+    "src/modulos/cad_topo/aos_aoscad_escribir.m",
+    "src/sensibilidad/sens_exportar_resultados.m",
+    "src/utilidades/intercambio/aos_exportar_contexto_viewer.m",
+    "src/utilidades/intercambio/aos_exportar_sensibilidad_core.m",
+    "src/utilidades/intercambio/aos_report_dispatcher.m",
+    "src/utilidades/intercambio/aos_rpt_escribir_mandriles.m",
+    "src/utilidades/intercambio/aos_rpt_escribir_tablas.m",
+    "src/utilidades/intercambio/exportar_aosrpt.m",
+    "src/utilidades/intercambio/exportar_aosrpt_enriquecido.m",
+    "src/utilidades/intercambio/exportar_aosrpt_grafico.m",
+    "src/utilidades/intercambio/exportar_aosrpt_mandriles.m",
+    "src/utilidades/intercambio/importar_aosrpt.m"
+  ],
+  "coverage": {
+    "generic_export": {
+      "file": "src/utilidades/intercambio/exportar_aosrpt.m",
+      "exists": true,
+      "hook": "aos_report_prepare_tables",
+      "integrated": true
+    },
+    "dispatcher": {
+      "file": "src/utilidades/intercambio/aos_report_dispatcher.m",
+      "exists": true,
+      "hook": "aos_report_prepare_tables",
+      "integrated": true
+    },
+    "generic_graphic": {
+      "file": "src/utilidades/intercambio/exportar_aosrpt_grafico.m",
+      "exists": true,
+      "hook": "aos_report_prepare_tables",
+      "integrated": true
+    },
+    "mandriles": {
+      "file": "src/utilidades/intercambio/exportar_aosrpt_mandriles.m",
+      "exists": true,
+      "hook": "aos_report_prepare_tables",
+      "integrated": true
+    },
+    "sensitivity_legacy": {
+      "file": "src/sensibilidad/sens_exportar_resultados.m",
+      "exists": true,
+      "hook": "aos_report_prepare_tables",
+      "integrated": true
+    },
+    "sensitivity_core": {
+      "file": "src/utilidades/intercambio/aos_exportar_sensibilidad_core.m",
+      "exists": true,
+      "hook": "aos_report_prepare_tables",
+      "integrated": true
+    },
+    "BES2": {
+      "file": "src/core/BES2/bes2_exportar_reporte.m",
+      "exists": true,
+      "hook": "aos_report_prepare_tables",
+      "integrated": true
+    },
+    "BES3": {
+      "file": "src/core/BES3/bes3_exportar_reporte.m",
+      "exists": true,
+      "hook": "aos_report_prepare_tables",
+      "integrated": true
+    },
+    "BES3_compare": {
+      "file": "src/core/BES3/bes3_exportar_comparacion_core.m",
+      "exists": true,
+      "hook": "aos_report_prepare_tables",
+      "integrated": true
+    },
+    "CGF": {
+      "file": "src/core/CGF/cgf_exportar_reporte.m",
+      "exists": true,
+      "hook": "aos_report_prepare_tables",
+      "integrated": true
+    },
+    "EGF": {
+      "file": "src/core/EGF/egf_exportar_reporte.m",
+      "exists": true,
+      "hook": "aos_report_prepare_tables",
+      "integrated": true
+    },
+    "BM_GF3": {
+      "file": "src/core/BM/gibbs_foundation3/gibbs3_report_context.m",
+      "exists": true,
+      "hook": "gibbs3_report_build_tables",
+      "integrated": true
+    },
+    "AOSCAD": {
+      "file": "src/modulos/cad_topo/aos_aoscad_escribir.m",
+      "exists": true,
+      "hook": "aos_aoscad_report_composition",
+      "integrated": true
+    },
+    "importer": {
+      "file": "src/utilidades/intercambio/importar_aosrpt.m",
+      "exists": true,
+      "hook": "aos_report_print_native_tables",
+      "integrated": true
+    }
+  },
+  "markers": {
+    "version": "0.1.9-R2-HF3.5",
+    "aos_version_first": "AOS Suite 0.1.9 R2 HF3.5",
+    "manifest_schema": true,
+    "archive_schema": true,
+    "sensitivity_full": true,
+    "gf3_no_raw_rows": true
+  }
+}

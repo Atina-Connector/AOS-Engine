@@ -1,0 +1,342 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aesir.local/schemas/aoscad-0.0.1-dev1.json",
+  "title": "AOSCAD 0.0.1 DEV1",
+  "description": "Contrato abierto, editable y recalculable para GNU Octave. Las tablas son la fuente primaria.",
+  "type": "object",
+  "required": [
+    "info",
+    "tablas_entrada",
+    "geometria",
+    "topologia",
+    "simulacion",
+    "tablas_resultados",
+    "validaciones",
+    "recursos_visuales"
+  ],
+  "properties": {
+    "info": {
+      "type": "object",
+      "required": [
+        "schema",
+        "formato_canonico",
+        "motor_objetivo",
+        "estado_desarrollo",
+        "dxf_clase",
+        "aoscad_perfil",
+        "dominio_sim",
+        "version_modulo"
+      ],
+      "properties": {
+        "schema": {
+          "const": "AOSCAD-0.0.1-DEV1"
+        },
+        "formato_canonico": {
+          "const": "JSON_UTF8"
+        },
+        "motor_objetivo": {
+          "const": "GNU_OCTAVE"
+        },
+        "estado_desarrollo": {
+          "const": "PROTOTIPO_NO_VALIDADO"
+        },
+        "dxf_clase": {
+          "enum": [
+            "INSTALACION",
+            "GALERIAS"
+          ]
+        },
+        "aoscad_perfil": {
+          "enum": [
+            "SIMPLE",
+            "ENRIQUECIDO"
+          ]
+        },
+        "dominio_sim": {
+          "enum": [
+            "HIDRAULICO",
+            "ELECTRICO",
+            "COMBINADO"
+          ]
+        },
+        "fuente_dxf": {
+          "type": "string"
+        },
+        "creado_en": {
+          "type": "string"
+        },
+        "modificado_en": {
+          "type": "string"
+        },
+        "version_modulo": {
+          "const": "0.0.1-DEV1"
+        },
+        "notas": {
+          "type": "string"
+        },
+        "asset_identity_schema": {
+          "type": "string",
+          "description": "Contrato de identidad de activos. Opcional; ausente en paquetes legacy."
+        },
+        "schema_revision": {
+          "type": "string",
+          "description": "Revision aditiva del schema sin cambiar info.schema (constante AOSCAD-0.0.1-DEV1)."
+        }
+      },
+      "additionalProperties": true
+    },
+    "tablas_entrada": {
+      "type": "object",
+      "description": "Fuente primaria editable para simulacion.",
+      "properties": {
+        "nodos": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "asset_id": {
+                "type": "string",
+                "description": "Identidad determinista AOS-<TIPO>-<hash8>. Opcional en paquetes legacy."
+              }
+            },
+            "additionalProperties": true
+          }
+        },
+        "tramos": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "asset_id": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": true
+          }
+        },
+        "accesorios": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "asset_id": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": true
+          }
+        },
+        "valvulas": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "asset_id": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": true
+          }
+        },
+        "equipos": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "asset_id": {
+                "type": "string"
+              },
+              "curva_bomba": {
+                "type": "object",
+                "description": "Curva head-caudal inline opcional (Sprint 3). Q_m3d / H_m.",
+                "properties": {
+                  "Q_m3d": {},
+                  "H_m": {},
+                  "fuente": { "type": "string" }
+                },
+                "additionalProperties": true
+              },
+              "bomba_modelo": {
+                "description": "Referencia a modelo del catalogo JSON (opcional)."
+              },
+              "bomba_estado": {
+                "description": "ENCENDIDA|APAGADA (opcional)."
+              }
+            },
+            "additionalProperties": true
+          }
+        },
+        "condiciones_borde": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "asset_id": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": true
+          }
+        },
+        "camaras": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "asset_id": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": true
+          }
+        },
+        "ramales": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "asset_id": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": true
+          }
+        },
+        "accesos": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "asset_id": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": true
+          }
+        },
+        "puertos": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          },
+          "description": "Puertos de conexion derivados (opcional; Sprint 2 Linea D)."
+        },
+        "fluidos": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          },
+          "description": "Propiedades editables de fluidos usadas por la simulacion."
+        },
+        "dominios_hidraulicos": {
+          "type": "array",
+          "items": {"type": "object"},
+          "description": "Dominios selectivos entre nodos: camino simple o subred/anillo preparado para solver de lazos."
+        }
+      },
+      "additionalProperties": {
+        "type": "array"
+      }
+    },
+    "activos": {
+      "type": "array",
+      "description": "Registro de activos con asset_id. Opcional: paquetes legacy sin esta seccion siguen siendo validos.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "asset_id": { "type": "string" },
+          "asset_type": { "type": "string" },
+          "source": { "type": "string" },
+          "validation_status": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "geometria": {
+      "type": "object",
+      "required": [
+        "sistema_coordenadas",
+        "unidades",
+        "entidades_dxf"
+      ],
+      "additionalProperties": true
+    },
+    "topologia": {
+      "type": "object",
+      "required": [
+        "origen",
+        "tolerancia_m",
+        "aristas",
+        "nodos_grafo"
+      ],
+      "additionalProperties": true
+    },
+    "simulacion": {
+      "type": "object",
+      "required": [
+        "motor",
+        "dominio",
+        "estado",
+        "parametros_efectivos",
+        "advertencias",
+        "corrida_id",
+        "fecha"
+      ],
+      "properties": {
+        "estado": {
+          "enum": [
+            "NO_EJECUTADA",
+            "EJECUTADA",
+            "EJECUTADA_CON_ADVERTENCIAS",
+            "INVALIDADA_POR_EDICION"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "tablas_resultados": {
+      "type": "object",
+      "description": "Tablas derivadas de la simulacion: nodos, tramos y resumen. Se eliminan al editar entradas.",
+      "additionalProperties": {
+        "type": "array"
+      }
+    },
+    "validaciones": {
+      "type": "object",
+      "required": [
+        "estado",
+        "items"
+      ],
+      "properties": {
+        "estado": {
+          "enum": [
+            "PENDIENTE",
+            "OK",
+            "ADVERTENCIA",
+            "ERROR"
+          ]
+        },
+        "items": {
+          "type": "array"
+        }
+      },
+      "additionalProperties": true
+    },
+    "historial_edicion": {
+      "type": "array"
+    },
+    "recursos_visuales": {
+      "description": "Vacio ({}) en SIMPLE. En ENRIQUECIDO: objeto RECURSOS_VIEWER con planos/graficos PNG regenerables (ruta_relativa, vigente, obsoletos). Secundarios: nunca sustituyen tablas. Prioridad Viewer: tablas > validaciones > geometria > recursos. Legacy sin esta seccion es valido.",
+      "oneOf": [
+        {
+          "type": "array",
+          "maxItems": 0
+        },
+        {
+          "type": "object"
+        }
+      ]
+    }
+  },
+  "additionalProperties": true
+}

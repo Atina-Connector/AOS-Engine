@@ -1,0 +1,64 @@
+{
+  "schema": "AOS_SCIENTIFIC_HOTFIX_1.0",
+  "id": "SENS-GLJGL-02",
+  "suite": "0.2.0-DEV1",
+  "architecture_revision": "ENV-02",
+  "base_scientific_hotfix": "SENS-GLJGL-01",
+  "date": "2026-08-06",
+  "status": "CANDIDATE_DYNAMIC_VALIDATION",
+  "scope": [
+    "EXPLICIT_CURVE_TREATMENT_MENU",
+    "POLYNOMIAL_FIT_POSTPROCESSING",
+    "DERIVATIVE_ZERO_OPTIMUM",
+    "PHYSICAL_OPTIMUM_VERIFICATION",
+    "SENSITIVITY_REPORTING"
+  ],
+  "solver_core_changes": {
+    "GL_sim": false,
+    "aos_nodal_balance_gl": false,
+    "aos_buscar_cruce_nodal": false,
+    "jgl_solver_directo": false,
+    "jgl_solver_iterativo": false
+  },
+  "curve_treatment": {
+    "default": "DISCRETO",
+    "hidden_polynomial": false,
+    "modes": [
+      "DISCRETO",
+      "POLINOMICO_INFORMATIVO",
+      "POLINOMICO_VERIFICADO"
+    ],
+    "degrees": [
+      "AUTO",
+      2,
+      3,
+      4,
+      5
+    ],
+    "degree_5_role": "HISTORICO_AOS",
+    "extrapolation": false,
+    "primary_source": "VALIDATED_SOLVER_POINTS"
+  },
+  "verification_rule": "POLYNOMIAL_OPTIMUM_MUST_BE_RECALCULATED_WITH_CANONICAL_PHYSICAL_SOLVER",
+  "rules": [
+    "user_visible_selection",
+    "no_polyfit_in_discrete_mode",
+    "preserve_solver_points",
+    "validated_points_only",
+    "no_gap_bridging",
+    "no_extrapolation",
+    "physical_limits",
+    "restore_discrete_on_verification_failure"
+  ],
+  "report_sections": [
+    "CURVE_TREATMENT",
+    "POLYNOMIAL_FIT",
+    "POLYNOMIAL_CURVE",
+    "POLYNOMIAL_OPTIMUM_VERIFICATION"
+  ],
+  "verification": {
+    "quick": "VERIFICAR_SENS_GLJGL_02(false)",
+    "deep": "VERIFICAR_SENS_GLJGL_02(true)",
+    "field_case_required": true
+  }
+}

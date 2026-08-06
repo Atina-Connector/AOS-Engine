@@ -1,0 +1,76 @@
+{
+  "schema": "AOS_RELEASE_0_2_0_DEV1",
+  "version": "0.2.0-DEV1",
+  "name": "AOS Suite 0.2.0 DEV1",
+  "engine": "GNU Octave",
+  "baseline": {
+    "version": "0.1.9-R2-HF3.4-CAD-R16",
+    "archive_sha256": "addcee6e609aac769794fada358f9d8246539378a806e69a1b035818949ac421"
+  },
+  "integrations": [
+    "HF3.5_REPORT_TABLE_COMPOSITION",
+    "AOSCAD_R16",
+    "AOSBCK_R1",
+    "GF3_TUBING_SIGN_1_8",
+    "PUNZADOS_HF3_1",
+    "ADR-AOS-2026-001_ENVIRONMENTAL_WORKBENCH",
+    "ENV-02_ENVIRONMENTAL_RUNTIME_SHELL",
+    "SENS-GLJGL-01_SENSITIVITY_PARITY_AND_PUBLICATION",
+    "SENS-GLJGL-02_EXPLICIT_POLYNOMIAL_CURVE_TREATMENT",
+    "SENS-GLJGL-03_EXPLICIT_JGL_MOTIVE_PRESSURE_AND_REQUIRED_PRESSURE_CURVE"
+  ],
+  "status": "DEVELOPMENT",
+  "promotion_rules": [
+    "dynamic_verification_required",
+    "no_mat",
+    "octave_only",
+    "viewer_last",
+    "roadmap_visible",
+    "common_cores_protected",
+    "environmental_independent_workbench",
+    "aoscad_spatial_authority",
+    "gl_point_sensitivity_parity",
+    "uniform_method_per_published_curve",
+    "rejected_points_not_optimized",
+    "explicit_curve_treatment_selection",
+    "no_hidden_polynomial",
+    "polynomial_optimum_requires_physical_verification",
+    "solver_points_remain_primary",
+    "explicit_jgl_motive_pressure_selection",
+    "no_hidden_pressure_override",
+    "forced_qiny_can_derive_required_pressure",
+    "available_pressure_limits_optimization",
+    "required_pressure_curve_is_auditable"
+  ],
+  "architecture_revision": "ENV-02",
+  "architecture_decisions": [
+    "ADR-AOS-2026-001"
+  ],
+  "runtime_changes_in_architecture_revision": true,
+  "runtime_change_scope": [
+    "AOS_app_menu",
+    "environmental_entrypoint",
+    "product_registry",
+    "legacy_alias",
+    "runtime_selftest"
+  ],
+  "scientific_revision": "SENS-GLJGL-03",
+  "scientific_hotfixes": [
+    "SENS-GLJGL-01",
+    "SENS-GLJGL-02",
+    "SENS-GLJGL-03"
+  ],
+  "scientific_hotfix_state": "CANDIDATE_DYNAMIC_VALIDATION",
+  "scientific_hotfix_scope": [
+    "GL_SENSITIVITY_ORCHESTRATION",
+    "JGL_SENSITIVITY_ORCHESTRATION",
+    "POINT_PUBLICATION_CONTRACT",
+    "EXPLICIT_POLYNOMIAL_CURVE_TREATMENT",
+    "DERIVATIVE_ZERO_OPTIMUM_VERIFICATION",
+    "SENSITIVITY_REPORTING",
+    "EXPLICIT_JGL_MOTIVE_PRESSURE_MODE",
+    "FORCED_QINY_REQUIRED_PRESSURE_DERIVATION",
+    "AVAILABLE_PRESSURE_FEASIBILITY",
+    "MOTIVE_PRESSURE_GRAPH_AND_REPORTING"
+  ]
+}

@@ -1,0 +1,47 @@
+AOS SUITE 0.2.0 DEV1 - ENV-02 + SENS-GLJGL-03
+========================================
+
+1. Extraer en una carpeta nueva.
+2. Abrir GNU Octave.
+3. Ejecutar:
+
+   cd('/ruta/AOS_0_2_0_DEV1_ENV02_SENS03')
+   clear functions
+   rehash
+   VERIFICAR_AOS_0_2_0_DEV1(false)
+   AOS
+
+4. Para la campana completa:
+
+   VERIFICAR_AOS_0_2_0_DEV1(true)
+
+Esta distribucion integra AOS 0.1.9 R2 HF3.4-CAD-R16, el subsistema de
+composicion de tablas HF3.5, la arquitectura ENV-01 y el runtime shell ENV-02.
+
+AOS Environmental aparece como banco independiente entre SCADA y Maintenance.
+El entrypoint `AOS_menu_environmental` esta disponible. Los calculos, schemas
+detallados, factores, importadores y reportes ambientales especializados siguen
+pendientes. `AOS_menu_gestion_ambiental` se conserva como alias historico.
+
+Documento de continuidad: CONTEXTO_AOS_0_2_0_DEV1.md
+ADR: documentos/adr/ADR-AOS-2026-001_AOS_ENVIRONMENTAL_BANCO_INDEPENDIENTE.md
+
+ENV-02 - DOCUMENTOS DE CONTROL
+- ARCHITECTURE_REVISION.txt
+- CHANGELOG_AOS_ENVIRONMENTAL_ENV02.md
+- NOTA_RUNTIME_AOS_ENVIRONMENTAL_ENV02.md
+- AUDITORIA_AOS_ENVIRONMENTAL_ENV02.md
+- MANIFEST_AOS_0_2_0_DEV1_ENV02.txt
+- SHA256SUMS_AOS_0_2_0_DEV1_ENV02.txt
+
+ENV-01 permanece incluido como antecedente documental de la decision de arquitectura.
+
+SENS-GLJGL-03 - CONDICION MOTRIZ JGL
+- Incluye de forma acumulativa SENS01 y SENS02.
+- Si Qiny se fuerza y P_iny_sup es cero/no informada, presenta un menu visible.
+- Puede derivar la presion minima requerida, verificar una presion disponible
+  o confirmar ausencia de presion motriz.
+- Agrega grafica y tabla de presiones requeridas frente a Qiny.
+- La simulacion puntual JGL con Qiny fijo usa la misma seleccion motriz.
+- El gate profundo incluye un barrido JGL derivado de dos puntos.
+- Verificador: VERIFICAR_SENS_GLJGL_03(false/true).

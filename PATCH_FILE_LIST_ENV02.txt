@@ -1,0 +1,47 @@
+# AOS Environmental ENV-02 patch file list
+# Baseline: AOS_0_2_0_DEV1_ENV01
+# A = added, M = modified, D = deleted
+
+A  AUDITORIA_AOS_ENVIRONMENTAL_ENV02.json
+A  AUDITORIA_AOS_ENVIRONMENTAL_ENV02.md
+A  CHANGELOG_AOS_ENVIRONMENTAL_ENV02.md
+A  INSTRUCCIONES_APLICACION_ENV02.md
+A  MANIFEST_AOS_0_2_0_DEV1_ENV02.txt
+A  NOTA_RUNTIME_AOS_ENVIRONMENTAL_ENV02.md
+A  PATCH_FILE_LIST_ENV02.txt
+A  SHA256SUMS_AOS_0_2_0_DEV1_ENV02.txt
+A  src/menu/AOS_menu_environmental.m
+A  src/tests/test_aos_environmental_runtime_shell_env02.m
+M  AOS_0_2_0_DEV1_CONTEXTO_COMPLETO.md
+M  AOS_VERSION.txt
+M  ARCHITECTURE_REVISION.txt
+M  CHANGELOG_AOS_0_2_0_DEV1.md
+M  CONTEXTO_AOS_0_2_0_DEV1.md
+M  INICIO_CHAT_AOS_0_2_0_DEV1.txt
+M  LEEME_PRIMERO.txt
+M  README.md
+M  REGRESIONES_AOS_0_2_0_DEV1.md
+M  VERIFICAR_AOS_0_1_9.m
+M  VERIFICAR_AOS_0_2_0_DEV1.m
+M  documentos/AOS_0_2_0_DEV1_CONTEXTO_COMPLETO.md
+M  documentos/ARQUITECTURA_AOS_0_2_0_DEV1.md
+M  documentos/ARQUITECTURA_AOS_ENVIRONMENTAL_0_2_0_DEV1.md
+M  documentos/ROADMAP_AOS_0_1_9_A_0_2_0.md
+M  src/menu/AOS_app.m
+M  src/menu/AOS_menu_gestion_ambiental.m
+M  src/menu/AOS_menu_maintenance.m
+M  src/menu/AOS_menu_roadmap.m
+M  src/menu/aos_modulo_no_disponible.m
+M  src/menu/aos_registro_modulos.m
+M  src/menu/aos_suite_registro_productos.m
+M  src/menu/aos_workbench_mostrar_ficha.m
+M  src/roadmap/aos_environmental_workbench_0_2_0_dev1.json
+M  src/roadmap/aos_frame_ribbon_contract_0_2_0.json
+M  src/roadmap/aos_migration_map_0_1_9_to_0_2_0.json
+M  src/roadmap/aos_release_0_2_0_dev1.json
+M  src/roadmap/aos_roadmap_0_2_0_dev1.json
+M  src/roadmap/aos_workbenches_0_2_0_dev1.json
+M  src/workbenches/environmental/README.md
+M  src/workbenches/maintenance/README.md
+
+# added=10 modified=31 deleted=0

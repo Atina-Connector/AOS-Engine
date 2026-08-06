@@ -1,0 +1,90 @@
+{
+  "schema": "AOS_ROADMAP_0_1_9",
+  "current_release": {
+    "version": "0.1.9 R2",
+    "name": "Gateway R2 to 0.2.0",
+    "objectives": [
+      "visible_workbenches",
+      "separate_services",
+      "separate_solvers",
+      "frame_contract",
+      "universal_case_management",
+      "contextual_import",
+      "aosdat_catalogs_and_galleries"
+    ]
+  },
+  "phases": [
+    {
+      "version": "0.1.9",
+      "name": "Gateway",
+      "deliverables": [
+        "modular launcher",
+        "roadmap visible",
+        "Fluids",
+        "Solvers",
+        "3D Core contract",
+        "universal open/import",
+        "AOSDAT catalog contract R2",
+        "galleries restored",
+        "semantic verification"
+      ]
+    },
+    {
+      "version": "0.2.0",
+      "name": "Frame and stable contracts",
+      "deliverables": [
+        "ribbon UI",
+        "project tree",
+        "property panel",
+        "shared scene",
+        "stable APIs"
+      ]
+    },
+    {
+      "version": "0.2.x",
+      "name": "Infrastructure integration",
+      "deliverables": [
+        "network loops",
+        "electrical network",
+        "facilities",
+        "SCADA histories"
+      ]
+    },
+    {
+      "version": "0.3.x",
+      "name": "Operational intelligence",
+      "deliverables": [
+        "maintenance scoring",
+        "pulling intelligence",
+        "economics",
+        "HSE"
+      ]
+    },
+    {
+      "version": "GLOBAL",
+      "name": "Integrated field optimization",
+      "deliverables": [
+        "reservoir-well-network-facilities-energy coupling"
+      ]
+    }
+  ],
+  "mandatory_rules": [
+    "Viewer last",
+    "Roadmap modules visible",
+    "GNU Octave scientific engine",
+    "No duplicate solver physics",
+    "AOS 3D Core transversal",
+    "AOS Fluids official property source"
+  ],
+  "source_release": "0.1.9 R2",
+  "aosbck": {
+    "state": "BETA_R1",
+    "principle": "ONE_GEOMETRY_MANY_INSTANCES",
+    "placement": [
+      "SURVEY",
+      "AOSCAD_NODE",
+      "XYZ"
+    ],
+    "assembly": "ROADMAP"
+  }
+}

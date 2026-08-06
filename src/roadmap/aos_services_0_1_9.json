@@ -1,0 +1,149 @@
+{
+    "schema":  "AOS_SERVICES_0_1_9_R2",
+    "services":  [
+                     {
+                         "id":  "CASE_MANAGEMENT",
+                         "state":  "ACTIVE_R2",
+                         "entrypoint":  "AOS_menu_gestion_caso",
+                         "consumers":  [
+                                           "SLA",
+                                           "WELLS",
+                                           "CAD",
+                                           "NETWORKS",
+                                           "ELECTRICAL",
+                                           "FACILITIES",
+                                           "GEOLOGY",
+                                           "FLUIDS",
+                                           "SCADA",
+                                           "MAINTENANCE",
+                                           "DATA"
+                                       ],
+                         "responsibility":  [
+                                                "open_import_route",
+                                                "active_case",
+                                                "aosdat_priority",
+                                                "contextual_import",
+                                                "recent_files_future"
+                                            ],
+                         "contracts":  [
+                                           "aosdat",
+                                           "aosrpt",
+                                           "aoscad",
+                                           "aosbck",
+                                           "DXF",
+                                           "STEP"
+                                       ]
+                     },
+                     {
+                         "id":  "AOS_3D_CORE",
+                         "state":  "ROADMAP_CORE_ACTIVE",
+                         "entrypoint":  "AOS_menu_3d_core",
+                         "consumers":  [
+                                           "WELLS",
+                                           "CAD",
+                                           "NETWORKS",
+                                           "ELECTRICAL",
+                                           "FACILITIES",
+                                           "GEOLOGY",
+                                           "GLOBAL"
+                                       ],
+                         "responsibility":  [
+                                                "geometry",
+                                                "scene",
+                                                "selection",
+                                                "asset_binding",
+                                                "result_overlay"
+                                            ],
+                         "not_responsible_for":  [
+                                                     "physics",
+                                                     "solver_equations"
+                                                 ],
+                         "capabilities_aoscad_r16":  {
+                                                         "asset_identity":  "DELIVERED",
+                                                         "step_index_viewer":  "DELIVERED",
+                                                         "ports_connections_interference":  "DELIVERED_SPRINT6",
+                                                         "federated_scene":  "DELIVERED_SPRINT6",
+                                                         "result_overlay":  "DELIVERED_SPRINT6",
+                                                         "sync_2d_3d":  "DELIVERED_SPRINT7",
+                                                         "visual_resources":  "DELIVERED_SPRINT7"
+                                                     },
+                         "aoscad_version":  "0.0.1-DEV1-R16",
+                         "aoscad_state":  "PROTOTIPO_NO_VALIDADO",
+                         "promotion":  "NO_BETA_CANDIDATO_R16"
+                     },
+                     {
+                         "id":  "AOSBCK_SERVICE",
+                         "state":  "BETA_R1",
+                         "entrypoint":  "AOS_menu_aosbck",
+                         "consumers":  [
+                                           "WELLS",
+                                           "CAD",
+                                           "NETWORKS",
+                                           "ELECTRICAL",
+                                           "FACILITIES",
+                                           "MAINTENANCE",
+                                           "GLOBAL"
+                                       ],
+                         "responsibility":  [
+                                                "step_packaging",
+                                                "component_identity",
+                                                "part_metadata",
+                                                "lightweight_instances",
+                                                "survey_placement",
+                                                "aoscad_node_placement",
+                                                "on_demand_view"
+                                            ],
+                         "contract":  "aosbck_contract_0_1_9_r1.json",
+                         "future":  [
+                                        "full_assembly",
+                                        "interference",
+                                        "federated_scene"
+                                    ]
+                     },
+                     {
+                         "id":  "AOS_FLUIDS_SERVICE",
+                         "state":  "BETA",
+                         "workbench":  "FLUIDS",
+                         "responsibility":  [
+                                                "PVT",
+                                                "fluid_id",
+                                                "properties_PT",
+                                                "calibration"
+                                            ]
+                     },
+                     {
+                         "id":  "UNITS",
+                         "state":  "ACTIVE",
+                         "primary_system":  "METRIC"
+                     },
+                     {
+                         "id":  "CATALOGS",
+                         "state":  "ACTIVE_R2",
+                         "layers":  [
+                                        "AOS_BASE",
+                                        "USER_PERSISTENT",
+                                        "EMBEDDED_AOSDAT"
+                                    ],
+                         "contract":  "AOS_CATALOGO_R2"
+                     },
+                     {
+                         "id":  "REPORTING",
+                         "state":  "BETA",
+                         "contracts":  [
+                                           "aosrpt",
+                                           "aoscad"
+                                       ]
+                     },
+                     {
+                         "id":  "VALIDATION",
+                         "state":  "ACTIVE",
+                         "requirements":  [
+                                              "origin",
+                                              "units",
+                                              "status",
+                                              "warnings",
+                                              "convergence"
+                                          ]
+                     }
+                 ]
+}
