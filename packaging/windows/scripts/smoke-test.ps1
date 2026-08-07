@@ -48,7 +48,9 @@ foreach ($rel in @("config", "datos", "AOS.m", "VERSION")) {
 Write-Host "3) iniciar_aos() carga el path sin error"
 $appDirForward = $appDir -replace '\\', '/'
 $evalScript = "cd('$appDirForward'); iniciar_aos(); if exist('AOS_app','file') ~= 2, error('AOS_app no encontrado en el path'); end; fprintf('SMOKE_TEST_PATH_OK\n');"
-$pathCheck = & $octaveCli --quiet --no-history --no-init-file --eval $evalScript 2>&1
+# Igual que en prepare-octave-runtime.ps1: unir a un solo string antes de
+# "-notmatch" para no filtrar linea por linea sobre un array.
+$pathCheck = ((& $octaveCli --quiet --no-history --no-init-file --eval $evalScript 2>&1) -join "`n")
 Write-Host $pathCheck
 if ($pathCheck -notmatch "SMOKE_TEST_PATH_OK") {
     throw "iniciar_aos()/AOS_app no quedaron localizables. Salida completa arriba."

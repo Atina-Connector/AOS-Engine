@@ -122,7 +122,11 @@ if (-not (Test-Path $octaveCli)) {
 }
 
 Write-Host "Smoke test: $octaveCli --version"
-$versionOutput = & $octaveCli --version
+# & captura salida multilinea como array de strings: "-notmatch" contra un
+# array filtra por elemento (devuelve las lineas que NO matchean), asi que
+# comparar el array entero da un resultado no vacio (=verdadero) aunque UNA
+# linea si contenga la version. Se une a un solo string antes de comparar.
+$versionOutput = (& $octaveCli --version) -join "`n"
 if ($versionOutput -notmatch [regex]::Escape($Version)) {
     throw "octave-cli.exe respondio pero no reporta la version esperada ($Version):`n$versionOutput"
 }
