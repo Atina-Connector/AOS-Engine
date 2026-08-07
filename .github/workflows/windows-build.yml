@@ -1,0 +1,72 @@
+name: Windows build
+
+# Disparo manual unicamente (ver docs/distribution/RELEASE_PROCESS.md): no
+# se publican releases automaticos hasta que el packaging este validado en
+# una maquina Windows real, no solo en el runner de CI.
+on:
+  workflow_dispatch:
+    inputs:
+      octave_version:
+        description: "Version de Octave a empaquetar (debe existir un hash pinneado en prepare-octave-runtime.ps1)"
+        required: false
+        default: "8.4.0"
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Leer version de AOS (app/VERSION es la fuente canonica)
+        id: aos_version
+        shell: pwsh
+        run: |
+          $version = (Get-Content app\VERSION -Raw).Trim()
+          Write-Host "AOS version: $version"
+          echo "version=$version" >> $env:GITHUB_OUTPUT
+
+      - name: Preparar runtime portable de Octave
+        shell: pwsh
+        run: .\packaging\windows\scripts\prepare-octave-runtime.ps1 -Version "${{ github.event.inputs.octave_version }}"
+
+      - name: Preparar app/ filtrada para distribucion
+        shell: pwsh
+        run: .\packaging\windows\scripts\stage-app.ps1
+
+      - name: Setup MSVC Build Tools
+        uses: ilammy/msvc-dev-cmd@v1
+
+      - name: Compilar launcher AOS.exe
+        shell: pwsh
+        run: .\packaging\windows\launcher\build.ps1
+
+      - name: Smoke test de punta a punta
+        shell: pwsh
+        run: .\packaging\windows\scripts\smoke-test.ps1
+
+      - name: Armar ZIP portable
+        shell: pwsh
+        run: .\packaging\windows\scripts\build-portable.ps1 -Version "${{ steps.aos_version.outputs.version }}"
+
+      - name: Instalar Inno Setup
+        shell: pwsh
+        run: choco install innosetup -y --no-progress
+
+      - name: Compilar instalador (AOS.iss)
+        shell: pwsh
+        run: |
+          $isccCandidates = @("C:\Program Files (x86)\Inno Setup 6", "C:\Program Files\Inno Setup 6")
+          $iscc = Get-ChildItem -Path $isccCandidates -Filter "ISCC.exe" -ErrorAction SilentlyContinue | Select-Object -First 1 -ExpandProperty FullName
+          if (-not $iscc) { throw "No se encontro ISCC.exe tras instalar Inno Setup." }
+          & $iscc "/DAOSVersion=${{ steps.aos_version.outputs.version }}" packaging\windows\installer\AOS.iss
+          if ($LASTEXITCODE -ne 0) { throw "ISCC.exe fallo (exit $LASTEXITCODE)." }
+
+      - name: Subir artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: AOS-windows-${{ steps.aos_version.outputs.version }}
+          path: |
+            dist/AOS-Portable-*.zip
+            dist/AOS-Setup-*.exe
+          if-no-files-found: error
