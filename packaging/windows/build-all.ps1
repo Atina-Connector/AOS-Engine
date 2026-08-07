@@ -73,9 +73,14 @@ if (Test-Command "7z.exe") {
 
 # --- Inno Setup (ISCC.exe) ---
 function Find-ISCC {
+    # El paquete winget JRSoftware.InnoSetup instala hoy por defecto en
+    # scope de usuario (%LOCALAPPDATA%\Programs\Inno Setup 6), no en
+    # Program Files -- se revisan ambas ubicaciones por las dudas, aunque
+    # abajo se fuerza --scope machine al instalar.
     $pf86 = ${Env:ProgramFiles(x86)}
     $pf = $Env:ProgramFiles
-    foreach ($base in @($pf86, $pf)) {
+    $localAppData = Join-Path $Env:LOCALAPPDATA "Programs"
+    foreach ($base in @($pf86, $pf, $localAppData)) {
         if ([string]::IsNullOrWhiteSpace($base)) { continue }
         $candidate = Join-Path $base "Inno Setup 6\ISCC.exe"
         if (Test-Path $candidate) { return $candidate }
@@ -86,7 +91,8 @@ function Find-ISCC {
 $iscc = Find-ISCC
 if (-not $iscc) {
     Write-Host "[FALTA] Inno Setup. Instalando..."
-    Install-WithWinget -Id "JRSoftware.InnoSetup" -FriendlyName "Inno Setup"
+    Install-WithWinget -Id "JRSoftware.InnoSetup" -FriendlyName "Inno Setup" `
+        -ExtraArgs @("--scope", "machine")
     $iscc = Find-ISCC
 }
 if (-not $iscc) { throw "No se encontro ISCC.exe despues de instalar Inno Setup." }
