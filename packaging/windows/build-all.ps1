@@ -131,13 +131,20 @@ if (-not (Test-Command "cl.exe")) {
     # "set" resultante para importar esas variables (PATH/INCLUDE/LIB, etc.)
     # al proceso de PowerShell actual. Truco estandar para usar herramientas
     # de MSVC desde afuera de un "Developer Command Prompt".
-    $envDump = & cmd.exe /c "`"$vcvarsall`" x64 >nul 2>&1 && set"
+    #
+    # "&" en vez de "&&", y sin silenciar la salida: con "&&" y ">nul 2>&1",
+    # si vcvarsall.bat devuelve un exit code no-cero por cualquier motivo
+    # (banners de primera ejecucion, warnings no fatales, etc.) el "set"
+    # nunca corre y no queda ningun rastro de por que fallo.
+    $envDump = & cmd.exe /c "`"$vcvarsall`" x64 & set"
     foreach ($line in $envDump) {
         if ($line -match '^([^=]+)=(.*)$') {
             [System.Environment]::SetEnvironmentVariable($Matches[1], $Matches[2], "Process")
         }
     }
     if (-not (Test-Command "cl.exe")) {
+        Write-Host "Salida completa de vcvarsall.bat:"
+        $envDump | ForEach-Object { Write-Host $_ }
         throw "No se pudo activar cl.exe en el entorno actual despues de correr vcvarsall.bat."
     }
 }
