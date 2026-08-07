@@ -1,24 +1,10 @@
 # Cómo generar un build de Windows
 
-Estado: scripts y workflow implementados, **sin ejecutar todavía en un
-runner o máquina Windows real** (este repo se desarrolla desde Mac). La
-primera corrida real de todo esto es en sí misma parte de la validación.
-
-## Prerequisito: remote de GitHub
-
-`.github/workflows/windows-build.yml` sólo puede correr si el repositorio
-está en GitHub (los runners `windows-latest` son de GitHub Actions). Hoy
-este repo **no tiene ningún remote configurado** (`git remote -v` vacío).
-Antes de poder usar la Opción A hace falta:
-
-```bash
-gh repo create <owner>/<nombre> --private --source=. --remote=origin
-git push -u origin master
-```
-
-(o crear el repo manualmente en GitHub y agregar el remote). Esto no está
-hecho todavía — se decide en conjunto antes de ejecutarlo, ya que implica
-elegir nombre, visibilidad (privado/público) y cuenta/organización.
+Estado: repo en GitHub (`Atina-Connector/AOS-Engine`), workflow corrido al
+menos una vez en `windows-latest` (llegó hasta `prepare-octave-runtime.ps1`
+antes de encontrar el bug de matching multilinea ya corregido — ver
+historial de commits). Todavía no se completó un run entero de punta a
+punta ni se probó el instalador resultante en una máquina Windows real.
 
 ## Opción A — GitHub Actions (recomendada, no depende de tener una PC Windows)
 
@@ -41,10 +27,36 @@ nombre del paso que falló ya indica dónde mirar.
 ## Opción B — build local en una máquina Windows real
 
 Útil para iterar sin esperar un run de CI, o para depurar un fallo que sólo
-se ve en Windows. Requiere en esa máquina: PowerShell 5.1+ (ya viene con
-Windows 10/11), **Visual Studio Build Tools** (para `cl.exe`) y **7-Zip**.
-Inno Setup sólo hace falta si también se quiere generar el `.exe` instalador
-(no para el ZIP portable).
+se ve en Windows.
+
+### B.1 — un solo paso: `build-all.bat`
+
+`packaging\windows\build-all.bat` (doble clic, o clic derecho → "Ejecutar
+como administrador" — hace falta ser administrador para poder instalar lo
+que falte) verifica 7-Zip, Visual Studio Build Tools con el workload de C++
+e Inno Setup, instala automáticamente vía `winget` lo que no esté, activa el
+entorno de `cl.exe` en el proceso, y corre todo el pipeline de punta a punta
+(mismo orden que usa `.github/workflows/windows-build.yml`). Es un `.bat`
+mínimo a propósito: solo valida privilegios de administrador y delega toda
+la lógica a `build-all.ps1` en la misma carpeta, más confiable en
+PowerShell que en batch puro.
+
+Requiere `winget` (viene con "App Installer", preinstalado en Windows 11 y
+en Windows 10 actualizado — si falta, se instala desde la Microsoft Store).
+La instalación de Visual Studio Build Tools puede tardar varios minutos la
+primera vez.
+
+Al terminar deja `dist\AOS-Portable-<version>-win-x64.zip` y
+`dist\AOS-Setup-<version>.exe` listos.
+
+### B.2 — paso a paso manual
+
+Para entender o depurar qué hace cada parte, o si ya se tienen las
+herramientas instaladas y no hace falta el bootstrap de `build-all.bat`.
+Requiere en esa máquina: PowerShell 5.1+ (ya viene con Windows 10/11),
+**Visual Studio Build Tools** (para `cl.exe`) y **7-Zip**. Inno Setup sólo
+hace falta si también se quiere generar el `.exe` instalador (no para el
+ZIP portable).
 
 Desde la raíz del repo, en PowerShell:
 
