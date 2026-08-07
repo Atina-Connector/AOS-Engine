@@ -10,10 +10,16 @@
     2. config/, datos/, AOS.m, VERSION estan presentes en la app empaquetada.
     3. iniciar_aos() carga el path completo sin error (AOS_app queda
        localizable) -- valida el armado de stage-app.ps1 sin abrir el menu.
-    4. AOS.exe de punta a punta: arranca, muestra el menu principal por
-       stdout, acepta "salir" por stdin, y devuelve exit code 0. Esto
-       ejercita el launcher real (localizacion de rutas, CreateProcessW,
-       herencia de stdio, propagacion de exit code), no solo Octave.
+    4. AOS.exe arranca y el menu principal de AOS_app se imprime
+       correctamente. No navega el menu por stdin: Octave usa
+       input()/readline para los prompts, que en Windows falla con "error:
+       input: reading user-input failed!" contra un stdin no interactivo
+       (pipe), sin importar que se le haya escrito algo -- confirmado en
+       una maquina real. La navegacion interactiva de punta a punta se
+       prueba a mano (ver docs/distribution/WINDOWS_INSTALLER.md); este
+       paso solo cubre lo que SI se puede automatizar: que el launcher
+       encuentra Octave y AOS.m, y que el arranque hasta el primer prompt
+       no tira ningun error.
 #>
 [CmdletBinding()]
 param(
@@ -64,10 +70,12 @@ if ($pathCheck -notmatch "SMOKE_TEST_PATH_OK") {
 # hasta el final del script -- mismo bug que en stage-app.ps1/robocopy.
 $global:LASTEXITCODE = 0
 
-Write-Host "4) AOS.exe de punta a punta (arranca, muestra menu, sale por CLI)"
-# Lectura asincrona de stdout/stderr: leer con ReadToEnd() recien despues de
-# WaitForExit() puede colgarse si el hijo llena el buffer del pipe antes de
-# que alguien lo vacie (deadlock clasico de System.Diagnostics.Process).
+Write-Host "4) AOS.exe arranca y muestra el menu principal"
+# No se navega el menu por stdin (ver nota arriba: input() no funciona
+# contra un pipe en Windows). Se deja correr hasta que aparezca el
+# prompt esperado o se cumpla el timeout, y despues se mata el proceso --
+# no importa como termine, lo unico que se valida es que llego a imprimir
+# el menu sin errores de path/arranque.
 $psi = New-Object System.Diagnostics.ProcessStartInfo
 $psi.FileName = $exe
 $psi.RedirectStandardInput = $true
@@ -91,28 +99,26 @@ $errEvent = Register-ObjectEvent -InputObject $proc -EventName ErrorDataReceived
 $proc.BeginOutputReadLine()
 $proc.BeginErrorReadLine()
 
-# "0" = Salir, "s" = confirmar salida, "" = default "no" para no borrar nada
-$proc.StandardInput.Write("0`r`ns`r`n`r`n")
-$proc.StandardInput.Close()
+# El primer arranque del runtime portable puede tardar; se sondea en vez
+# de dormir un tiempo fijo, cortando apenas aparece el prompt esperado.
+$deadline = (Get-Date).AddSeconds(90)
+while ((Get-Date) -lt $deadline) {
+    if ($proc.HasExited) { break }
+    if ($stdoutBuilder.ToString() -match [regex]::Escape('Seleccione [0-19]')) { break }
+    Start-Sleep -Milliseconds 500
+}
 
-# El primer arranque del runtime portable puede tardar; margen generoso.
-$exited = $proc.WaitForExit(180000)
 Unregister-Event -SourceIdentifier $outEvent.Name
 Unregister-Event -SourceIdentifier $errEvent.Name
 
-if (-not $exited) {
-    $proc.Kill()
-    throw "AOS.exe no salio dentro del timeout de 3 minutos."
-}
+if (-not $proc.HasExited) { $proc.Kill() }
+$proc.WaitForExit(5000) | Out-Null
 
 $stdout = $stdoutBuilder.ToString()
 $stderr = $stderrBuilder.ToString()
 
-if ($proc.ExitCode -ne 0) {
-    throw "AOS.exe salio con codigo $($proc.ExitCode).`nSTDOUT:`n$stdout`nSTDERR:`n$stderr"
-}
 if ($stdout -notmatch "AOS SUITE") {
-    throw "La salida de AOS.exe no contiene el menu principal esperado.`nSTDOUT:`n$stdout"
+    throw "AOS.exe no llego a mostrar el menu principal.`nSTDOUT:`n$stdout`nSTDERR:`n$stderr"
 }
 
-Write-Host "OK: AOS.exe arranco, mostro el menu principal y salio limpiamente (exit 0)."
+Write-Host "OK: AOS.exe arranco y mostro el menu principal (la navegacion interactiva se prueba a mano, ver docs/distribution/WINDOWS_INSTALLER.md)."

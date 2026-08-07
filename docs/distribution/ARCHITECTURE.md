@@ -113,6 +113,26 @@ de sí misma). Si el problema persiste después de instalar, es señal de que
 el reloj del sistema sigue mal configurado — vale la pena confirmarlo
 aparte (`Configuración → Hora e idioma → Sincronizar ahora`).
 
+## Límite conocido: `input()` de Octave no funciona contra un pipe en Windows
+
+Confirmado en una máquina real: si a `octave-cli.exe` (o a `AOS.exe`) se lo
+arranca con stdin redirigido a un pipe anónimo (como hace
+`System.Diagnostics.Process` con `RedirectStandardInput=$true`, el patrón
+que usaría cualquier intento de automatizar la navegación del menú), la
+primera llamada a `input()`/`aos_leer_opcion` falla con
+`error: input: reading user-input failed!` — sin importar que ya se le
+haya escrito algo al pipe. No es un bug de AOS ni del launcher: el resto
+del arranque (`AOS.exe` localiza Octave y `AOS.m`, carga todo `src/`, e
+imprime el menú principal completo) funciona perfecto hasta ese punto
+exacto, confirmando que el problema es específicamente la lectura
+interactiva contra un stdin no-tty en Windows, no el arranque en sí.
+
+Por esto `smoke-test.ps1` no intenta navegar el menú de punta a punta por
+automatización — sólo valida que el arranque llega hasta imprimir el
+primer prompt sin error. La navegación interactiva real (importar, simular,
+exportar, salir) se prueba a mano contra una consola real, ver el
+checklist de `WINDOWS_INSTALLER.md`.
+
 ## Qué NO hace esta arquitectura (todavía)
 
 - No compila nada de AOS a C++/`.oct` — los `.m` fuente viajan tal cual en
