@@ -44,6 +44,12 @@ function Invoke-RobocopyDir {
     foreach ($e in $ExcludeDirs) { $xdArgs += "/XD"; $xdArgs += (Join-Path $src $e) }
     & robocopy $src $dst /E /NFL /NDL /NJH /NJS /NP @xdArgs | Out-Null
     if ($LASTEXITCODE -ge 8) { throw "robocopy fallo copiando $Rel (exit $LASTEXITCODE)" }
+    # robocopy usa 0-7 para variantes de "exito" (1 = "se copiaron
+    # archivos", no un error); si no se resetea aca, ese valor no-cero
+    # queda en $LASTEXITCODE y pwsh.exe lo hereda como su propio exit
+    # code al terminar el script, marcando el step entero como fallido
+    # aunque todo haya salido bien.
+    $global:LASTEXITCODE = 0
 }
 
 # --- Top-level, RUNTIME_REQUIRED ---

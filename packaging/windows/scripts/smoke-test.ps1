@@ -55,6 +55,11 @@ Write-Host $pathCheck
 if ($pathCheck -notmatch "SMOKE_TEST_PATH_OK") {
     throw "iniciar_aos()/AOS_app no quedaron localizables. Salida completa arriba."
 }
+# octave-cli.exe pudo dejar un $LASTEXITCODE no-cero aunque el chequeo de
+# arriba haya pasado; lo que sigue usa System.Diagnostics.Process (no toca
+# $LASTEXITCODE), asi que sin este reset ese valor viejo quedaria colgado
+# hasta el final del script -- mismo bug que en stage-app.ps1/robocopy.
+$global:LASTEXITCODE = 0
 
 Write-Host "4) AOS.exe de punta a punta (arranca, muestra menu, sale por CLI)"
 # Lectura asincrona de stdout/stderr: leer con ReadToEnd() recien despues de

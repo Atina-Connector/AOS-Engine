@@ -44,9 +44,11 @@ Copy-Item -Path $exeSrc -Destination (Join-Path $StagingDir "AOS.exe")
 
 & robocopy $runtimeSrc (Join-Path $StagingDir "runtime") /E /NFL /NDL /NJH /NJS /NP | Out-Null
 if ($LASTEXITCODE -ge 8) { throw "robocopy fallo copiando runtime/ (exit $LASTEXITCODE)" }
+$global:LASTEXITCODE = 0  # 0-7 de robocopy son variantes de exito, no dejar el valor colgado
 
 & robocopy $appSrc (Join-Path $StagingDir "app") /E /NFL /NDL /NJH /NJS /NP | Out-Null
 if ($LASTEXITCODE -ge 8) { throw "robocopy fallo copiando app/ (exit $LASTEXITCODE)" }
+$global:LASTEXITCODE = 0
 
 New-Item -ItemType Directory -Force -Path (Split-Path $OutputZip -Parent) | Out-Null
 if (Test-Path $OutputZip) { Remove-Item -Force $OutputZip }
