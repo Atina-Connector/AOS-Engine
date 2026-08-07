@@ -1,0 +1,6 @@
+# Catálogo de válvulas de gas lift IPO
+# Codigo  Diam_orificio_mm  R_fuelle  Pres_max_domo_bar
+V-IPO-08  8                 0.2       300
+V-IPO-10  10                0.2       300
+V-IPO-12  12                0.2       300
+V-IPO-14  14                0.2       300

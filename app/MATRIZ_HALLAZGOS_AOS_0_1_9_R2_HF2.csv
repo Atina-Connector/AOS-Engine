@@ -1,0 +1,12 @@
+id,severidad,area,hallazgo,correccion,estado
+UI-001,CRITICA,Geologia,"Reemplazar o editar representado por s/n","Administrador numerado y transaccional",CORREGIDO
+GEO-002,CRITICA,Geologia,"Reemplazo podia perder punzados o cargar defaults","Politica explicita conservar/usar/fusionar/cancelar",CORREGIDO
+UI-003,ALTA,Suite,"Preguntas binarias directas sin validacion uniforme","aos_preguntar_sn transversal",CORREGIDO
+CFG-004,ALTA,Conversiones,"num2str sobre tipos inesperados","Conversores seguros de texto/numero/vector/logico",CORREGIDO
+CAT-005,CRITICA,Catalogos,"Vector Q/head no sobrevivía round-trip","Parser escalar estricto y vector seguro",CORREGIDO
+GAL-006,ALTA,GL,"Elemento deshabilitado desaparecia al cargar galeria","Carga preserva 24; seleccion filtra 23 habilitados",CORREGIDO
+TEST-007,ALTA,QA,"Un selftest retiraba src/tests del path","Restauracion iniciar_aos(true) antes/despues",CORREGIDO
+RPT-008,ALTA,AOSRPT,"Reconstruccion usaba str2num","Parser seguro sin evaluacion",CORREGIDO
+BCK-009,MEDIA,AOSBCK,"Metadatos y vectores sin validacion uniforme","Contratos seguros para texto y vector3",CORREGIDO
+GF3-010,MEDIA,BM,"Campos de reporte podian recibir estructuras","aos_texto_seguro en exportadores",CORREGIDO
+QA-011,ALTA,Transversal,"No habia barrera automatica contra recurrencia","aos_auditar_interacciones + selftest",CORREGIDO

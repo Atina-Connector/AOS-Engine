@@ -1,0 +1,59 @@
+{
+  "schema": "AOSBCK_CONTRACT_0_1_9_R1",
+  "extension": ".aosbck",
+  "meaning": "AOS Block Component",
+  "container": "ZIP",
+  "canonical_contents": [
+    "manifest.json",
+    "geometry/source.step",
+    "metadata/properties.json",
+    "preview/"
+  ],
+  "principle": "ONE_GEOMETRY_MANY_INSTANCES",
+  "definition": {
+    "component_id": "catalog identity",
+    "part_number": "commercial identity",
+    "geometry": "single reusable STEP",
+    "ports": "local connection definitions"
+  },
+  "instance": {
+    "instance_id": "physical identity",
+    "placement_sources": [
+      "WELL_SURVEY",
+      "AOSCAD_NODE",
+      "XYZ_MANUAL"
+    ],
+    "orientation": "quaternion WXYZ",
+    "project_fields": [
+      "serial_number",
+      "lot_number",
+      "installation_date",
+      "status",
+      "notes"
+    ]
+  },
+  "consumers": [
+    "AOS_WELLS",
+    "AOS_CAD",
+    "AOS_NETWORKS",
+    "AOS_ELECTRICAL",
+    "AOS_FACILITIES",
+    "AOS_MAINTENANCE",
+    "AOS_GLOBAL",
+    "AOS_3D_CORE"
+  ],
+  "r1_scope": [
+    "STEP_TO_AOSBCK",
+    "MULTIPLE_INSTANCES",
+    "SURVEY_PLACEMENT",
+    "AOSCAD_NODE_PLACEMENT",
+    "ON_DEMAND_FREECAD_VIEW",
+    "PORT_METADATA"
+  ],
+  "future_scope": [
+    "FULL_ASSEMBLY",
+    "INTERFERENCE_CHECK",
+    "FEDERATED_SCENE",
+    "AUTOMATIC_PORT_MATING"
+  ]
+}

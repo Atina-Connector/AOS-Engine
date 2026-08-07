@@ -1,0 +1,85 @@
+function ok = VERIFICAR_AOS_0_1_9_R2_HF3_5(profundo)
+% VERIFICAR_AOS_0_1_9_R2_HF3_5 Composicion transversal de tablas.
+  if nargin < 1, profundo = false; endif
+  raiz = fileparts(mfilename('fullpath'));
+  cd(raiz);
+  addpath(raiz,'-begin');
+  addpath(fullfile(raiz,'src'),'-begin');
+  iniciar_aos(true);
+
+  fprintf('\n================================================================\n');
+  fprintf(' AOS 0.1.9 R2 HF3.5 - COMPOSICION TRANSVERSAL DE TABLAS\n');
+  fprintf('================================================================\n');
+  ok = true;
+  requeridos = { ...
+    'src/utilidades/reportes/aos_report_configure_tables.m', ...
+    'src/utilidades/reportes/aos_report_apply_profile.m', ...
+    'src/utilidades/reportes/aos_report_prepare_tables.m', ...
+    'src/utilidades/reportes/aos_report_write_manifest.m', ...
+    'src/utilidades/reportes/aos_report_parse_native_tables.m', ...
+    'src/utilidades/reportes/aos_report_print_native_tables.m', ...
+    'src/utilidades/intercambio/aos_rpt_escribir_tablas.m', ...
+    'src/core/BM/gibbs_foundation3/gibbs3_report_build_tables.m', ...
+    'src/core/BES2/bes2_report_build_tables.m', ...
+    'src/core/BES3/bes3_report_build_tables.m', ...
+    'src/core/CGF/cgf_report_build_tables.m', ...
+    'src/modulos/cad_topo/aos_aoscad_report_composition.m', ...
+    'src/tests/test_aos_report_composition_hf3_5.m', ...
+    'src/tests/test_aos_report_module_tables_hf3_5.m', ...
+    'src/tests/test_aos_report_sensitivity_hf3_5.m', ...
+    'src/tests/test_aos_aoscad_report_composition_hf3_5.m', ...
+    'src/tests/test_aos_report_coverage_hf3_5.m'};
+  for i = 1:numel(requeridos)
+    if exist(fullfile(raiz,requeridos{i}),'file') == 2
+      fprintf('OK   %s\n',requeridos{i});
+    else
+      fprintf(2,'FALTA %s\n',requeridos{i});
+      ok = false;
+    endif
+  endfor
+
+  pruebas = {'test_aos_report_composition_hf3_5', ...
+    'test_aos_report_module_tables_hf3_5', ...
+    'test_aos_report_sensitivity_hf3_5', ...
+    'test_aos_aoscad_report_composition_hf3_5', ...
+    'test_aos_report_coverage_hf3_5'};
+  for i = 1:numel(pruebas)
+    ok = ejecutar_local(pruebas{i},ok);
+  endfor
+
+  if profundo
+    try
+      r = VERIFICAR_AOS_0_1_9(true);
+      ok = ok && ~isempty(r) && logical(r);
+    catch err
+      fprintf(2,'FALLO verificacion integral: %s\n',err.message);
+      ok = false;
+    end_try_catch
+  endif
+
+  if ok
+    fprintf('RESULTADO: AOS 0.1.9 R2 HF3.5 APROBADO\n');
+  else
+    fprintf(2,'RESULTADO: AOS 0.1.9 R2 HF3.5 NO APROBADO\n');
+  endif
+endfunction
+
+function ok = ejecutar_local(nombre,ok)
+  try
+    iniciar_aos(true); rehash();
+    if exist(nombre,'file') ~= 2
+      fprintf(2,'FALLO: selftest no encontrado: %s\n',nombre);
+      ok = false; return;
+    endif
+    r = feval(nombre);
+    if ~isempty(r) && logical(r)
+      fprintf('OK   selftest %s\n',nombre);
+    else
+      fprintf(2,'FALLO: selftest sin aprobacion: %s\n',nombre);
+      ok = false;
+    endif
+  catch err
+    fprintf(2,'FALLO selftest %s: %s\n',nombre,err.message);
+    ok = false;
+  end_try_catch
+endfunction

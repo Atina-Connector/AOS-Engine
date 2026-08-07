@@ -1,0 +1,11 @@
+AOS 0.0.12 - ESTABILIZACION TRANSVERSAL GNU OCTAVE
+
+Esta carpeta es una version consolidada. No requiere instalar ninguno de los
+parches anteriores. Se recomienda usarla en una carpeta nueva y conservar la
+instalacion previa intacta hasta aprobar los tres verificadores:
+
+  VERIFICAR_ESTABILIZACION_AOS_0_0_12
+  VERIFICAR_QINY_HIDRAULICA_GL
+  VERIFICAR_SENSIBILIDADES_AOS_0_0_12
+
+El CFD gas-gas no forma parte del runtime AOS.

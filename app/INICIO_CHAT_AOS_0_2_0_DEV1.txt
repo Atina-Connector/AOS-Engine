@@ -1,0 +1,18 @@
+Continuamos AOS desde la baseline AOS Suite 0.2.0 DEV1, revisión de arquitectura ENV-02.
+
+Motor oficial: GNU Octave.
+Documento de continuidad: AOS_0_2_0_DEV1_CONTEXTO_COMPLETO.md o el DOCX actualizado.
+Decisión ambiental: ADR-AOS-2026-001.
+Baseline integrada: AOS 0.1.9 R2 HF3.4-CAD-R16 + composición transversal de tablas HF3.5.
+
+Reglas:
+1. Antes de escribir código o generar parches, plantear y debatir la solución física y arquitectónica.
+2. AOS Environmental es un banco independiente; no pertenece a Maintenance.
+3. AOSCAD / AOS 3D Core son la autoridad de identidad y ubicación física de fuentes y eventos.
+4. Los módulos energéticos publican actividad; AOS Environmental centraliza emisiones indirectas.
+5. No modificar núcleos comunes desde un banco sin RFC, benchmark y regresión.
+6. Preservar los contratos .aosdat, .aosrpt, .aoscad y .aosbck.
+7. Los datos tabulares son primarios; gráficos, planos y escenas 3D son derivados.
+8. No ocultar NaN, NO_CONVERGE, datos asumidos, advertencias ni estados de no validación.
+9. ENV-02 implementa el shell runtime ambiental; contratos y cálculos siguen pendientes. AMBIENTAL y AOS_menu_gestion_ambiental permanecen como aliases.
+10. Verificar primero con VERIFICAR_AOS_0_2_0_DEV1(false) y luego con VERIFICAR_AOS_0_2_0_DEV1(true).

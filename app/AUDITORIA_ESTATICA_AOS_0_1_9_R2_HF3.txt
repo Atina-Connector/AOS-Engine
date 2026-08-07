@@ -1,0 +1,85 @@
+AUDITORIA ESTATICA AOS 0.1.9 R2 HF3
+Fecha UTC: 2026-07-29T20:35:45+00:00
+Estado: APROBADA_ESTATICAMENTE
+
+Archivos totales: 1029
+Carpetas incluyendo raiz: 167
+Archivos GNU Octave .m: 741
+Lineas fisicas .m: 58440
+Lineas efectivas aproximadas: 51198
+Comentarios completos: 2903
+Lineas en blanco: 4339
+Declaraciones function: 2173
+Archivos agregados vs HF2: 22
+Archivos modificados vs HF2: 27
+Archivos eliminados vs HF2: 0
+JSON validos: 15
+JSON totales: 15
+Archivos .mat: 0
+Nombres .m duplicados en src: 0
+
+CONTROLES:
+Sin archivos eliminados: True
+Nombres de funciones nuevas coherentes: True
+Sin patrones peligrosos nuevos/modificados: True
+Sin dialogo ambiguo reemplazar/editar: True
+menu gestor visible: OK (src/menu/AOS_menu_datos_pozo.m)
+menu despacha gestor: OK (src/menu/AOS_menu_datos_pozo.m)
+importa metadata: OK (src/utilidades/intercambio/importar_aosdat.m)
+exporta metadata: OK (src/utilidades/intercambio/exportar_aosdat.m)
+geologia independiente: OK (src/geologia/aos_geologia_administrar.m)
+invalidacion transversal: OK (src/geologia/punzados/aos_punzados_commit.m)
+extras protegidos: OK (src/geologia/punzados/aos_punzados_escribir_aosdat.m)
+
+ARCHIVOS AGREGADOS:
+ + AUDITORIA_ESTATICA_AOS_0_1_9_R2_HF3.json
+ + AUDITORIA_ESTATICA_AOS_0_1_9_R2_HF3.txt
+ + AUDITORIA_TRANSVERSAL_PUNZADOS_AOS_0_1_9_R2_HF3.md
+ + CHANGELOG_AOS_0_1_9_R2_HF3.md
+ + REGRESIONES_AOS_0_1_9_R2_HF3.md
+ + VERIFICAR_AOS_0_1_9_R2_HF3.m
+ + datos/ejemplos/punzados/AOS_PUNZADOS_HF3_DEMO.aosdat
+ + historial/HF2/README_HF2.md
+ + src/geologia/punzados/aos_punzados_administrar.m
+ + src/geologia/punzados/aos_punzados_commit.m
+ + src/geologia/punzados/aos_punzados_desde_aosdat.m
+ + src/geologia/punzados/aos_punzados_escribir_aosdat.m
+ + src/geologia/punzados/aos_punzados_generar_regular.m
+ + src/geologia/punzados/aos_punzados_normalizar.m
+ + src/geologia/punzados/aos_punzados_operacion.m
+ + src/geologia/punzados/aos_punzados_validar.m
+ + src/tests/test_aos_menu_punzados_hf3.m
+ + src/tests/test_aos_punzados_aosdat_roundtrip_hf3.m
+ + src/tests/test_aos_punzados_consumidores_hf3.m
+ + src/tests/test_aos_punzados_crud_hf3.m
+ + src/tests/test_aos_punzados_sin_geologia_hf3.m
+ + src/utilidades/config/aos_invalidar_resultados.m
+
+ARCHIVOS MODIFICADOS:
+ * AOS_VERSION.txt
+ * MANIFEST_AOS_0_1_9_R2.txt
+ * README.md
+ * SHA256SUMS_AOS_0_1_9_R2.txt
+ * VERIFICAR_AOS_0_1_9.m
+ * VERSION
+ * src/geologia/aos_geologia_administrar.m
+ * src/geologia/aos_geologia_commit.m
+ * src/geologia/aos_geologia_resolver_punzados.m
+ * src/geologia/calcular_caudales_criticos.m
+ * src/geologia/cargar_geologia_interactivo.m
+ * src/geologia/cargar_intervalos_punzados.m
+ * src/geologia/punzados/aos_distribuir_produccion_punzados.m
+ * src/geologia/punzados/aos_obtener_punzados_activos.m
+ * src/geologia/punzados/calcular_erosion_punzados.m
+ * src/menu/AOS_app.m
+ * src/menu/AOS_menu_datos_pozo.m
+ * src/menu/AOS_menu_suite_config_diag.m
+ * src/utilidades/config/aos_normalizar_config.m
+ * src/utilidades/config/aos_normalizar_geologia.m
+ * src/utilidades/config/aos_obtener_geometria_activa.m
+ * src/utilidades/config/aos_sincronizar_geologia_activa.m
+ * src/utilidades/config/aos_validar_geometria_pozo.m
+ * src/utilidades/graficos/aos_visualizar_geometria_pozo.m
+ * src/utilidades/graficos/plot_survey.m
+ * src/utilidades/intercambio/exportar_aosdat.m
+ * src/utilidades/intercambio/importar_aosdat.m

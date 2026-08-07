@@ -1,0 +1,8 @@
+AOS - AESIR Oilfield Simulation
+Copyright (c) 2026 AESIR sa. Todos los derechos reservados.
+
+Esta entrega contiene codigo y documentacion de trabajo interno de AESIR sa, incluidos componentes y conceptos identificados como tecnologia propietaria.
+
+GNU Octave y cualquier biblioteca de terceros conservan sus propias licencias. Antes de una distribucion comercial o externa deben revisarse las obligaciones aplicables, el empaquetado del runtime, los avisos de terceros y la estrategia de licenciamiento definitiva.
+
+Este archivo es informativo y no sustituye una revision legal.

@@ -1,0 +1,24 @@
+AUDITORIA ESTATICA AOS 0.1.9 R2 HF3.3
+========================================
+Estado: APROBADA_ESTATICAMENTE
+Archivos: 1061
+Carpetas (incluye raiz): 169
+Archivos GNU Octave .m: 749
+JSON validos: 19
+Archivos agregados: 10
+Archivos modificados: 22
+Archivos eliminados: 0
+Archivos .mat: 0
+Nombres .m duplicados en src: 0
+Rigidez analitica de prueba: 241427.468438 N/m
+
+Controles fisicos:
+- new_formula: OK
+- old_formula_absent: OK
+- signed_bottom: OK
+- positive_elong: OK
+- spacing_elong: OK
+- legacy_alias: OK
+
+Incidencias:
+- Ninguna.

@@ -1,0 +1,169 @@
+{
+  "schema": "AOS_ENV01_ARCHITECTURE_AUDIT",
+  "generated_utc": "2026-07-31T21:17:24.633602+00:00",
+  "baseline": "AOS_0_2_0_DEV1",
+  "package": "AOS_0_2_0_DEV1_ENV01",
+  "architecture_revision": "ENV-01",
+  "decision": "ADR-AOS-2026-001",
+  "scope": "architecture_and_documentation_only",
+  "status": "PASS_STATIC",
+  "checks": [
+    {
+      "id": "runtime_m_unchanged",
+      "status": "PASS",
+      "required": true,
+      "detail": "858 archivos .m; agregados=0, eliminados=0, modificados=0."
+    },
+    {
+      "id": "json_valid",
+      "status": "PASS",
+      "required": true,
+      "detail": "31 archivos JSON validados; errores=0."
+    },
+    {
+      "id": "target_workbench_count",
+      "status": "PASS",
+      "required": true,
+      "detail": "Cantidad objetivo=15; esperado=15."
+    },
+    {
+      "id": "environmental_position",
+      "status": "PASS",
+      "required": true,
+      "detail": "Orden relevante: SCADA -> ENVIRONMENTAL -> MAINTENANCE"
+    },
+    {
+      "id": "viewer_last",
+      "status": "PASS",
+      "required": true,
+      "detail": "Último workbench=VIEWER."
+    },
+    {
+      "id": "environmental_unique",
+      "status": "PASS",
+      "required": true,
+      "detail": "Entradas ENVIRONMENTAL=1."
+    },
+    {
+      "id": "environmental_state",
+      "status": "PASS",
+      "required": true,
+      "detail": "state=ROADMAP_ARCHITECTURE_APPROVED"
+    },
+    {
+      "id": "environmental_runtime_false",
+      "status": "PASS",
+      "required": true,
+      "detail": "runtime_available=False"
+    },
+    {
+      "id": "legacy_alias_preserved",
+      "status": "PASS",
+      "required": true,
+      "detail": "legacy_alias=AMBIENTAL; legacy_entrypoint=AOS_menu_gestion_ambiental"
+    },
+    {
+      "id": "spatial_authority",
+      "status": "PASS",
+      "required": true,
+      "detail": "authority=AOS_CAD_3D_CORE"
+    },
+    {
+      "id": "energy_boundary",
+      "status": "PASS",
+      "required": true,
+      "detail": "activity_publisher=CONSUMING_WORKBENCH; co2e_owner=AOS_ENVIRONMENTAL"
+    },
+    {
+      "id": "no_mat",
+      "status": "PASS",
+      "required": true,
+      "detail": "Archivos .mat encontrados=0."
+    },
+    {
+      "id": "no_duplicate_m_basenames",
+      "status": "PASS",
+      "required": true,
+      "detail": "Nombres .m duplicados en src=0."
+    },
+    {
+      "id": "required_artifacts",
+      "status": "PASS",
+      "required": true,
+      "detail": "Requeridos=7; faltantes=[]."
+    },
+    {
+      "id": "context_docx_rendered",
+      "status": "PASS",
+      "required": true,
+      "detail": "Páginas renderizadas=31; inspección visual completa realizada."
+    },
+    {
+      "id": "adr_docx_rendered",
+      "status": "PASS",
+      "required": true,
+      "detail": "Páginas renderizadas=6; inspección visual completa realizada."
+    },
+    {
+      "id": "octave_dynamic_verification",
+      "status": "NOT_RUN",
+      "required": false,
+      "detail": "GNU Octave no está disponible en el entorno de generación; ejecutar VERIFICAR_AOS_0_2_0_DEV1(false/true) en la máquina del proyecto."
+    }
+  ],
+  "inventory": {
+    "new_files": [
+      "AOS_0_2_0_DEV1_CONTEXTO_ENV01.docx",
+      "ARCHITECTURE_REVISION.txt",
+      "AUDITORIA_ENMIENDA_ARQUITECTURA_ENV01.json",
+      "AUDITORIA_ENMIENDA_ARQUITECTURA_ENV01.md",
+      "INSTRUCCIONES_APLICACION_ENV01.md",
+      "RESUMEN_ENMIENDA_AOS_ENVIRONMENTAL_ENV01.md",
+      "documentos/AOS_0_2_0_DEV1_CONTEXTO_ENV01.docx",
+      "documentos/ARQUITECTURA_AOS_ENVIRONMENTAL_0_2_0_DEV1.md",
+      "documentos/adr/ADR-AOS-2026-001_AOS_ENVIRONMENTAL_BANCO_INDEPENDIENTE.docx",
+      "documentos/adr/ADR-AOS-2026-001_AOS_ENVIRONMENTAL_BANCO_INDEPENDIENTE.md",
+      "documentos/adr/README.md",
+      "src/roadmap/aos_environmental_workbench_0_2_0_dev1.json",
+      "src/workbenches/environmental/README.md"
+    ],
+    "modified_files": [
+      "AOS_0_2_0_DEV1_CONTEXTO_COMPLETO.md",
+      "AOS_0_2_0_DEV1_CONTEXTO_INTEGRAL.docx",
+      "AOS_VERSION.txt",
+      "AUDITORIA_INTEGRACION_AOS_0_2_0_DEV1.md",
+      "CHANGELOG_AOS_0_2_0_DEV1.md",
+      "CONTEXTO_AOS_0_2_0_DEV1.md",
+      "INICIO_CHAT_AOS_0_2_0_DEV1.txt",
+      "LEEME_PRIMERO.txt",
+      "MIGRACION_AOS_0_1_9_A_0_2_0.md",
+      "README.md",
+      "REGRESIONES_AOS_0_2_0_DEV1.md",
+      "documentos/AOS_0_2_0_DEV1_CONTEXTO_COMPLETO.docx",
+      "documentos/AOS_0_2_0_DEV1_CONTEXTO_COMPLETO.md",
+      "documentos/AOS_0_2_0_DEV1_CONTEXTO_INTEGRAL.docx",
+      "documentos/ARQUITECTURA_AOS_0_2_0_DEV1.md",
+      "documentos/ROADMAP_AOS_0_1_9_A_0_2_0.md",
+      "src/roadmap/aos_frame_ribbon_contract_0_2_0.json",
+      "src/roadmap/aos_migration_map_0_1_9_to_0_2_0.json",
+      "src/roadmap/aos_release_0_2_0_dev1.json",
+      "src/roadmap/aos_roadmap_0_2_0_dev1.json",
+      "src/roadmap/aos_workbenches_0_2_0_dev1.json",
+      "src/workbenches/maintenance/README.md"
+    ],
+    "removed_files": [],
+    "runtime_m_added": [],
+    "runtime_m_removed": [],
+    "runtime_m_changed": [],
+    "json_errors": [],
+    "duplicate_m_basenames": {}
+  },
+  "dynamic_validation": {
+    "executed": false,
+    "reason": "GNU Octave unavailable in generation environment",
+    "required_commands": [
+      "VERIFICAR_AOS_0_2_0_DEV1(false)",
+      "VERIFICAR_AOS_0_2_0_DEV1(true)"
+    ]
+  }
+}

@@ -1,0 +1,48 @@
+AOS 0.1.9 R2 HF3.5 - AUDITORIA ESTATICA
+========================================
+
+Estado: APROBADA_ESTATICAMENTE
+
+Archivos totales: 1111
+Carpetas incluyendo raiz: 172
+Archivos GNU Octave .m: 785
+Lineas fisicas .m: 60807
+Lineas efectivas aproximadas .m: 53308
+Declaraciones function: 2294
+JSON validos: 22 de 22
+Archivos .mat: 0
+Nombres .m duplicados en src: 0
+Funciones nuevas cuyo nombre no coincide con el archivo: 0
+Bloques function/endfunction nuevos desbalanceados: 0
+Llamadas nuevas de reportes sin implementacion: 0
+Archivos agregados respecto de HF3.4: 40
+Archivos modificados respecto de HF3.4: 34
+Archivos eliminados respecto de HF3.4: 0
+
+Cobertura de exportadores:
+  OK generic_export: src/utilidades/intercambio/exportar_aosrpt.m -> aos_report_prepare_tables
+  OK dispatcher: src/utilidades/intercambio/aos_report_dispatcher.m -> aos_report_prepare_tables
+  OK generic_graphic: src/utilidades/intercambio/exportar_aosrpt_grafico.m -> aos_report_prepare_tables
+  OK mandriles: src/utilidades/intercambio/exportar_aosrpt_mandriles.m -> aos_report_prepare_tables
+  OK sensitivity_legacy: src/sensibilidad/sens_exportar_resultados.m -> aos_report_prepare_tables
+  OK sensitivity_core: src/utilidades/intercambio/aos_exportar_sensibilidad_core.m -> aos_report_prepare_tables
+  OK BES2: src/core/BES2/bes2_exportar_reporte.m -> aos_report_prepare_tables
+  OK BES3: src/core/BES3/bes3_exportar_reporte.m -> aos_report_prepare_tables
+  OK BES3_compare: src/core/BES3/bes3_exportar_comparacion_core.m -> aos_report_prepare_tables
+  OK CGF: src/core/CGF/cgf_exportar_reporte.m -> aos_report_prepare_tables
+  OK EGF: src/core/EGF/egf_exportar_reporte.m -> aos_report_prepare_tables
+  OK BM_GF3: src/core/BM/gibbs_foundation3/gibbs3_report_context.m -> gibbs3_report_build_tables
+  OK AOSCAD: src/modulos/cad_topo/aos_aoscad_escribir.m -> aos_aoscad_report_composition
+  OK importer: src/utilidades/intercambio/importar_aosrpt.m -> aos_report_print_native_tables
+
+Controles de contrato:
+  version: 0.1.9-R2-HF3.5
+  aos_version_first: AOS Suite 0.1.9 R2 HF3.5
+  manifest_schema: True
+  archive_schema: True
+  sensitivity_full: True
+  gf3_no_raw_rows: True
+
+Limitacion:
+No se ejecuto GNU Octave en el entorno de construccion. La verificacion
+dinamica debe cerrarse con VERIFICAR_AOS_0_1_9_R2_HF3_5(true).

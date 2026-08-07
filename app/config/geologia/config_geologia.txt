@@ -1,0 +1,46 @@
+# ===================================================================
+# AOS – Configuración genérica de geología para alertas de formación
+# Modelos: Mohr-Coulomb (arenamiento), Craft & Hawkins (canalización),
+#          API RP 14E adaptado (erosión en la cara de la formación).
+# ===================================================================
+
+# --- Tipo de formación ---
+# 1 = Consolidada, 2 = Medianamente consolidada, 3 = No consolidada
+tipo_formacion = 2
+
+# --- Propiedades mecánicas de la roca ---
+UCS = 15e6                   # Resistencia a la compresión uniaxial (Pa)
+angulo_friccion = 30         # Ángulo de fricción interna (°)
+cohesion = 5e6               # Cohesión (Pa)
+modulo_young = 10e9          # Módulo de Young (Pa)
+relacion_poisson = 0.25      # Relación de Poisson
+
+# --- Esfuerzos in‑situ (Pa) ---
+esfuerzo_vertical = 70e6     # Sv
+esfuerzo_h_min = 60e6        # Shmin
+esfuerzo_H_max = 65e6        # SHmax
+
+# --- Propiedades petrofísicas ---
+porosidad = 0.20
+permeabilidad_h = 100e-15    # Permeabilidad horizontal (m²) – 100 mD ≈ 9.87e-14 m²
+permeabilidad_v = 20e-15     # Permeabilidad vertical (m²)
+radio_poro = 0.1             # Radio de poro (mm)
+diametro_grano_medio = 0.5   # Diámetro medio de grano (mm)
+
+# --- Configuración del pozo para conificación ---
+espesor_zona_petrolera = 50  # Espesor de la capa de petróleo (m)
+altura_perforados = 20       # Altura de los punzados desde el tope de la arena (m)
+radio_drenaje = 500          # Radio de drenaje (m)
+radio_pozo = 0.1             # Radio del pozo (m)
+skin_factor = 0
+
+# --- Propiedades de los fluidos (referencia) ---
+# Pueden sobrescribirse con los valores de cada simulación.
+rho_petroleo = 850           # Densidad del petróleo (kg/m³)
+rho_agua = 1000              # Densidad del agua (kg/m³)
+mu_petroleo = 0.001          # Viscosidad del petróleo (Pa·s)
+B_o = 1.1                    # Factor volumétrico del petróleo (m³/m³)
+
+# --- Factor de seguridad ---
+# 1.0 = justo en el límite crítico, >1.0 margen de seguridad
+factor_seguridad = 1.2

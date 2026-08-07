@@ -1,0 +1,286 @@
+0
+SECTION
+  2
+HEADER
+  9
+$ACADVER
+  1
+AC1015
+  9
+$INSUNITS
+ 70
+6
+  0
+ENDSEC
+  0
+SECTION
+  2
+TABLES
+  0
+TABLE
+  2
+LAYER
+ 70
+6
+  0
+LAYER
+  2
+0
+ 70
+0
+ 62
+7
+  6
+CONTINUOUS
+  0
+LAYER
+  2
+AOS_FLOWLINES
+ 70
+0
+ 62
+3
+  6
+CONTINUOUS
+  0
+LAYER
+  2
+AOS_WELLS
+ 70
+0
+ 62
+1
+  6
+CONTINUOUS
+  0
+LAYER
+  2
+AOS_BOMBAS
+ 70
+0
+ 62
+5
+  6
+CONTINUOUS
+  0
+LAYER
+  2
+AOS_VALVULAS
+ 70
+0
+ 62
+4
+  6
+CONTINUOUS
+  0
+LAYER
+  2
+AOS_META
+ 70
+0
+ 62
+2
+  6
+CONTINUOUS
+  0
+ENDTAB
+  0
+ENDSEC
+  0
+SECTION
+  2
+ENTITIES
+  0
+LINE
+  5
+100
+  8
+AOS_FLOWLINES
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 11
+100.0
+ 21
+0.0
+ 31
+0.0
+  0
+LINE
+  5
+101
+  8
+AOS_FLOWLINES
+ 10
+100.0
+ 20
+0.0
+ 30
+0.0
+ 11
+100.0
+ 21
+50.0
+ 31
+0.0
+  0
+CIRCLE
+  5
+102
+  8
+AOS_WELLS
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+2.5
+  0
+CIRCLE
+  5
+103
+  8
+AOS_WELLS
+ 10
+100.0
+ 20
+0.0
+ 30
+0.0
+ 40
+2.0
+  0
+CIRCLE
+  5
+108
+  8
+AOS_BOMBAS
+ 10
+100.0
+ 20
+50.0
+ 30
+0.0
+ 40
+1.5
+  0
+TEXT
+  5
+104
+  8
+AOS_WELLS
+ 10
+3.0
+ 20
+3.0
+ 30
+0.0
+ 40
+2.0
+  1
+WELL-MX01
+  0
+TEXT
+  5
+105
+  8
+AOS_META
+ 10
+50.0
+ 20
+1.0
+ 30
+0.0
+ 40
+1.0
+  1
+AOS D=0.1016 MAT=ACERO EPS=4.5e-5 ID=FL-01
+  0
+TEXT
+  5
+106
+  8
+AOS_META
+ 10
+0.0
+ 20
+-1.5
+ 30
+0.0
+ 40
+1.0
+  1
+AOS P=1500000
+  0
+TEXT
+  5
+107
+  8
+AOS_META
+ 10
+100.0
+ 20
+48.5
+ 30
+0.0
+ 40
+1.0
+  1
+AOS Q=0.02
+  0
+TEXT
+  5
+109
+  8
+AOS_META
+ 10
+100.0
+ 20
+1.2
+ 30
+0.0
+ 40
+0.8
+  1
+AOS TIPO=VALVULA KV=80 ESTADO=ABIERTA ID=VLV-01
+  0
+TEXT
+  5
+10A
+  8
+AOS_META
+ 10
+101.2
+ 20
+0.0
+ 30
+0.0
+ 40
+0.8
+  1
+AOS TIPO=CODO ID=CODO-01
+  0
+TEXT
+  5
+10B
+  8
+AOS_META
+ 10
+100.0
+ 20
+51.2
+ 30
+0.0
+ 40
+0.8
+  1
+AOS TIPO=BOMBA ID=Bomba-01
+  0
+ENDSEC
+  0
+EOF

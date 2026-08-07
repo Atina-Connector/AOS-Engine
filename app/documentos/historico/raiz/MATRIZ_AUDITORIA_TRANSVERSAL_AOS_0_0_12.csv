@@ -1,0 +1,26 @@
+Area,Modulo,Estado,Prueba/garantia
+Configuracion,Canonicos vs aliases,CORREGIDO,captura/restauracion runtime y sync canonico->alias
+GL,Qiny dentro de VLP,CORREGIDO,audit Qiny/Qg formacion/Qg total/Ps/Preq
+GL,Sensibilidad Qiny,CORREGIDO,tabla solicitado vs efectivo dentro VLP
+JGL,Directo,CORREGIDO,misma interfaz fisica comun; audit por punto
+JGL,Iterativo,CORREGIDO,criterios Q/Ps/dP; min/max iteraciones
+JGL,Automatico/hibrido,CORREGIDO,directo malla completa + confirmacion iterativa selectiva
+JGL,CFD,FUERA DE RUNTIME,sin referencias ni archivos CFD en core
+Sensibilidad JGL,Qiny,CORREGIDO,menu de aproximacion y modo propagado
+Sensibilidad JGL/GL,Qiny comparativo,CORREGIDO,misma malla y Qiny explicito en ambos
+Sensibilidad JGL/GL,Piny,CORREGIDO,Qiny comun fijo o calculado; modo propagado
+Sensibilidad JGL/GL,Pwh,CORREGIDO,Pwh solicitado/efectivo y modo propagado
+Sensibilidad JGL/GL,Profundidad,CORREGIDO,barre D_iny sin tocar D_bomba
+Sensibilidad JGL,A_n,CORREGIDO,recalculo geometria por punto
+Sensibilidad JGL,d_t,CORREGIDO,recalculo geometria por punto
+Sensibilidad JGL/GL,Balance energetico,CORREGIDO ESTRUCTURAL,modo propagado y energia auditable; modelo calibrable
+BES,Corrida principal,CORREGIDO,snapshot efectivo de Pwh/D_bomba/frecuencia/etapas
+BES,5 sensibilidades,CORREGIDO,solicitado/efectivo y archivos presentes
+BM,Corrida principal,CORREGIDO,audit D_bomba/diametro/carrera/SPM
+BM,Sensibilidades,NO IMPLEMENTADO,no existe menu en esta rama
+Mandriles,Entradas GL,CORREGIDO,sin Qiny hardcodeado
+Calibracion,GL/JGL,CORREGIDO,base comun y Qiny explicito
+Reportes,Ligero/enriquecido,CORREGIDO,snapshot inmutable y nombre solicitado
+Intercambio,aosdat/aosrpt/CSV,CORREGIDO,setters canonicos y pozos aislados
+Paths Octave,Duplicados,CORREGIDO,0 nombres duplicados en src
+Runtime GNU Octave,Suite numerica,PENDIENTE LOCAL,tres verificadores incluidos

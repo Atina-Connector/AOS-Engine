@@ -1,0 +1,41 @@
+AOSCAD 0.0.1 DEV1 - paquete de desarrollo GNU Octave
+=====================================================
+
+Estado: PROTOTIPO_NO_VALIDADO
+Alcance: DXF/LibreCAD + STEP/FreeCAD + .aoscad JSON editable.
+
+Reglas obligatorias
+-------------------
+- GNU Octave es el unico motor objetivo.
+- .aoscad JSON UTF-8 es la fuente canonica unica.
+- No se generan representaciones binarias paralelas.
+- Una edicion invalida resultados y exige recalculo.
+- SIMPLE y ENRIQUECIDO comparten el mismo modelo de datos.
+- Las tablas son primarias; dibujos y graficos son derivados.
+
+Verificacion
+------------
+Desde la raiz AOS:
+  cd('src/modulos/cad_topo');
+  VERIFICAR_CAD_TOPO
+
+Esperado:
+  RESULTADO: AOSCAD 0.0.1 DEV1 OK
+
+Prueba manual
+-------------
+1. Importar datos/ejemplos/cad/demo_aos_wells_meta.dxf.
+2. Reconocer objetos y construir topologia.
+3. Validar conexiones.
+4. Ejecutar simulacion demo y guardar .aoscad.
+5. Abrir el .aoscad en Suite.
+6. Editar el diametro de un tramo.
+7. Confirmar INVALIDADA_POR_EDICION y resultados vacios.
+8. Recalcular y guardar una nueva revision.
+9. Verificar que solo exista el archivo .aoscad.
+
+Documentacion
+-------------
+src/modulos/cad_topo/LEEME_MODULO.txt
+src/modulos/cad_topo/schema/AOSCAD_0_0_1_DEV1_SCHEMA.json
+src/modulos/cad_topo/schema/CONTRATO_VIEWER_AOSCAD.txt

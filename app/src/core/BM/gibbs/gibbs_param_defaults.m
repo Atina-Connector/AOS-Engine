@@ -1,0 +1,29 @@
+function param = gibbs_param_defaults(param)
+  % Defaults fisicos para el modulo Gibbs BM v10.
+  if nargin < 1 || ~isstruct(param), param = struct(); end
+  if ~isfield(param, 'D_bomba'), param.D_bomba = 1500; end
+  if ~isfield(param, 'D_bomba_mm'), param.D_bomba_mm = 32; end
+  if ~isfield(param, 'S_carrera'), param.S_carrera = 1.5; end
+  if ~isfield(param, 'N_velocidad'), param.N_velocidad = 6; end
+  if ~isfield(param, 'tipo_unidad'), param.tipo_unidad = 'Convencional'; end
+  if ~isfield(param, 'rho_o'), param.rho_o = 850; end
+  if ~isfield(param, 'rho_w'), param.rho_w = 1000; end
+  if ~isfield(param, 'WC'), param.WC = 0.5; end
+  if ~isfield(param, 'GLR'), param.GLR = 0; end
+  if ~isfield(param, 'P_wh'), param.P_wh = 10e5; end
+  if ~isfield(param, 'P_casing'), param.P_casing = 0; end
+  if ~isfield(param, 'P_intake'), param.P_intake = 1e5; end
+  if ~isfield(param, 'P_intake_min'), param.P_intake_min = 1e5; end
+  if ~isfield(param, 'P_res'), param.P_res = 200e5; end
+  if ~isfield(param, 'IP'), param.IP = 1e-11; end
+  if ~isfield(param, 'eta_vol'), param.eta_vol = 0.85; end
+  if ~isfield(param, 'eta_mecanica_BM'), param.eta_mecanica_BM = 0.75; end
+  if ~isfield(param, 'tuberia_anclada'), param.tuberia_anclada = 1; end
+  if ~isfield(param, 'material_varillas'), param.material_varillas = 'Acero Grado D'; end
+  if ~isfield(param, 'usar_gibbs_BM'), param.usar_gibbs_BM = 1; end
+  if ~isfield(param, 'llenado_bomba'), param.llenado_bomba = param.eta_vol; end
+  if ~isfield(param, 'slip_bomba'), param.slip_bomba = 0.0; end
+  if ~isfield(param, 'eficiencia_valvulas'), param.eficiencia_valvulas = 1.0; end
+  if ~isfield(param, 'friccion_bomba_N'), param.friccion_bomba_N = 0.0; end
+  if ~isfield(param, 'gibbs_metodo_forward'), param.gibbs_metodo_forward = 'estable'; end
+end

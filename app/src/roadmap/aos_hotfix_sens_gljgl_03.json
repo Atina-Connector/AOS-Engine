@@ -1,0 +1,73 @@
+{
+  "schema": "AOS_SCIENTIFIC_HOTFIX_1.0",
+  "id": "SENS-GLJGL-03",
+  "suite": "0.2.0-DEV1",
+  "architecture_revision": "ENV-02",
+  "base_scientific_hotfix": "SENS-GLJGL-02",
+  "date": "2026-08-06",
+  "status": "CANDIDATE_DYNAMIC_VALIDATION",
+  "problem": "JGL sensitivity rejected every forced-Qiny point when imported P_iny_sup was zero, because the solver returned SIN_PRESION_MOTRIZ before reaching the historical kinetic-pressure fallback.",
+  "scope": [
+    "EXPLICIT_JGL_MOTIVE_PRESSURE_MODE",
+    "FORCED_QINY_REQUIRED_PRESSURE_DERIVATION",
+    "AVAILABLE_PRESSURE_FEASIBILITY",
+    "MOTIVE_PRESSURE_SENSITIVITY_GRAPH",
+    "PRESSURE_LIMIT_BY_QINY",
+    "SENSITIVITY_REPORTING"
+  ],
+  "solver_core_changes": {
+    "GL_sim": false,
+    "aos_nodal_balance_gl": false,
+    "aos_buscar_cruce_nodal": false,
+    "jgl_solver_directo": false,
+    "jgl_solver_iterativo": false,
+    "jgl_eductor_common_contract": true
+  },
+  "motive_pressure_modes": [
+    "DERIVADA_DESDE_QINY",
+    "PRESION_DISPONIBLE",
+    "SIN_PRESION_MOTRIZ"
+  ],
+  "default_when_forced_qiny_and_pressure_missing": "USER_VISIBLE_MENU_RECOMMENDS_DERIVADA_DESDE_QINY",
+  "hidden_pressure_override": false,
+  "pressure_contract": {
+    "bottom_required": "Pm_req=Ps+DeltaP_motriz_req",
+    "surface_required": "P_sup_req=(Pm_req+DeltaP_friccion)/factor_columna",
+    "column_model": "INVERTS_JGL_PRESION_MOTRIZ_FONDO",
+    "available_pressure_comparison": true,
+    "pressure_limit_interpolation": true,
+    "extrapolation": false
+  },
+  "published_outputs": [
+    "P_succion_eductor",
+    "DeltaP_motriz_requerida",
+    "P_motriz_fondo_requerida",
+    "P_motriz_fondo_disponible",
+    "P_iny_sup_requerida",
+    "P_iny_sup_disponible",
+    "DeltaP_columna_gas",
+    "DeltaP_friccion_inyeccion",
+    "Margen_presion",
+    "Qiny_max_por_presion",
+    "Estado_presion"
+  ],
+  "rules": [
+    "P_iny_sup_zero_is_preserved_as_imported_data",
+    "pressure_derivation_requires_explicit_user_selection",
+    "derived_mode_may_publish_design_curve_without_available_pressure",
+    "available_pressure_mode_rejects_infeasible_qiny",
+    "derived_point_above_available_pressure_is_not_valid_for_optimum",
+    "solver_points_remain_primary",
+    "no_pressure_extrapolation"
+  ],
+  "report_sections": [
+    "SENSITIVITY_TABLE",
+    "JGL_MOTIVE_PRESSURE"
+  ],
+  "verification": {
+    "quick": "VERIFICAR_SENS_GLJGL_03(false)",
+    "deep": "VERIFICAR_SENS_GLJGL_03(true)",
+    "field_case_required": true,
+    "benchmark_case": "MDM-2064"
+  }
+}

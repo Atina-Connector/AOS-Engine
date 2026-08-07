@@ -1,0 +1,13 @@
+function g=egf_cargar_eyector(p)
+  p=egf_defaults(p);f=p.egf_eyector_file;if ~exist(f,'file'),error('EGF: no existe catalogo %s',f);endif;x=load_config(f);
+  An=getnum_local(x,'A_nozzle_m2',2e-5);At=getnum_local(x,'A_throat_m2',4.5e-4);
+  if isfield(p,'egf_A_nozzle_override')&&isfinite(p.egf_A_nozzle_override),An=p.egf_A_nozzle_override;endif
+  if isfield(p,'egf_A_throat_override')&&isfinite(p.egf_A_throat_override),At=p.egf_A_throat_override;endif
+  g=struct('archivo',f,'modelo',gettext_local(x,'modelo',f),'origen',gettext_local(x,'origen','DESCONOCIDO'), ...
+    'A_nozzle',An,'A_throat',At, ...
+    'Cd_primary',getnum_local(x,'Cd_primary',0.96),'Cd_secondary',getnum_local(x,'Cd_secondary',0.90), ...
+    'eta_diffuser',getnum_local(x,'eta_diffuser',0.72),'presion_max_bar',getnum_local(x,'presion_max_bar',350), ...
+    'temperatura_max_C',getnum_local(x,'temperatura_max_C',180),'Qm_max_Sm3_d',getnum_local(x,'Qm_max_Sm3_d',80000));
+endfunction
+function v=getnum_local(s,f,d),v=d;if isfield(s,f)&&isnumeric(s.(f))&&~isempty(s.(f))&&isfinite(s.(f)(1)),v=s.(f)(1);endif,endfunction
+function t=gettext_local(s,f,d),t=d;if isfield(s,f)&&ischar(s.(f)),t=strtrim(s.(f));endif,endfunction

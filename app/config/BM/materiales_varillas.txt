@@ -1,0 +1,6 @@
+# Catálogo de materiales para varillas de bombeo
+# Formato: nombre, densidad_kg_m3, modulo_young_GPa, limite_fatiga_MPa, resistencia_ultima_MPa
+Acero Grado C, 7850, 210, 200, 620
+Acero Grado D, 7850, 210, 280, 793
+Acero Grado K, 7850, 210, 350, 860
+Fibra de Vidrio, 2100, 48, 100, 690

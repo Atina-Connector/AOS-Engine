@@ -1,0 +1,7 @@
+1. Conservar este paquete sin cambios.
+2. Instalar/copiar `codigo/gibbs_foundation2` en la ruta GF2 de AOS.
+3. Importar `entrada/ejemplo_bm.aosdat` con la rutina nativa indiferenciada.
+4. Ejecutar Gibbs Foundation 2 en modo dinamico a 6 spm.
+5. Comparar las cuatro graficas con la evidencia preservada.
+6. Guardar en el futuro el resultado numerico como MAT y CSV para convertir las
+   bandas visuales en tolerancias exactas de regresion.

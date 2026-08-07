@@ -1,0 +1,20 @@
+{
+  "schema": "AOS_ASSET_IDENTITY_0_2_0",
+  "required": [
+    "asset_id",
+    "asset_type",
+    "source",
+    "validation_status"
+  ],
+  "optional": [
+    "geometry_id",
+    "fluid_id",
+    "well_id",
+    "network_id",
+    "location",
+    "links",
+    "scada_tags",
+    "maintenance_record"
+  ],
+  "rule": "The same asset_id is reused by tables, 3D, topology, solvers, SCADA, maintenance, reports and AOS Global."
+}

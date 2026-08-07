@@ -1,0 +1,130 @@
+{
+  "schema": "AOS_ROADMAP_0_2_0_DEV1",
+  "current_release": {
+    "version": "0.2.0 DEV1",
+    "name": "Distributed Development Baseline",
+    "baseline": "0.1.9 R2 HF3.4-CAD-R16",
+    "integrated_hotfix": "HF3.5_REPORT_TABLE_COMPOSITION",
+    "objectives": [
+      "distributed_workbenches",
+      "protected_common_cores",
+      "versioned_solver_contracts",
+      "frame_ribbon",
+      "shared_project_context",
+      "dynamic_report_composition",
+      "AOS_3D_CORE",
+      "AOS_GLOBAL_ORCHESTRATION",
+      "AOS_ENVIRONMENTAL_WORKBENCH",
+      "AOSCAD_ENVIRONMENTAL_ASSET_LINKAGE"
+    ],
+    "architecture_revision": "ENV-02",
+    "architecture_decision": "ADR-AOS-2026-001"
+  },
+  "phases": [
+    {
+      "version": "0.1.9",
+      "name": "Gateway",
+      "deliverables": [
+        "modular launcher",
+        "roadmap visible",
+        "Fluids",
+        "Solvers",
+        "3D Core contract",
+        "universal open/import",
+        "AOSDAT catalog contract R2",
+        "galleries restored",
+        "semantic verification"
+      ]
+    },
+    {
+      "version": "0.2.0",
+      "name": "Frame and stable contracts",
+      "deliverables": [
+        "ribbon UI",
+        "project tree",
+        "property panel",
+        "shared scene",
+        "stable APIs",
+        "environmental_workbench_architecture",
+        "environmental_ribbon_registration",
+        "environmental_runtime_shell"
+      ]
+    },
+    {
+      "version": "0.2.x",
+      "name": "Infrastructure integration",
+      "deliverables": [
+        "network loops",
+        "electrical network",
+        "facilities",
+        "SCADA histories",
+        "environmental_identity_and_location_contract",
+        "environmental_event_contract",
+        "energy_activity_contract",
+        "emission_factor_governance",
+        "AOSCAD_environmental_overlay_contract"
+      ]
+    },
+    {
+      "version": "0.3.x",
+      "name": "Operational intelligence",
+      "deliverables": [
+        "environmental_management",
+        "fugitive_emissions",
+        "spills",
+        "h2s_and_toxic_releases",
+        "indirect_energy_emissions",
+        "environmental_risk_and_mitigation",
+        "maintenance_scoring",
+        "pulling_intelligence",
+        "economics",
+        "reliability"
+      ]
+    },
+    {
+      "version": "GLOBAL",
+      "name": "Integrated field optimization",
+      "deliverables": [
+        "reservoir-well-network-facilities-energy-environmental-maintenance coupling"
+      ]
+    }
+  ],
+  "mandatory_rules": [
+    "Viewer last",
+    "Roadmap modules visible",
+    "GNU Octave scientific engine",
+    "No duplicate solver physics",
+    "AOS 3D Core transversal",
+    "AOS Fluids official property source",
+    "AOS Environmental independent workbench",
+    "AOSCAD spatial authority for environmental events",
+    "Environmental between SCADA and Maintenance",
+    "Indirect emissions centralized in AOS Environmental"
+  ],
+  "source_release": "0.2.0 DEV1",
+  "aosbck": {
+    "state": "BETA_R1",
+    "principle": "ONE_GEOMETRY_MANY_INSTANCES",
+    "placement": [
+      "SURVEY",
+      "AOSCAD_NODE",
+      "XYZ"
+    ],
+    "assembly": "ROADMAP"
+  },
+  "architecture_amendments": [
+    {
+      "id": "ENV-01",
+      "adr": "ADR-AOS-2026-001",
+      "status": "ACCEPTED",
+      "runtime_changes": false
+    },
+    {
+      "id": "ENV-02",
+      "adr": "ADR-AOS-2026-001",
+      "status": "IMPLEMENTED_RUNTIME_SHELL",
+      "runtime_changes": true,
+      "scope": "menu_entrypoint_registration_and_compatibility_only"
+    }
+  ]
+}

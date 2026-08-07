@@ -1,0 +1,12 @@
+# AOS BES V2 - bomba genérica de screening, 1 etapa a 60 Hz
+modelo = AOS_BES2_1500
+origen = GENERICO_AOS_SCREENING
+frecuencia_base_Hz = 60
+Q_m3_d = [0,50,100,150,200,250,300,350,400,450]
+head_m_etapa = [13.5,13.2,12.6,11.7,10.6,9.2,7.6,5.8,3.8,1.5]
+eficiencia = [0.15,0.35,0.55,0.68,0.76,0.80,0.77,0.67,0.48,0.20]
+Q_BEP_m3_d = 250
+Q_min_recomendado_m3_d = 150
+Q_max_recomendado_m3_d = 350
+diametro_exterior_m = 0.114
+rpm_base = 3600

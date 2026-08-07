@@ -1,0 +1,28 @@
+AOS Suite 0.2.0 DEV1 ENV-02 SENS02
+Hotfix cientifico: SENS-GLJGL-02
+Base cientifica: SENS-GLJGL-01
+Fecha: 6 de agosto de 2026
+Motor oficial: GNU Octave
+
+OBJETIVO
+Restaurar el ajuste polinomico de grado 5 historico de AOS como una opcion
+explicita, auditable y separada del solver fisico. El ajuste se utiliza para
+armonizar la representacion de la curva y localizar maximos por derivada cero.
+
+MODOS
+1. DISCRETO: no ejecuta polyfit. Es el modo predeterminado.
+2. POLINOMICO_INFORMATIVO: superpone el ajuste; la recomendacion oficial
+   permanece en un punto discreto calculado por el solver.
+3. POLINOMICO_VERIFICADO: estima un maximo interior por derivada cero y vuelve
+   a ejecutar el solver GL/JGL en ese Qiny. Solo publica el optimo si converge.
+
+GRADOS
+AUTO controlado, 2, 3, 4 y 5. El grado 5 se identifica como HISTORICO AOS.
+
+PROTECCION
+No se modifican GL_sim, el balance nodal, jgl_solver_directo ni
+jgl_solver_iterativo. Los puntos fisicos y la tabla de sensibilidad permanecen
+como fuente primaria. No hay extrapolacion ni polinomio oculto.
+
+ESTADO
+CANDIDATO_A_VALIDACION_DINAMICA_EN_GNU_OCTAVE

@@ -1,0 +1,18 @@
+# Configuración para diseño de mandriles de gas lift
+# Unidades: SI (m, Pa, kg/m³, etc.)
+
+# --- Inyección ---
+P_iny_sup = 231e5       # Presión de inyección en superficie (Pa abs)
+
+# --- Fluido de terminación (kill fluid) ---
+rho_kill = 1050          # Densidad del fluido de terminación (kg/m³)
+
+# --- Condiciones de diseño ---
+delta_P_valvula = 10e5     # caída de presión entre válvulas consecutivas (Pa)
+grad_descarga  = 0.55e5  # antes 0.3e5 (0.55 bar/m, típico de mezcla gas-líquido)
+N_max_valvulas = 5       # Número máximo de válvulas a diseñar
+
+# --- Profundidad de referencia ---
+D_packer = 2950           # Profundidad del packer (m) – válvula operativa justo arriba
+
+GLR = 134

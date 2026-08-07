@@ -1,0 +1,13 @@
+AUDITORIA DE CONSOLIDACION AOS 0.1.3R1
+
+Resultado de preparacion:
+- Fuente copiada desde el estado integrado posterior a DEV5.4.
+- Reportes de prueba retirados de intercambio/reportes/enviados.
+- Identificadores visibles actualizados a 0.1.3R1.
+- Generadores AOSRPT actualizados a AOS_0_1_3_R1.
+- Manifiesto y sumas SHA-256 regenerados.
+- No se detectaron carpetas PARCHE_* ni backup_* dentro de la entrega.
+
+Limitacion del entorno de construccion:
+- GNU Octave no esta instalado en el entorno de empaquetado.
+- Se realizaron controles estaticos y de integridad; la prueba numerica se ejecuta con el verificador incluido en la instalacion del usuario.

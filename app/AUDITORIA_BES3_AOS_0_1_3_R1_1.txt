@@ -1,0 +1,25 @@
+AUDITORIA BES3 - AOS 0.1.3R1.1
+Fecha: 2026-07-23
+
+Fuentes comparadas:
+- AOS_0_1_3_R1_LIMPIO_CORREGIDO.zip
+- AOS_0_1_3_operacion.zip
+- PARCHE_AOS_0_1_3_BES3_AUTOINSTALABLE incluido en la copia operativa
+
+Hallazgos:
+- R1 activo: 35 archivos en src/core/BES3.
+- Copia operativa: 44 archivos en src/core/BES3.
+- Omision activa: 9 archivos BES3 y 1 caso sintetico.
+- Los 10 elementos recuperados son byte a byte identicos al payload del parche BES3 original.
+- Las diferencias de los archivos BES3 compartidos se limitaban a identificadores DEV5/R1 en menu, defaults y selftest.
+
+Accion:
+- Se conservaron los archivos R1 existentes.
+- Se agregaron solamente los 10 elementos omitidos.
+- Se reforzo el verificador.
+- Se identifico la distribucion corregida como AOS 0.1.3R1.1.
+
+Limitacion:
+- GNU Octave no esta instalado en el entorno de construccion.
+- Se completaron controles estaticos, de dependencias e integridad SHA-256.
+- La prueba numerica debe ejecutarse con el verificador incluido en GNU Octave.

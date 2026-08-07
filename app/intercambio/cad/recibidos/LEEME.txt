@@ -1,0 +1,2 @@
+Entradas CAD recibidas (DXF/STEP). Copias limpias de demos de prueba.
+Backups LibreCAD (*.dxf~) y *_AOS_REV no deben quedar aqui.

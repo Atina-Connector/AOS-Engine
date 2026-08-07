@@ -1,0 +1,19 @@
+{
+  "schema": "AOS_FLUID_MODEL_0_2_0",
+  "required": [
+    "fluid_id",
+    "model_type",
+    "reference_conditions",
+    "property_model",
+    "source",
+    "validation_status"
+  ],
+  "models": [
+    "BLACK_OIL",
+    "COMPOSITIONAL",
+    "GAS",
+    "WATER_BRINE",
+    "MULTIPHASE"
+  ],
+  "rule": "Workbenches reference fluid_id and do not duplicate calibrated property definitions."
+}

@@ -1,0 +1,226 @@
+{
+  "schema": "AOS_WORKBENCHES_0_2_0_DEV1",
+  "suite": {
+    "version": "0.2.0 DEV1",
+    "role": "distributed_development_baseline",
+    "runtime": "GNU Octave",
+    "baseline": "0.1.9 R2 HF3.4-CAD-R16",
+    "integrated_hotfix": "HF3.5_REPORT_TABLE_COMPOSITION",
+    "architecture_revision": "ENV-02",
+    "architecture_decision": "ADR-AOS-2026-001"
+  },
+  "ribbon_order": [
+    "SLA",
+    "WELLS",
+    "CAD",
+    "NETWORKS",
+    "ELECTRICAL",
+    "FACILITIES",
+    "GEOLOGY",
+    "FLUIDS",
+    "SCADA",
+    "ENVIRONMENTAL",
+    "MAINTENANCE",
+    "DATA",
+    "SOLVERS",
+    "GLOBAL",
+    "VIEWER"
+  ],
+  "viewer_rule": "VIEWER_MUST_BE_LAST",
+  "workbenches": [
+    {
+      "id": "SLA",
+      "name": "AOS SLA",
+      "version": "0.1.9 R2",
+      "state": "OPERATIVO_BETA",
+      "entrypoint": "AOS_menu_SLA",
+      "ribbon_group": "PRODUCTION",
+      "visible": true
+    },
+    {
+      "id": "WELLS",
+      "name": "AOS Wells",
+      "version": "0.0.1 BETA R2",
+      "state": "BETA_ROADMAP",
+      "entrypoint": "AOS_menu_wells",
+      "ribbon_group": "WELLS",
+      "visible": true
+    },
+    {
+      "id": "CAD",
+      "name": "AOS CAD",
+      "version": "0.0.1 DEV1 R16 CANDIDATO_REVISION_JEFE + AOSBCK R1",
+      "state": "DEV1",
+      "entrypoint": "AOS_menu_cad_topologia",
+      "ribbon_group": "CAD",
+      "visible": true
+    },
+    {
+      "id": "NETWORKS",
+      "name": "AOS Networks",
+      "version": "0.0.1",
+      "state": "BETA",
+      "entrypoint": "AOS_menu_networks",
+      "ribbon_group": "NETWORKS",
+      "visible": true
+    },
+    {
+      "id": "ELECTRICAL",
+      "name": "AOS Electrical",
+      "version": "0.0.1",
+      "state": "ROADMAP_CORE_ACTIVE",
+      "entrypoint": "AOS_menu_electrical",
+      "ribbon_group": "ELECTRICAL",
+      "visible": true
+    },
+    {
+      "id": "FACILITIES",
+      "name": "AOS Facilities",
+      "version": "0.0.1",
+      "state": "ROADMAP",
+      "entrypoint": "AOS_menu_facilities",
+      "ribbon_group": "FACILITIES",
+      "visible": true
+    },
+    {
+      "id": "GEOLOGY",
+      "name": "AOS Geology",
+      "version": "0.0.1",
+      "state": "BETA_ROADMAP",
+      "entrypoint": "AOS_menu_geology",
+      "ribbon_group": "GEOLOGY",
+      "visible": true
+    },
+    {
+      "id": "FLUIDS",
+      "name": "AOS Fluids",
+      "version": "0.0.1",
+      "state": "BETA_TRANSVERSAL",
+      "entrypoint": "AOS_menu_fluidos",
+      "ribbon_group": "FLUIDS",
+      "visible": true
+    },
+    {
+      "id": "SCADA",
+      "name": "AOS SCADA",
+      "version": "0.0.1",
+      "state": "BETA",
+      "entrypoint": "AOS_menu_scada",
+      "ribbon_group": "SCADA",
+      "visible": true
+    },
+    {
+      "id": "ENVIRONMENTAL",
+      "name": "AOS Environmental",
+      "version": "0.0.1 ENV-02",
+      "state": "ROADMAP_RUNTIME_SHELL",
+      "entrypoint": "AOS_menu_environmental",
+      "runtime_available": true,
+      "legacy_alias": "AMBIENTAL",
+      "legacy_entrypoint": "AOS_menu_gestion_ambiental",
+      "legacy_host": "MAINTENANCE",
+      "ribbon_group": "ENVIRONMENTAL",
+      "visible": true,
+      "owner": "ENVIRONMENTAL_HSE",
+      "scope": [
+        "fugitive_emissions",
+        "direct_emissions",
+        "spills",
+        "h2s",
+        "energy_indirect_emissions",
+        "environmental_risk",
+        "mitigation",
+        "compliance",
+        "reporting"
+      ],
+      "spatial_authority": "AOS_CAD_3D_CORE",
+      "dependencies": [
+        "CAD",
+        "WELLS",
+        "NETWORKS",
+        "ELECTRICAL",
+        "FACILITIES",
+        "FLUIDS",
+        "SCADA",
+        "DATA"
+      ],
+      "consumers": [
+        "MAINTENANCE",
+        "GLOBAL",
+        "VIEWER"
+      ],
+      "decision": "ADR-AOS-2026-001",
+      "runtime_scope": "navigation_and_contract_scaffold_only",
+      "scientific_calculations_available": false
+    },
+    {
+      "id": "MAINTENANCE",
+      "name": "AOS Maintenance",
+      "version": "0.0.1",
+      "state": "ROADMAP",
+      "entrypoint": "AOS_menu_maintenance",
+      "ribbon_group": "MAINTENANCE",
+      "visible": true,
+      "scope": "integrity_reliability_pulling_economics_corrective_actions",
+      "environmental_model_owner": false,
+      "environmental_consumer": true
+    },
+    {
+      "id": "DATA",
+      "name": "AOS Data",
+      "version": "0.2.0 DEV1",
+      "state": "BETA",
+      "entrypoint": "AOS_menu_data",
+      "ribbon_group": "DATA",
+      "visible": true
+    },
+    {
+      "id": "SOLVERS",
+      "name": "AOS Solvers",
+      "version": "0.0.1",
+      "state": "TRANSVERSAL",
+      "entrypoint": "AOS_menu_solvers",
+      "ribbon_group": "SOLVERS",
+      "visible": true
+    },
+    {
+      "id": "GLOBAL",
+      "name": "AOS Global",
+      "version": "0.0.1",
+      "state": "CONCEPTUAL",
+      "entrypoint": "AOS_menu_global",
+      "ribbon_group": "GLOBAL",
+      "visible": true
+    },
+    {
+      "id": "VIEWER",
+      "name": "AOS Viewer",
+      "version": "Alpha36",
+      "state": "ALPHA",
+      "entrypoint": "AOS_menu_viewer",
+      "ribbon_group": "VIEWER",
+      "visible": true
+    }
+  ],
+  "source_release": "0.2.0 DEV1",
+  "aosbck": {
+    "state": "BETA_R1",
+    "principle": "ONE_GEOMETRY_MANY_INSTANCES",
+    "placement": [
+      "SURVEY",
+      "AOSCAD_NODE",
+      "XYZ"
+    ],
+    "assembly": "ROADMAP"
+  },
+  "architecture_rules": {
+    "environmental_independent_workbench": true,
+    "environmental_ribbon_position": "AFTER_SCADA_BEFORE_MAINTENANCE",
+    "aoscad_spatial_authority": true,
+    "maintenance_does_not_own_environmental_model": true,
+    "energy_activity_published_by_consumers": true,
+    "indirect_emissions_centralized_in_environmental": true,
+    "runtime_change_in_env01": false,
+    "runtime_shell_env02": true
+  }
+}

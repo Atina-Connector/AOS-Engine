@@ -1,0 +1,30 @@
+function param = gibbs2_defaults(param)
+  % Gibbs Foundation 2 – defaults académicos.
+  if nargin < 1 || ~isstruct(param), param = struct(); end
+  if ~isfield(param,'S_carrera'), param.S_carrera = 1.5; end
+  if ~isfield(param,'N_velocidad'), param.N_velocidad = 6; end
+  if ~isfield(param,'D_bomba'), param.D_bomba = 1500; end
+  if ~isfield(param,'D_bomba_mm'), param.D_bomba_mm = 32; end
+  if ~isfield(param,'WC'), param.WC = 0.5; end
+  if ~isfield(param,'rho_o'), param.rho_o = 850; end
+  if ~isfield(param,'rho_w'), param.rho_w = 1000; end
+  if ~isfield(param,'P_wh'), param.P_wh = 10e5; end
+  if ~isfield(param,'P_intake_min'), param.P_intake_min = 1e5; end
+  if ~isfield(param,'eta_vol'), param.eta_vol = 0.85; end
+  if ~isfield(param,'gibbs2_n_nodos'), param.gibbs2_n_nodos = 41; end
+  if ~isfield(param,'gibbs2_n_ciclos'), param.gibbs2_n_ciclos = 5; end
+  if ~isfield(param,'gibbs2_descartar_ciclos'), param.gibbs2_descartar_ciclos = 1; end
+  if ~isfield(param,'gibbs2_puntos_por_ciclo'), param.gibbs2_puntos_por_ciclo = 720; end
+  if ~isfield(param,'gibbs2_E_Pa'), param.gibbs2_E_Pa = 207e9; end
+  if ~isfield(param,'gibbs2_rho_rod'), param.gibbs2_rho_rod = 7850; end
+  if ~isfield(param,'gibbs2_diam_varilla_mm'), param.gibbs2_diam_varilla_mm = 22.2; end
+  if ~isfield(param,'gibbs2_llenado_bomba'), param.gibbs2_llenado_bomba = min(max(param.eta_vol,0.05),1.2); end
+  if ~isfield(param,'gibbs2_modo_solver'), param.gibbs2_modo_solver = 'automatico'; end
+  if ~isfield(param,'gibbs2_spm_limite_cuasiestatico'), param.gibbs2_spm_limite_cuasiestatico = 4.5; end
+  if ~isfield(param,'gibbs2_valve_transition_frac'), param.gibbs2_valve_transition_frac = 0.02; end
+  if ~isfield(param,'gibbs2_valve_vel_threshold'), param.gibbs2_valve_vel_threshold = 0.01; end
+  if ~isfield(param,'gibbs2_delta_damping'), param.gibbs2_delta_damping = 0.10; end
+  if ~isfield(param,'gibbs2_oversampling'), param.gibbs2_oversampling = 2; end
+  if ~isfield(param,'gibbs2_buoyancy_factor_rods'), param.gibbs2_buoyancy_factor_rods = 0.87; end
+  param.gibbs2_version = 'AOS_BM_Gibbs_Foundation2_v1_0_academico';
+end

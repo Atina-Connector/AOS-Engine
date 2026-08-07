@@ -1,0 +1,23 @@
+function ok = VERIFICAR_AOS_0_1_9_R1(ejecutar_tests)
+% VERIFICAR_AOS_0_1_9_R1 Verifica distribucion completa y servicio AOSBCK.
+  if nargin<1,ejecutar_tests=false;endif
+  raiz=fileparts(mfilename('fullpath'));addpath(fullfile(raiz,'src'),'-begin');addpath(genpath(fullfile(raiz,'src')),'-begin');
+  fprintf('\n================================================================\n');fprintf(' VERIFICACION AOS SUITE 0.1.9 R1 - PUERTA A 0.2.0\n');fprintf('================================================================\n');
+  ok=VERIFICAR_AOS_0_1_9(false);
+  req={'src/menu/AOS_menu_aosbck.m','src/services/aosbck/AOS_menu_aosbck_servicio.m', ...
+    'src/services/aosbck/aosbck_crear_desde_step.m','src/services/aosbck/aosbck_abrir.m', ...
+    'src/services/aosbck/aosbck_agregar_instancia.m','src/services/aosbck/aosbck_ubicacion_survey.m', ...
+    'src/services/aosbck/aosbck_ubicacion_aoscad.m','src/services/aosbck/aosbck_seleccionar_nodo_aoscad.m', ...
+    'src/services/aosbck/aosbck_visualizar.m', ...
+    'src/services/aosbck/test_aosbck_r1.m','src/roadmap/aosbck_contract_0_1_9_r1.json'};
+  for i=1:numel(req),if exist(fullfile(raiz,req{i}),'file')==2,fprintf('OK   %s\n',req{i});else,fprintf(2,'FALTA %s\n',req{i});ok=false;endif;endfor
+  ok=texto_local(fullfile(raiz,'src','menu','AOS_menu_3d_core.m'),'AOSBCK','AOSBCK visible en 3D Core',ok);
+  ok=texto_local(fullfile(raiz,'src','modulos','cad_topo','aos_cad_topologia_menu_impl.m'),'crear componente reutilizable','AOSBCK visible en CAD 3D',ok);
+  ok=texto_local(fullfile(raiz,'src','menu','AOS_menu_wells.m'),'AOSBCK por Survey','AOSBCK visible en Wells',ok);
+  if ejecutar_tests
+    try,r=test_aosbck_r1();if r,fprintf('OK   selftest AOSBCK R1\n');else,ok=false;endif;catch err,fprintf(2,'FALLO selftest AOSBCK: %s\n',err.message);ok=false;end_try_catch
+    try,r=VERIFICAR_AOS_0_1_9(true);ok=ok&&r;catch err,fprintf(2,'FALLO tests base: %s\n',err.message);ok=false;end_try_catch
+  endif
+  if ok,fprintf('RESULTADO: AOS 0.1.9 R1 APROBADO\n');else,fprintf(2,'RESULTADO: AOS 0.1.9 R1 NO APROBADO\n');endif
+endfunction
+function ok=texto_local(r,p,e,ok),try,t=fileread(r);if isempty(strfind(t,p)),fprintf(2,'FALLO: %s\n',e);ok=false;else,fprintf('OK   %s\n',e);endif;catch,ok=false;end_try_catch;endfunction

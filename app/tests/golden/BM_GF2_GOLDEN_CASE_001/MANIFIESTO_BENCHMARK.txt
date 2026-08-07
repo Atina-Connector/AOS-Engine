@@ -1,0 +1,35 @@
+IDENTIFICACION=BM_GF2_GOLDEN_CASE_001
+ESTADO=PRIMER_RESULTADO_FISICAMENTE_COHERENTE
+FECHA_CONSERVACION=2026-07-18
+SOLVER=Gibbs Foundation 2 dinamico axial FE
+ENTRADA=entrada/ejemplo_bm.aosdat
+EVIDENCIA=evidencia/GF2_PRIMER_RESULTADO_CORRECTO.png
+
+PARAMETROS_PRINCIPALES
+pozo=BM_TIPO_01
+profundidad_bomba_MD_m=1500
+profundidad_bomba_TVD_aprox_m=1497.9
+diametro_bomba_mm=32
+carrera_superficie_m=1.5
+velocidad_spm=6
+eta_vol=0.82
+varilla_diametro_mm=22.2
+WC=0.45
+P_wh_bar=8.5
+ciclos=5
+
+BANDAS_VISUALES_PRELIMINARES
+carrera_superficie_m=1.49..1.51
+carrera_bomba_m=1.30..1.45
+transmision_carrera=0.87..0.97
+carga_superficie_max_kN=52..55
+carga_superficie_min_kN=33..36
+carga_bomba_max_kN=9.2..9.8
+carga_bomba_min_kN=0.0..0.7
+carta_superficie_cerrada=SI
+carta_fondo_cerrada=SI
+regimen_periodico=SI
+
+REGLA_DE_PRESERVACION
+No modificar archivos de este paquete. Generar una nueva identificacion para toda
+revision del solver, defaults, caso de entrada o criterio de aceptacion.

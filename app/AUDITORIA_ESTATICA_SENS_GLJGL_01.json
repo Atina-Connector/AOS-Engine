@@ -1,0 +1,141 @@
+{
+  "schema": "AOS_SENS_GLJGL_01_STATIC_AUDIT_1.0",
+  "date": "2026-08-05",
+  "baseline": "AOS_0_2_0_DEV1_ENV02",
+  "hotfix": "SENS-GLJGL-01",
+  "status": "PASS_STATIC",
+  "dynamic_validation": "NOT_RUN_GNU_OCTAVE_UNAVAILABLE",
+  "inventory": {
+    "new_count": 21,
+    "modified_count": 16,
+    "deleted_count": 0,
+    "new": [
+      "AUDITORIA_ESTATICA_SENS_GLJGL_01.json",
+      "AUDITORIA_ESTATICA_SENS_GLJGL_01.md",
+      "CHANGELOG_SENS_GLJGL_01.md",
+      "HOTFIX_SENS_GLJGL_01.txt",
+      "INSTRUCCIONES_APLICACION_SENS_GLJGL_01.md",
+      "PATCH_FILE_LIST_SENS01.txt",
+      "REGRESIONES_SENS_GLJGL_01.md",
+      "VERIFICAR_SENS_GLJGL_01.m",
+      "src/roadmap/aos_hotfix_sens_gljgl_01.json",
+      "src/sensibilidad/cond_val_local.m",
+      "src/sensibilidad/sens_firma_config_gl_jgl.m",
+      "src/sensibilidad/sens_gl_evaluar_punto.m",
+      "src/sensibilidad/sens_jgl_evaluar_punto.m",
+      "src/sensibilidad/sens_si_no.m",
+      "src/sensibilidad/sens_validar_base_gl_jgl.m",
+      "src/sensibilidad/sens_validar_punto_gl.m",
+      "src/sensibilidad/sens_validar_punto_jgl.m",
+      "src/tests/test_sens_gljgl01_contrato_estatico.m",
+      "src/tests/test_sens_gljgl01_metodo_uniforme_jgl.m",
+      "src/tests/test_sens_gljgl01_paridad_gl.m",
+      "src/tests/test_sens_gljgl01_validacion_estados.m"
+    ],
+    "modified": [
+      "AOS_VERSION.txt",
+      "CHANGELOG_AOS_0_2_0_DEV1.md",
+      "REGRESIONES_AOS_0_2_0_DEV1.md",
+      "VERIFICAR_AOS_0_2_0_DEV1.m",
+      "src/core/JGL/jgl_sensibilidad_parametrica.m",
+      "src/roadmap/aos_release_0_2_0_dev1.json",
+      "src/roadmap/aos_solvers_0_2_0_dev1.json",
+      "src/sensibilidad/jgl_menu_aproximacion.m",
+      "src/sensibilidad/sens_Qiny.m",
+      "src/sensibilidad/sens_Qiny_GL.m",
+      "src/sensibilidad/sens_Qiny_JGL.m",
+      "src/sensibilidad/sens_cargar_base.m",
+      "src/sensibilidad/sens_exportar_resultados.m",
+      "src/sensibilidad/sens_jgl_gl_malla.m",
+      "src/sensibilidad/sens_menu_modo_general.m",
+      "src/sensibilidad/sens_preparar_base.m"
+    ],
+    "deleted": []
+  },
+  "counts": {
+    "all_files": 1290,
+    "m_files_total": 873,
+    "m_files_src": 812,
+    "changed_or_new_m_files": 24,
+    "json_files": 34
+  },
+  "json": {
+    "ok": true,
+    "errors": []
+  },
+  "octave_first": {
+    "mat_files": [],
+    "duplicate_m_basenames": {},
+    "function_filename_mismatches": []
+  },
+  "protected_solver_core": {
+    "src/core/GL/GL_sim.m": {
+      "baseline_sha256": "e4ebbe948b8d41b7d2a64a55224a144fd7096ca6d6c30960c2c51758f0709f86",
+      "hotfix_sha256": "e4ebbe948b8d41b7d2a64a55224a144fd7096ca6d6c30960c2c51758f0709f86",
+      "unchanged": true
+    },
+    "src/utilidades/nodal/aos_nodal_balance_gl.m": {
+      "baseline_sha256": "c8cd8a616f8a225c716c131caadb4aa87720b660f403503f78b517bb49c06d0f",
+      "hotfix_sha256": "c8cd8a616f8a225c716c131caadb4aa87720b660f403503f78b517bb49c06d0f",
+      "unchanged": true
+    },
+    "src/utilidades/nodal/aos_buscar_cruce_nodal.m": {
+      "baseline_sha256": "038fae7cc180e50af0f226fb2a63d3a48f47aa4e9d94b7fecd071a8f00d80451",
+      "hotfix_sha256": "038fae7cc180e50af0f226fb2a63d3a48f47aa4e9d94b7fecd071a8f00d80451",
+      "unchanged": true
+    },
+    "src/core/JGL/jgl_solver_directo.m": {
+      "baseline_sha256": "f6c8cabeefd272722a8a9cce382be5459c8a5dae5e71cb10fcf05fd9c0e6654a",
+      "hotfix_sha256": "f6c8cabeefd272722a8a9cce382be5459c8a5dae5e71cb10fcf05fd9c0e6654a",
+      "unchanged": true
+    },
+    "src/core/JGL/jgl_solver_iterativo.m": {
+      "baseline_sha256": "d212c3d067ee45c16169a5122cac8a4fb1872425329153d6c130f217ed64c9c8",
+      "hotfix_sha256": "d212c3d067ee45c16169a5122cac8a4fb1872425329153d6c130f217ed64c9c8",
+      "unchanged": true
+    }
+  },
+  "contract_checks": {
+    "no_hardcoded_gl_ok": true,
+    "real_gl_state_propagated": true,
+    "ipr_fallback_linear": true,
+    "jgl_uniform_engine": true,
+    "raw_public_contract": true,
+    "hotfix_json_registered": true,
+    "protected_solver_core_unchanged": true
+  },
+  "lexical_check": {
+    "tool": "custom static delimiter/block checker",
+    "result": "PASS",
+    "changed_m_files": [
+      "VERIFICAR_AOS_0_2_0_DEV1.m",
+      "VERIFICAR_SENS_GLJGL_01.m",
+      "src/core/JGL/jgl_sensibilidad_parametrica.m",
+      "src/sensibilidad/cond_val_local.m",
+      "src/sensibilidad/jgl_menu_aproximacion.m",
+      "src/sensibilidad/sens_Qiny.m",
+      "src/sensibilidad/sens_Qiny_GL.m",
+      "src/sensibilidad/sens_Qiny_JGL.m",
+      "src/sensibilidad/sens_cargar_base.m",
+      "src/sensibilidad/sens_exportar_resultados.m",
+      "src/sensibilidad/sens_firma_config_gl_jgl.m",
+      "src/sensibilidad/sens_gl_evaluar_punto.m",
+      "src/sensibilidad/sens_jgl_evaluar_punto.m",
+      "src/sensibilidad/sens_jgl_gl_malla.m",
+      "src/sensibilidad/sens_menu_modo_general.m",
+      "src/sensibilidad/sens_preparar_base.m",
+      "src/sensibilidad/sens_si_no.m",
+      "src/sensibilidad/sens_validar_base_gl_jgl.m",
+      "src/sensibilidad/sens_validar_punto_gl.m",
+      "src/sensibilidad/sens_validar_punto_jgl.m",
+      "src/tests/test_sens_gljgl01_contrato_estatico.m",
+      "src/tests/test_sens_gljgl01_metodo_uniforme_jgl.m",
+      "src/tests/test_sens_gljgl01_paridad_gl.m",
+      "src/tests/test_sens_gljgl01_validacion_estados.m"
+    ]
+  },
+  "patch_reproduction": {
+    "result": "PASS",
+    "differences": {}
+  }
+}

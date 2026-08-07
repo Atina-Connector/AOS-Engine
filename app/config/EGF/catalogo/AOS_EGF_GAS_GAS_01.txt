@@ -1,0 +1,11 @@
+# Eyector gas-gas de fondo genérico AOS - screening cuasi 1D
+modelo = AOS_EGF_GAS_GAS_01
+origen = GENERICO_AOS_SCREENING
+A_nozzle_m2 = 2.0e-5
+A_throat_m2 = 4.5e-4
+Cd_primary = 0.96
+Cd_secondary = 0.90
+eta_diffuser = 0.72
+presion_max_bar = 350
+temperatura_max_C = 180
+Qm_max_Sm3_d = 80000

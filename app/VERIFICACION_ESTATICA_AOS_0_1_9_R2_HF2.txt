@@ -1,0 +1,124 @@
+AOS 0.1.9 R2 HF2 - VERIFICACION ESTATICA
+Fecha: 2026-07-29
+
+Archivos totales: 1007
+Archivos .m en src: 676
+Lineas fisicas .m en src: 53769
+Declaraciones de funciones aproximadas: 2000
+Archivos agregados respecto de HF1: 19
+Archivos modificados respecto de HF1: 81
+Archivos eliminados respecto de HF1: 0
+JSON validos: 14/14
+Archivos .mat: 0
+Basenames .m duplicados en src: 0
+str2num_activo: 0
+binaria_directa: 0
+conversion_generica: 0
+
+RESULTADO: APROBADO
+
+Nota: la aprobacion dinamica final requiere GNU Octave y VERIFICAR_AOS_0_1_9_R2_HF2(true).
+
+AGREGADOS:
+AUDITORIA_TRANSVERSAL_AOS_0_1_9_R2_HF2.md
+CHANGELOG_AOS_0_1_9_R2_HF2.md
+MATRIZ_HALLAZGOS_AOS_0_1_9_R2_HF2.csv
+NOTAS_TECNICAS_AOS_0_1_9_R2_HF2.md
+REGRESIONES_AOS_0_1_9_R2_HF2.md
+VERIFICACION_ESTATICA_AOS_0_1_9_R2_HF2.txt
+VERIFICAR_AOS_0_1_9_R2_HF2.m
+src/geologia/aos_geologia_administrar.m
+src/geologia/aos_geologia_commit.m
+src/geologia/aos_geologia_resolver_punzados.m
+src/tests/test_aos_auditoria_interacciones_hf2.m
+src/tests/test_aos_conversiones_seguras_hf2.m
+src/tests/test_aos_geologia_transaccional_hf2.m
+src/tests/test_aos_path_selftests_hf2.m
+src/utilidades/config/aos_logico_seguro.m
+src/utilidades/config/aos_numero_seguro.m
+src/utilidades/config/aos_vector_seguro.m
+src/utilidades/diagnostico/aos_auditar_interacciones.m
+src/utilidades/varios/aos_preguntar_sn.m
+
+MODIFICADOS:
+AOS_VERSION.txt
+MANIFEST_AOS_0_1_9_R2.txt
+README.md
+SHA256SUMS_AOS_0_1_9_R2.txt
+VERIFICAR_AOS_0_1_9.m
+VERSION
+src/core/BES2/BES_V2_menu.m
+src/core/BM/gibbs_foundation/gibbs18_menu.m
+src/core/BM/gibbs_foundation2/gibbs2_menu.m
+src/core/BM/gibbs_foundation2/gibbs2_sweep_damping.m
+src/core/BM/gibbs_foundation3/gibbs3_export_case.m
+src/core/BM/gibbs_foundation3/gibbs3_report_append_sections.m
+src/core/CGF/CGF_menu.m
+src/core/EGF/EGF_menu.m
+src/core/GL/mandriles/mandriles_cargar_galeria.m
+src/core/common/redes_hidraulicas/aos_cad_hidraulica_evaluar_tramo.m
+src/diagnosticos/test_sensibilidades.m
+src/geologia/cargar_geologia_interactivo.m
+src/geologia/cargar_intervalos_punzados.m
+src/geologia/preguntar_reporte.m
+src/lab/gibbs/gibbs_lab_menu.m
+src/menu/AOS_app.m
+src/menu/AOS_menu_configuracion.m
+src/menu/AOS_menu_datos_pozo.m
+src/menu/AOS_menu_geology.m
+src/menu/AOS_menu_gestion_caso.m
+src/menu/BES_app.m
+src/menu/BM_operativo_menu.m
+src/menu/GL_puro_menu.m
+src/menu/JGL_menu.m
+src/menu/aos_menu_imprimir_resumen_config.m
+src/menu/aos_menu_imprimir_ultima_corrida.m
+src/modulos/cad_topo/VERIFICAR_CAD_TOPO.m
+src/modulos/cad_topo/test_aos_cad_dxf.m
+src/modulos/cad_topo/test_aos_cad_galerias.m
+src/modulos/cad_topo/test_aos_cad_metadatos.m
+src/modulos/cad_topo/test_aos_cad_roundtrip_ids.m
+src/modulos/cad_topo/test_aos_cad_step.m
+src/modulos/cad_topo/test_aos_cad_validaciones.m
+src/sensibilidad/sens_A_n.m
+src/sensibilidad/sens_D_bomba.m
+src/sensibilidad/sens_P_iny.m
+src/sensibilidad/sens_P_wh.m
+src/sensibilidad/sens_P_wh_BES.m
+src/sensibilidad/sens_Qiny.m
+src/sensibilidad/sens_Qiny_GL.m
+src/sensibilidad/sens_Qiny_JGL.m
+src/sensibilidad/sens_RunLife_BES.m
+src/sensibilidad/sens_balance_energetico.m
+src/sensibilidad/sens_configurar_economia_inyeccion.m
+src/sensibilidad/sens_d_t.m
+src/sensibilidad/sens_etapas_BES.m
+src/sensibilidad/sens_exportar_resultados.m
+src/sensibilidad/sens_frecuencia_BES.m
+src/sensibilidad/sens_sumergencia_BES.m
+src/services/aosbck/aosbck_agregar_puerto.m
+src/services/aosbck/aosbck_instancia_nueva.m
+src/services/aosbck/aosbck_manifest_nuevo.m
+src/tests/test_aos_galeria_mandriles_r2.m
+src/tests/test_aosdat_legacy_compat_001.m
+src/tests/test_aosdat_roundtrip_001.m
+src/tests/test_aosdat_supati_001.m
+src/tests/test_plot_survey_punzados_001.m
+src/tests/test_vlp_corregido.m
+src/tools/menu_map/aos_generar_mapa_menus.m
+src/utilidades/bombeo_mecanico/plot_cartas_gibbs.m
+src/utilidades/config/load_config.m
+src/utilidades/config/load_config_struct.m
+src/utilidades/intercambio/aos_catalogos_fusionar_desde_aosdat.m
+src/utilidades/intercambio/aos_finalizar_archivo_crypto.m
+src/utilidades/intercambio/aos_parse_valor.m
+src/utilidades/intercambio/exportar_aosdat.m
+src/utilidades/intercambio/exportar_catalogo.m
+src/utilidades/intercambio/importar_aosrpt.m
+src/utilidades/intercambio/importar_catalogo.m
+src/utilidades/intercambio/preguntar_exportar_aosrpt.m
+src/utilidades/intercambio/preguntar_exportar_grafico.m
+src/utilidades/semaforos/aos_exportar_semaforos.m
+src/utilidades/semaforos/aos_imprimir_semaforos.m
+src/utilidades/varios/calibrar.m
+src/utilidades/varios/diseno_mandriles.m

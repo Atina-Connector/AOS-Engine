@@ -1,0 +1,18 @@
+AOS SENS-GLJGL-03 - RESUMEN DE PARCHES
+
+La distribucion completa incluye SENS01, SENS02 y SENS03.
+No es necesario instalar SENS02 por separado.
+
+Parche acumulativo desde SENS01:
+- Agregados: 52
+- Modificados: 32
+- Eliminados: 0
+- Inventario externo: PATCH_FILE_LIST_SENS03_DESDE_SENS01.txt
+
+Parche incremental desde SENS02:
+- Agregados: 27
+- Modificados: 26
+- Eliminados: 0
+- Inventario externo: PATCH_FILE_LIST_SENS03_DESDE_SENS02.txt
+
+La aplicacion se realiza copiando payload/ sobre una copia limpia de la base exacta indicada.

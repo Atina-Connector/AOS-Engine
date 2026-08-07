@@ -1,0 +1,81 @@
+AOSCAD 0.0.1 DEV1
+==================
+
+Estado: PROTOTIPO_NO_VALIDADO
+Motor objetivo unico: GNU Octave.
+Ubicacion: src/modulos/cad_topo/
+
+Regla de arquitectura
+---------------------
+El archivo .aoscad en JSON UTF-8 es la unica fuente canonica persistente.
+No se crean archivos binarios paralelos. No se acepta otro motor cientifico.
+Las estructuras y matrices existen solo en memoria durante la ejecucion.
+
+Equivalencias
+-------------
+DXF INSTALACION = survey espacial + metadatos completos de tuberias, redes,
+equipos, componentes electricos y condiciones de borde.
+DXF GALERIAS = geometria + topologia equivalente al modelo de galerias.
+AOSCAD SIMPLE = modelo editable, configuracion, tablas, resultados y validaciones.
+AOSCAD ENRIQUECIDO = el mismo modelo + planos y graficos regenerables.
+
+Contrato
+--------
+Schema: AOSCAD-0.0.1-DEV1
+Formato: JSON_UTF8
+Motor: GNU_OCTAVE
+Estado: PROTOTIPO_NO_VALIDADO
+
+Secciones obligatorias:
+  info
+  tablas_entrada
+  geometria
+  topologia
+  simulacion
+  tablas_resultados
+  validaciones
+  recursos_visuales
+
+Las tablas son la fuente primaria. La topologia, los planos y los graficos son
+representaciones derivadas. Una edicion de entrada elimina los resultados
+anteriores y obliga a recalcular antes de guardar una corrida vigente.
+
+Archivos principales
+--------------------
+  aos_aoscad_nuevo_paquete.m
+  aos_aoscad_escribir.m
+  aos_aoscad_leer.m
+  aos_aoscad_abrir_en_suite.m
+  aos_aoscad_editar_campo.m
+  aos_cad_verificar_octave_only.m
+  schema/AOSCAD_0_0_1_DEV1_SCHEMA.json
+  schema/CONTRATO_VIEWER_AOSCAD.txt
+
+Preferencias
+------------
+  datos_usuario/configuracion/preferencias_cad_topo.json
+
+Menu operativo
+--------------
+El menu AOS carga primero src/menu/. Mantener sincronizadas:
+  src/menu/AOS_menu_cad_topologia.m
+  src/modulos/cad_topo/AOS_menu_cad_topologia.m
+
+Verificacion
+------------
+  VERIFICAR_CAD_TOPO
+  aos_cad_verificar_octave_only
+  aos_cad_flujo_aceptacion_dev1
+
+Flujo de desarrollo
+-------------------
+DXF -> tablas -> topologia -> validacion -> simulacion demo -> .aoscad
+-> abrir -> editar -> invalidar resultados -> recalcular -> guardar nueva revision
+
+Limitaciones DEV1
+-----------------
+- Solver hidraulico actual: DEMO_NO_SOLVER_OFICIAL.
+- Electrico, combinado y galerias: sin solver oficial.
+- Recursos visuales enriquecidos: estructura preparada, generacion pendiente.
+- Topologia 3D, unidades DXF completas e intersecciones espaciales: pendientes.
+- No congelar este contrato como version estable.

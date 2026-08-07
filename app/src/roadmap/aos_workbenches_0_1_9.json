@@ -1,0 +1,164 @@
+{
+  "schema": "AOS_WORKBENCHES_0_1_9",
+  "suite": {
+    "version": "0.1.9 R2",
+    "role": "gateway_to_0.2.0",
+    "runtime": "GNU Octave"
+  },
+  "ribbon_order": [
+    "SLA",
+    "WELLS",
+    "CAD",
+    "NETWORKS",
+    "ELECTRICAL",
+    "FACILITIES",
+    "GEOLOGY",
+    "FLUIDS",
+    "SCADA",
+    "MAINTENANCE",
+    "DATA",
+    "SOLVERS",
+    "GLOBAL",
+    "VIEWER"
+  ],
+  "viewer_rule": "VIEWER_MUST_BE_LAST",
+  "workbenches": [
+    {
+      "id": "SLA",
+      "name": "AOS SLA",
+      "version": "0.1.9 R2",
+      "state": "OPERATIVO_BETA",
+      "entrypoint": "AOS_menu_SLA",
+      "ribbon_group": "PRODUCTION",
+      "visible": true
+    },
+    {
+      "id": "WELLS",
+      "name": "AOS Wells",
+      "version": "0.0.1 BETA R2",
+      "state": "BETA_ROADMAP",
+      "entrypoint": "AOS_menu_wells",
+      "ribbon_group": "WELLS",
+      "visible": true
+    },
+    {
+      "id": "CAD",
+      "name": "AOS CAD",
+      "version": "0.0.1 DEV1 R16 CANDIDATO_REVISION_JEFE + AOSBCK R1",
+      "state": "DEV1",
+      "entrypoint": "AOS_menu_cad_topologia",
+      "ribbon_group": "CAD",
+      "visible": true
+    },
+    {
+      "id": "NETWORKS",
+      "name": "AOS Networks",
+      "version": "0.0.1",
+      "state": "BETA",
+      "entrypoint": "AOS_menu_networks",
+      "ribbon_group": "NETWORKS",
+      "visible": true
+    },
+    {
+      "id": "ELECTRICAL",
+      "name": "AOS Electrical",
+      "version": "0.0.1",
+      "state": "ROADMAP_CORE_ACTIVE",
+      "entrypoint": "AOS_menu_electrical",
+      "ribbon_group": "ELECTRICAL",
+      "visible": true
+    },
+    {
+      "id": "FACILITIES",
+      "name": "AOS Facilities",
+      "version": "0.0.1",
+      "state": "ROADMAP",
+      "entrypoint": "AOS_menu_facilities",
+      "ribbon_group": "FACILITIES",
+      "visible": true
+    },
+    {
+      "id": "GEOLOGY",
+      "name": "AOS Geology",
+      "version": "0.0.1",
+      "state": "BETA_ROADMAP",
+      "entrypoint": "AOS_menu_geology",
+      "ribbon_group": "GEOLOGY",
+      "visible": true
+    },
+    {
+      "id": "FLUIDS",
+      "name": "AOS Fluids",
+      "version": "0.0.1",
+      "state": "BETA_TRANSVERSAL",
+      "entrypoint": "AOS_menu_fluidos",
+      "ribbon_group": "FLUIDS",
+      "visible": true
+    },
+    {
+      "id": "SCADA",
+      "name": "AOS SCADA",
+      "version": "0.0.1",
+      "state": "BETA",
+      "entrypoint": "AOS_menu_scada",
+      "ribbon_group": "SCADA",
+      "visible": true
+    },
+    {
+      "id": "MAINTENANCE",
+      "name": "AOS Maintenance",
+      "version": "0.0.1",
+      "state": "ROADMAP",
+      "entrypoint": "AOS_menu_maintenance",
+      "ribbon_group": "MAINTENANCE",
+      "visible": true
+    },
+    {
+      "id": "DATA",
+      "name": "AOS Data",
+      "version": "0.1.9 R2",
+      "state": "BETA",
+      "entrypoint": "AOS_menu_data",
+      "ribbon_group": "DATA",
+      "visible": true
+    },
+    {
+      "id": "SOLVERS",
+      "name": "AOS Solvers",
+      "version": "0.0.1",
+      "state": "TRANSVERSAL",
+      "entrypoint": "AOS_menu_solvers",
+      "ribbon_group": "SOLVERS",
+      "visible": true
+    },
+    {
+      "id": "GLOBAL",
+      "name": "AOS Global",
+      "version": "0.0.1",
+      "state": "CONCEPTUAL",
+      "entrypoint": "AOS_menu_global",
+      "ribbon_group": "GLOBAL",
+      "visible": true
+    },
+    {
+      "id": "VIEWER",
+      "name": "AOS Viewer",
+      "version": "Alpha36",
+      "state": "ALPHA",
+      "entrypoint": "AOS_menu_viewer",
+      "ribbon_group": "VIEWER",
+      "visible": true
+    }
+  ],
+  "source_release": "0.1.9 R2",
+  "aosbck": {
+    "state": "BETA_R1",
+    "principle": "ONE_GEOMETRY_MANY_INSTANCES",
+    "placement": [
+      "SURVEY",
+      "AOSCAD_NODE",
+      "XYZ"
+    ],
+    "assembly": "ROADMAP"
+  }
+}

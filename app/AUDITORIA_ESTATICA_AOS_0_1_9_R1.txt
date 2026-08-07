@@ -1,0 +1,18 @@
+AUDITORIA ESTATICA AOS 0.1.9 R1
+
+Base preservada: SI (913 archivos originales presentes)
+Archivos eliminados: 0
+Archivos totales: 947
+Carpetas incluyendo raiz: 161
+Archivos GNU Octave .m: 699
+Lineas fisicas .m: 53992
+Declaraciones function: 1964
+Archivos JSON validados: 14
+Archivos .mat: 0
+AOSBCK de ejemplo: ZIP valido, manifest y STEP presentes
+Contrato AOSBCK: AOSBCK-0.1.9-R1
+Referencias nuevas sin resolver: 0
+
+LIMITACION DE LA AUDITORIA
+No hay GNU Octave instalado en el entorno de construccion. La auditoria es estructural y estatica.
+La validacion dinamica final debe ejecutarse con VERIFICAR_AOS_0_1_9_R1(true) en GNU Octave.

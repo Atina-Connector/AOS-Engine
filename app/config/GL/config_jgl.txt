@@ -1,0 +1,36 @@
+P_res    = 205.4e5  # SBHP medida por Echometer (2025)
+D_res    = 3044     # Profundidad MD de los punzados
+D_bomba  = 2700     # Profundidad de instalación JGL (similar al intake BES)
+D_packer = 1450
+D_tubing = 3044
+P_sep    = 6e5
+P_wh     = 6e5
+IP = 1.16e-11   # 0.10 m3/d/bar (IP de flujo natural)
+factor_IP_residual = 1.0
+WC       = 0.94
+GLR      = 80
+
+rho_o    = 900
+rho_w    = 1000
+rho_g_std = 0.80
+diam_tbg = 0.062
+T_fondo  = 358.15
+T_sup    = 298.15
+
+gamma_g  = 1.3
+R_gas    = 519.6
+P_iny_sup = 200e5
+
+A_n      = 12e-6
+d_t      = 0.038
+eta_n    = 0.98
+eta_t    = 0.85
+eta_d    = 0.80
+
+survey_file = config/GL/survey.txt
+modelo_IPR = linear
+modelo_VLP = HB
+API      = 25.0
+
+Qiny_min = 0.01
+Qiny_max = 0.53

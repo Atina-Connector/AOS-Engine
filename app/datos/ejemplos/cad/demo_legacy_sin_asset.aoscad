@@ -1,0 +1,90 @@
+{
+  "info": {
+    "schema": "AOSCAD-0.0.1-DEV1",
+    "formato_canonico": "JSON_UTF8",
+    "motor_objetivo": "GNU_OCTAVE",
+    "estado_desarrollo": "PROTOTIPO_NO_VALIDADO",
+    "dxf_clase": "INSTALACION",
+    "aoscad_perfil": "SIMPLE",
+    "dominio_sim": "HIDRAULICO",
+    "fuente_dxf": "demo_legacy_sin_asset",
+    "creado_en": "2026-01-01 00:00:00",
+    "modificado_en": "2026-01-01 00:00:00",
+    "version_modulo": "0.0.1-DEV1",
+    "notas": "Fixture Sprint 2: paquete DEV1 valido SIN activos ni asset_id (compatibilidad hacia atras)."
+  },
+  "tablas_entrada": {
+    "nodos": [
+      {
+        "id": "N001",
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "tipo": "JUNCTION",
+        "capa": "RED"
+      },
+      {
+        "id": "N002",
+        "x": 10,
+        "y": 0,
+        "z": 0,
+        "tipo": "JUNCTION",
+        "capa": "RED"
+      }
+    ],
+    "tramos": [
+      {
+        "id": "T001",
+        "nodo_o": "N001",
+        "nodo_d": "N002",
+        "x1": 0,
+        "y1": 0,
+        "x2": 10,
+        "y2": 0,
+        "diametro_m": 0.1,
+        "capa": "RED"
+      }
+    ],
+    "accesorios": [],
+    "valvulas": [],
+    "equipos": [],
+    "condiciones_borde": [],
+    "fluidos": [],
+    "dominios_hidraulicos": [],
+    "camaras": [],
+    "ramales": [],
+    "accesos": []
+  },
+  "geometria": {
+    "sistema_coordenadas": "LOCAL_METRICO",
+    "unidades": "m",
+    "entidades_dxf": []
+  },
+  "topologia": {
+    "origen": "DERIVADA_DE_TABLAS",
+    "tolerancia_m": 0.05,
+    "aristas": [],
+    "nodos_grafo": []
+  },
+  "simulacion": {
+    "motor": "",
+    "dominio": "HIDRAULICO",
+    "estado": "NO_EJECUTADA",
+    "parametros_efectivos": {},
+    "advertencias": [],
+    "corrida_id": "",
+    "fecha": "",
+    "entradas_hash": "",
+    "dominio_hidraulico_activo_id": ""
+  },
+  "tablas_resultados": {
+    "nodos": [],
+    "tramos": []
+  },
+  "validaciones": {
+    "estado": "PENDIENTE",
+    "items": []
+  },
+  "historial_edicion": [],
+  "recursos_visuales": []
+}

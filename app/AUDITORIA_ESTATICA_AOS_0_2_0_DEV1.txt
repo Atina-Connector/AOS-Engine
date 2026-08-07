@@ -1,0 +1,26 @@
+AUDITORIA ESTATICA AOS SUITE 0.2.0 DEV1
+============================================================
+Estado: APROBADA_ESTATICAMENTE
+Version: 0.2.0-DEV1
+Archivos totales: 1244
+Carpetas incluyendo raiz: 186
+Archivos .m distribucion: 858
+Lineas fisicas .m distribucion: 82216
+Lineas efectivas .m distribucion: 72297
+Funciones declaradas distribucion: 2824
+Archivos .m activos en src: 798
+Lineas efectivas activas src: 68884
+Funciones activas src: 2708
+JSON validos: 29 de 29
+Archivos .mat: 0
+Nombres .m duplicados en src: 0
+Workbenches: 14
+Viewer ultimo: SI
+Escritor AOSCAD conserva R16: SI
+Escritor AOSCAD integra HF3.5: SI
+iniciar_aos usa genpath: NO
+Archivos requeridos faltantes: 0
+Llamadas aos_* sin definicion estatica detectada: 0
+Bloqueos: ninguno
+
+Limitacion: no se ejecuto GNU Octave en este entorno; falta verificacion dinamica en la maquina del proyecto.

@@ -1,0 +1,12 @@
+AOS Suite 0.1.9 R2
+Edicion: consolidacion completa previa a la distribucion por bancos de trabajo
+Motor cientifico oficial: GNU Octave
+Arquitectura: workbenches + servicios + solvers + AOS Global
+AOSCAD integrado: 0.0.1 DEV1 R9.1
+AOSBCK integrado: 0.1.9 R1 BETA
+Gestion de casos: universal y contextual; .aosdat conserva prioridad
+Catalogos: contrato AOS_CATALOGO_R2, base + usuario + embebidos .aosdat
+Galerias: mandriles .aosdat + galerias CAD/DXF
+Verificacion: semantica por registros, entrypoints y contratos
+Historial: AOS 0.1.9 R1 preservado como baseline independiente
+Hotfix aplicado: HF1 - gestion de caso segura para configuraciones sin nombre

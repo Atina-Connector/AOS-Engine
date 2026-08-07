@@ -1,0 +1,588 @@
+AOS 0.0.11 - MAPA ACTUAL (Benchmark Ready)
+Generado: 2026-07-10
+Plataforma objetivo: GNU Octave
+
+AOS/
+├── _backup_parche_v09_BM_Gibbs_20260708_092251/
+│   └── src/
+│       ├── core/
+│       │   └── BM/
+│       │       └── BM_core.m
+│       ├── diagnosticos/
+│       │   ├── diagnostico_gibbs.m
+│       │   └── diagnostico_gibbs_v2.m
+│       ├── menu/
+│       │   └── BM_menu.m
+│       └── utilidades/
+│           ├── bombeo_mecanico/
+│           │   ├── cargar_catalogo_bm.m
+│           │   ├── cargar_materiales_varillas.m
+│           │   ├── cinematica_superficie.m
+│           │   ├── diseno_varillas.m
+│           │   ├── ecuacion_onda_gibbs.m
+│           │   ├── filtrar_picos_carta.m
+│           │   └── generar_tabla_cartas.m
+│           ├── config/
+│           │   └── aos_config_base.m
+│           └── intercambio/
+│               ├── exportar_aosdat.m
+│               ├── exportar_aosrpt.m
+│               ├── exportar_aosrpt_enriquecido.m
+│               └── importar_aosdat.m
+├── _backup_parche_v10e_BM_Gibbs_onda_20260708_093044/
+│   ├── src/
+│   │   ├── core/
+│   │   │   └── BM/
+│   │   │       └── BM_core.m
+│   │   ├── diagnosticos/
+│   │   │   ├── diagnostico_gibbs.m
+│   │   │   └── diagnostico_gibbs_v2.m
+│   │   ├── menu/
+│   │   │   └── BM_menu.m
+│   │   ├── utilidades/
+│   │   │   ├── bombeo_mecanico/
+│   │   │   │   ├── cinematica_superficie.m
+│   │   │   │   ├── diseno_varillas.m
+│   │   │   │   ├── ecuacion_onda_gibbs.m
+│   │   │   │   ├── filtrar_picos_carta.m
+│   │   │   │   └── generar_tabla_cartas.m
+│   │   │   ├── config/
+│   │   │   │   └── aos_config_base.m
+│   │   │   └── intercambio/
+│   │   │       ├── exportar_aosdat.m
+│   │   │       ├── exportar_aosrpt.m
+│   │   │       └── exportar_aosrpt_enriquecido.m
+│   │   └── iniciar_aos.m
+│   └── mapa_actual.txt
+├── _backup_parche_v11_BM_Gibbs_transmision_20260708_101458/
+│   ├── src/
+│   │   ├── core/
+│   │   │   └── BM/
+│   │   │       ├── gibbs/
+│   │   │       │   ├── gibbs_bm_resolver.m
+│   │   │       │   ├── gibbs_calcular_metricas_bomba.m
+│   │   │       │   ├── gibbs_carga_fluido.m
+│   │   │       │   ├── gibbs_construir_malla_sarta.m
+│   │   │       │   ├── gibbs_estimacion_espaciamiento.m
+│   │   │       │   ├── gibbs_modelo_bomba.m
+│   │   │       │   ├── gibbs_param_defaults.m
+│   │   │       │   ├── gibbs_resolver_forward.m
+│   │   │       │   ├── gibbs_resolver_inverso.m
+│   │   │       │   └── gibbs_resumen_texto.m
+│   │   │       └── BM_core.m
+│   │   ├── diagnosticos/
+│   │   │   ├── diagnostico_gibbs.m
+│   │   │   └── diagnostico_gibbs_v2.m
+│   │   ├── menu/
+│   │   │   └── BM_menu.m
+│   │   ├── utilidades/
+│   │   │   ├── bombeo_mecanico/
+│   │   │   │   ├── cinematica_superficie.m
+│   │   │   │   ├── diagnostico_bm_gibbs.m
+│   │   │   │   ├── diseno_varillas.m
+│   │   │   │   ├── ecuacion_onda_gibbs.m
+│   │   │   │   ├── filtrar_picos_carta.m
+│   │   │   │   ├── generar_tabla_cartas.m
+│   │   │   │   └── plot_cartas_gibbs.m
+│   │   │   ├── config/
+│   │   │   │   └── aos_config_base.m
+│   │   │   └── intercambio/
+│   │   │       ├── exportar_aosdat.m
+│   │   │       ├── exportar_aosrpt.m
+│   │   │       └── exportar_aosrpt_enriquecido.m
+│   │   └── iniciar_aos.m
+│   └── mapa_actual.txt
+├── _backup_parche_v13_semaforos_globales_20260708_111618/
+│   ├── src/
+│   │   ├── core/
+│   │   │   └── BM/
+│   │   │       ├── gibbs/
+│   │   │       │   ├── gibbs_bm_resolver.m
+│   │   │       │   ├── gibbs_calcular_metricas_bomba.m
+│   │   │       │   ├── gibbs_carga_fluido.m
+│   │   │       │   ├── gibbs_construir_malla_sarta.m
+│   │   │       │   ├── gibbs_estimacion_espaciamiento.m
+│   │   │       │   ├── gibbs_modelo_bomba.m
+│   │   │       │   ├── gibbs_param_defaults.m
+│   │   │       │   ├── gibbs_resolver_forward.m
+│   │   │       │   ├── gibbs_resolver_inverso.m
+│   │   │       │   └── gibbs_resumen_texto.m
+│   │   │       └── BM_core.m
+│   │   ├── diagnosticos/
+│   │   │   ├── diagnostico_gibbs.m
+│   │   │   └── diagnostico_gibbs_v2.m
+│   │   ├── menu/
+│   │   │   ├── BES_app.m
+│   │   │   ├── BM_menu.m
+│   │   │   ├── GL_puro_menu.m
+│   │   │   └── JGL_menu.m
+│   │   ├── utilidades/
+│   │   │   ├── bombeo_mecanico/
+│   │   │   │   ├── bm_semaforo_operacion.m
+│   │   │   │   ├── cinematica_superficie.m
+│   │   │   │   ├── diagnostico_bm_gibbs.m
+│   │   │   │   ├── diseno_varillas.m
+│   │   │   │   ├── ecuacion_onda_gibbs.m
+│   │   │   │   ├── filtrar_picos_carta.m
+│   │   │   │   ├── generar_tabla_cartas.m
+│   │   │   │   └── plot_cartas_gibbs.m
+│   │   │   ├── config/
+│   │   │   │   └── aos_config_base.m
+│   │   │   └── intercambio/
+│   │   │       ├── exportar_aosdat.m
+│   │   │       ├── exportar_aosrpt.m
+│   │   │       └── exportar_aosrpt_enriquecido.m
+│   │   └── iniciar_aos.m
+│   └── mapa_actual.txt
+├── _backup_parche_v14_semaforos_globales_20260708_121529/
+│   ├── src/
+│   │   ├── core/
+│   │   │   └── BM/
+│   │   │       ├── gibbs/
+│   │   │       │   ├── gibbs_bm_resolver.m
+│   │   │       │   ├── gibbs_calcular_metricas_bomba.m
+│   │   │       │   ├── gibbs_carga_fluido.m
+│   │   │       │   ├── gibbs_construir_malla_sarta.m
+│   │   │       │   ├── gibbs_estimacion_espaciamiento.m
+│   │   │       │   ├── gibbs_modelo_bomba.m
+│   │   │       │   ├── gibbs_param_defaults.m
+│   │   │       │   ├── gibbs_resolver_forward.m
+│   │   │       │   ├── gibbs_resolver_inverso.m
+│   │   │       │   └── gibbs_resumen_texto.m
+│   │   │       └── BM_core.m
+│   │   ├── diagnosticos/
+│   │   │   ├── diagnostico_gibbs.m
+│   │   │   └── diagnostico_gibbs_v2.m
+│   │   ├── docs/
+│   │   │   ├── MODULO_BM_GIBBS_v13.md
+│   │   │   └── SEMAFOROS_OPERATIVOS_AOS_v13.md
+│   │   ├── menu/
+│   │   │   ├── BES_app.m
+│   │   │   ├── BM_menu.m
+│   │   │   ├── GL_puro_menu.m
+│   │   │   └── JGL_menu.m
+│   │   ├── utilidades/
+│   │   │   ├── bombeo_mecanico/
+│   │   │   │   ├── bm_semaforo_operacion.m
+│   │   │   │   ├── cinematica_superficie.m
+│   │   │   │   ├── diagnostico_bm_gibbs.m
+│   │   │   │   ├── diseno_varillas.m
+│   │   │   │   ├── ecuacion_onda_gibbs.m
+│   │   │   │   ├── filtrar_picos_carta.m
+│   │   │   │   ├── generar_tabla_cartas.m
+│   │   │   │   └── plot_cartas_gibbs.m
+│   │   │   ├── config/
+│   │   │   │   └── aos_config_base.m
+│   │   │   ├── intercambio/
+│   │   │   │   ├── exportar_aosdat.m
+│   │   │   │   ├── exportar_aosrpt.m
+│   │   │   │   └── exportar_aosrpt_enriquecido.m
+│   │   │   └── semaforos/
+│   │   │       ├── aos_color_estado.m
+│   │   │       ├── aos_dibujar_spot.m
+│   │   │       ├── aos_exportar_semaforos.m
+│   │   │       ├── aos_imprimir_semaforos.m
+│   │   │       ├── aos_semaforo_operacion.m
+│   │   │       └── aos_spot_texto.m
+│   │   └── iniciar_aos.m
+│   └── mapa_actual.txt
+├── _backup_parche_v15_Gibbs_Lab_20260708_131328/
+│   └── src/
+│       ├── core/
+│       │   └── BM/
+│       │       ├── gibbs/
+│       │       │   └── gibbs_param_defaults.m
+│       │       └── BM_core.m
+│       ├── menu/
+│       │   └── BM_menu.m
+│       ├── utilidades/
+│       │   └── config/
+│       │       └── aos_config_base.m
+│       └── iniciar_aos.m
+├── _backup_parche_v16_Gibbs_Lab_carta_superficie_20260708_140928/
+│   └── src/
+│       ├── core/
+│       │   └── BM/
+│       │       ├── gibbs/
+│       │       │   └── gibbs_param_defaults.m
+│       │       └── BM_core.m
+│       ├── lab/
+│       │   └── gibbs/
+│       │       ├── gibbs_lab_correr.m
+│       │       ├── gibbs_lab_defaults.m
+│       │       ├── gibbs_lab_imprimir.m
+│       │       ├── gibbs_lab_menu.m
+│       │       ├── gibbs_lab_plot.m
+│       │       └── gibbs_lab_suavizar_periodico.m
+│       ├── menu/
+│       │   └── BM_menu.m
+│       ├── utilidades/
+│       │   └── config/
+│       │       └── aos_config_base.m
+│       └── iniciar_aos.m
+├── _backup_parche_v17_Gibbs_Lab_auditado_20260708_151650/
+│   └── src/
+│       ├── core/
+│       │   └── BM/
+│       │       ├── gibbs/
+│       │       │   └── gibbs_param_defaults.m
+│       │       └── BM_core.m
+│       ├── lab/
+│       │   └── gibbs/
+│       │       ├── gibbs_lab_correr.m
+│       │       ├── gibbs_lab_defaults.m
+│       │       ├── gibbs_lab_imprimir.m
+│       │       ├── gibbs_lab_menu.m
+│       │       ├── gibbs_lab_plot.m
+│       │       └── gibbs_lab_suavizar_periodico.m
+│       ├── menu/
+│       │   └── BM_menu.m
+│       ├── utilidades/
+│       │   └── config/
+│       │       └── aos_config_base.m
+│       └── iniciar_aos.m
+├── _backup_parche_v18_Gibbs_Foundation_20260708_170000/
+│   └── src/
+│       ├── iniciar/
+│       │   └── iniciar_aos.m
+│       └── menu/
+│           └── BM_menu.m
+├── avance/
+│   ├── AOS_0_0_11_ARCHIVOS_CLAVE.md
+│   ├── AOS_0_0_11_BENCHMARK_READY.md
+│   ├── AOS_0_0_11_CAMBIOS_FISICA_Y_ARQUITECTURA.md
+│   ├── AOS_0_0_11_MANUAL_DE_USO.md
+│   ├── AOS_0_0_11_NOTAS_RELEASE.md
+│   ├── AOS_0_0_1_CONTEXTO_Y_ARQUITECTURA.md
+│   └── AOS_0_0_1_MANUAL_DE_USO.md
+├── config/
+│   ├── BES/
+│   │   ├── catalogo/
+│   │   │   ├── DN1750.txt
+│   │   │   ├── DN3100.txt
+│   │   │   └── DN450.txt
+│   │   └── curva_bomba.txt
+│   ├── BM/
+│   │   ├── materiales_varillas.txt
+│   │   └── unidades.txt
+│   ├── geologia/
+│   │   └── config_geologia.txt
+│   └── GL/
+│       ├── Calibracion_Coeficientes_JGL.txt
+│       ├── chokes_std.txt
+│       ├── config_jgl.txt
+│       ├── config_mandriles.txt
+│       ├── inyeccion.txt
+│       ├── survey.txt
+│       └── valvulas.txt
+├── datos/
+│   ├── backups/
+│   ├── ejemplos/
+│   │   ├── benchmarks/
+│   │   │   └── SUPATI_X1_ST_BENCHMARK_AOS_001.aosdat
+│   │   ├── importados_legacy/
+│   │   │   ├── geologia_MB.aosdat
+│   │   │   ├── Manantiales_Behr_1.aosdat
+│   │   │   ├── MB1_Calibracion_Global.aosdat
+│   │   │   ├── MB1_calibrado.aosdat
+│   │   │   ├── MB1_Completo.aosdat
+│   │   │   ├── pozos_importados.csv
+│   │   │   ├── SUPUATI_X1_ST_JGL.aosdat
+│   │   │   ├── SUPUATI_X1_ST_JGL2.aosdat
+│   │   │   ├── survey_MB1.aosdat
+│   │   │   └── test_bm_completo.aosdat
+│   │   ├── MB01_15pts_2tercios_vertical.aosdat
+│   │   ├── MB01_calibracion_factor1.aosdat
+│   │   ├── test_bm_completo.aosdat
+│   │   └── test_final.aosdat
+│   └── reportes/
+├── intercambio/
+│   ├── catalogos/
+│   │   ├── enviados/
+│   │   │   ├── bombas/
+│   │   │   ├── unidades_bm/
+│   │   │   ├── valvulas/
+│   │   │   └── varillas/
+│   │   └── recibidos/
+│   │       ├── bombas/
+│   │       ├── unidades_bm/
+│   │       ├── valvulas/
+│   │       └── varillas/
+│   ├── importados/
+│   ├── pozos/
+│   │   ├── enviados/
+│   │   └── recibidos/
+│   └── reportes/
+│       ├── enviados/
+│       └── recibidos/
+├── src/
+│   ├── core/
+│   │   ├── BES/
+│   │   │   └── BES_sim.m
+│   │   ├── BM/
+│   │   │   ├── gibbs/
+│   │   │   │   ├── gibbs_bm_resolver.m
+│   │   │   │   ├── gibbs_calcular_metricas_bomba.m
+│   │   │   │   ├── gibbs_carga_fluido.m
+│   │   │   │   ├── gibbs_construir_malla_sarta.m
+│   │   │   │   ├── gibbs_estimacion_espaciamiento.m
+│   │   │   │   ├── gibbs_modelo_bomba.m
+│   │   │   │   ├── gibbs_param_defaults.m
+│   │   │   │   ├── gibbs_resolver_forward.m
+│   │   │   │   ├── gibbs_resolver_inverso.m
+│   │   │   │   └── gibbs_resumen_texto.m
+│   │   │   ├── gibbs_foundation/
+│   │   │   │   ├── gibbs18_bottom_boundary.m
+│   │   │   │   ├── gibbs18_build_rod_mesh.m
+│   │   │   │   ├── gibbs18_defaults.m
+│   │   │   │   ├── gibbs18_menu.m
+│   │   │   │   ├── gibbs18_plot.m
+│   │   │   │   ├── gibbs18_postprocess.m
+│   │   │   │   ├── gibbs18_print.m
+│   │   │   │   ├── gibbs18_run_case.m
+│   │   │   │   ├── gibbs18_solver_forward.m
+│   │   │   │   ├── gibbs18_static_surface_load.m
+│   │   │   │   └── gibbs18_surface_motion.m
+│   │   │   └── BM_core.m
+│   │   ├── common/
+│   │   │   ├── ipr/
+│   │   │   │   └── ipr.m
+│   │   │   ├── pvt/
+│   │   │   │   ├── pvt_calcular.m
+│   │   │   │   └── pvt_tension_superficial.m
+│   │   │   └── vlp/
+│   │   │       ├── aos_imprimir_vlp_efectiva.m
+│   │   │       ├── aos_vlp_clamp.m
+│   │   │       ├── aos_vlp_friccion.m
+│   │   │       ├── aos_vlp_getfield.m
+│   │   │       ├── aos_vlp_holdup_drift_flux.m
+│   │   │       ├── aos_vlp_holdup_duns_ros.m
+│   │   │       ├── aos_vlp_holdup_HB.m
+│   │   │       ├── aos_vlp_info.m
+│   │   │       ├── aos_vlp_integrar.m
+│   │   │       ├── aos_vlp_normalizar_survey.m
+│   │   │       ├── aos_vlp_parametros.m
+│   │   │       ├── aos_vlp_propiedades_locales.m
+│   │   │       ├── aos_vlp_temperatura.m
+│   │   │       ├── aos_vlp_z_factor.m
+│   │   │       ├── calcular_holdup.m
+│   │   │       ├── calcular_regimen.m
+│   │   │       ├── diagnostico_vlp.m
+│   │   │       ├── mapa_flujo.m
+│   │   │       ├── mapa_flujo_simple.m
+│   │   │       ├── vlp_duns_ros.m
+│   │   │       ├── vlp_HB_full.m
+│   │   │       └── vlp_simplified_corregida.m
+│   │   └── GL/
+│   │       ├── GL_puro_core.m
+│   │       ├── GL_sim.m
+│   │       ├── JGL_core.m
+│   │       ├── JGLsim.m
+│   │       └── JGLsim_fixedQ.m
+│   ├── crypto/
+│   │   ├── aos_decrypt.m
+│   │   └── aos_encrypt.m
+│   ├── diagnosticos/
+│   │   ├── legacy/
+│   │   │   ├── corregir_hardcodeos.m
+│   │   │   ├── corregir_test_vlp.m
+│   │   │   └── plot_survey_old.m
+│   │   ├── diagnosticar_rutas_archivos.m
+│   │   ├── diagnostico_gibbs.m
+│   │   ├── diagnostico_gibbs_v2.m
+│   │   ├── generar_mapa_dependencias.m
+│   │   └── test_sensibilidades.m
+│   ├── docs/
+│   │   ├── ARQUITECTURA_FINAL_AOS.md
+│   │   ├── CONFIG_DEFAULTS_CATALOGOS.md
+│   │   ├── MODULO_BM_GIBBS_v10e.md
+│   │   ├── MODULO_BM_GIBBS_v11.md
+│   │   ├── MODULO_BM_GIBBS_v13.md
+│   │   ├── MODULO_BM_GIBBS_v18_1_CICLOS.md
+│   │   ├── MODULO_BM_GIBBS_v18_FOUNDATION.md
+│   │   ├── MODULO_GIBBS_LAB_v15.md
+│   │   ├── MODULO_GIBBS_LAB_v16.md
+│   │   ├── MODULO_GIBBS_LAB_v17.md
+│   │   ├── MODULO_TUBERIA_PRODUCCION.md
+│   │   ├── PARCHE_V06_JGL_VLP_TAITEL.md
+│   │   ├── PARCHE_V09_BM_GIBBS.md
+│   │   ├── PARCHE_v18_2_BM_GIBBS_PROMEDIO_CARGAS_DIAMETRO.md
+│   │   ├── PARCHE_v18_3_BM_GIBBS_ESTABILIZACION_CUASIESTATICA.md
+│   │   ├── README_VLP_CORREGIDO.md
+│   │   ├── REPORTE_CAMBIOS_VLP.md
+│   │   └── SEMAFOROS_OPERATIVOS_AOS_v13.md
+│   ├── geologia/
+│   │   ├── punzados/
+│   │   │   ├── calcular_erosion_punzados.m
+│   │   │   └── cargar_intervalos_punzados.m
+│   │   ├── calcular_caudales_criticos.m
+│   │   ├── cargar_geologia.m
+│   │   ├── cargar_geologia_interactivo.m
+│   │   ├── cargar_intervalos_punzados.m
+│   │   ├── preguntar_reporte.m
+│   │   └── reporte_alerta.m
+│   ├── lab/
+│   │   └── gibbs/
+│   │       ├── gibbs_lab_correr.m
+│   │       ├── gibbs_lab_defaults.m
+│   │       ├── gibbs_lab_imprimir.m
+│   │       ├── gibbs_lab_menu.m
+│   │       ├── gibbs_lab_plot.m
+│   │       ├── gibbs_lab_solver_forward.m
+│   │       └── gibbs_lab_suavizar_periodico.m
+│   ├── menu/
+│   │   ├── AOS_app.m
+│   │   ├── BES_app.m
+│   │   ├── BM_menu.m
+│   │   ├── GL_puro_menu.m
+│   │   ├── JGL_menu.m
+│   │   └── menu_sensibilidad.m
+│   ├── sensibilidad/
+│   │   ├── aos_imprimir_reparaciones.m
+│   │   ├── aos_reparar_discontinuidad_local.m
+│   │   ├── encontrar_optimo.m
+│   │   ├── menu_sensibilidad_BES.m
+│   │   ├── sens_A_n.m
+│   │   ├── sens_agregar_qiny_referencia.m
+│   │   ├── sens_aplicar_consistencia_jgl_gl.m
+│   │   ├── sens_balance_energetico.m
+│   │   ├── sens_cargar_base.m
+│   │   ├── sens_D_bomba.m
+│   │   ├── sens_d_t.m
+│   │   ├── sens_etapas_BES.m
+│   │   ├── sens_eval_jgl_fijo.m
+│   │   ├── sens_P_iny.m
+│   │   ├── sens_P_wh.m
+│   │   ├── sens_preparar_base.m
+│   │   ├── sens_Qiny.m
+│   │   ├── sens_Qiny_GL.m
+│   │   ├── sens_Qiny_JGL.m
+│   │   ├── sens_reparar_discontinuidades_locales.m
+│   │   └── sens_sumergencia_BES.m
+│   ├── tests/
+│   │   ├── test_aosdat_legacy_compat_001.m
+│   │   ├── test_aosdat_roundtrip_001.m
+│   │   ├── test_aosdat_supati_001.m
+│   │   ├── test_intercambio.m
+│   │   ├── test_plot_survey_punzados_001.m
+│   │   ├── test_unidades_aos_001.m
+│   │   └── test_vlp_corregido.m
+│   ├── utilidades/
+│   │   ├── bombeo_mecanico/
+│   │   │   ├── bm_semaforo_operacion.m
+│   │   │   ├── cargar_catalogo_bm.m
+│   │   │   ├── cargar_materiales_varillas.m
+│   │   │   ├── cinematica_superficie.m
+│   │   │   ├── diagnostico_bm_gibbs.m
+│   │   │   ├── diagnostico_cartas_bm.m
+│   │   │   ├── diseno_varillas.m
+│   │   │   ├── ecuacion_onda_gibbs.m
+│   │   │   ├── filtrar_picos_carta.m
+│   │   │   ├── generar_tabla_cartas.m
+│   │   │   └── plot_cartas_gibbs.m
+│   │   ├── config/
+│   │   │   ├── aos_aplicar_aliases_aosdat.m
+│   │   │   ├── aos_config_base.m
+│   │   │   ├── aos_normalizar_config.m
+│   │   │   ├── aos_normalizar_geologia.m
+│   │   │   ├── aos_normalizar_presion_burbuja.m
+│   │   │   ├── aos_preparar_config_activa.m
+│   │   │   ├── aos_presion_bar_a_pa.m
+│   │   │   ├── aos_presion_burbuja_pa.m
+│   │   │   ├── aos_sincronizar_geologia_activa.m
+│   │   │   ├── aos_validar_config_modulo.m
+│   │   │   ├── load_config.m
+│   │   │   ├── load_config_struct.m
+│   │   │   └── load_survey.m
+│   │   ├── diagnostico/
+│   │   │   ├── aos_sla_intake_guard.m
+│   │   │   ├── calcular_perfil_tuberia_produccion.m
+│   │   │   ├── diagnostico_tuberia_produccion.m
+│   │   │   ├── thornhill_craver.m
+│   │   │   ├── velocidad_critica.m
+│   │   │   └── velocidad_en_bomba.m
+│   │   ├── graficos/
+│   │   │   ├── plot_erosion_taitel.m
+│   │   │   ├── plot_mandriles.m
+│   │   │   └── plot_survey.m
+│   │   ├── intercambio/
+│   │   │   ├── aos_parse_valor.m
+│   │   │   ├── aos_sanitizar_campo.m
+│   │   │   ├── exportar_aosdat.m
+│   │   │   ├── exportar_aosrpt.m
+│   │   │   ├── exportar_aosrpt_enriquecido.m
+│   │   │   ├── exportar_aosrpt_grafico.m
+│   │   │   ├── exportar_catalogo.m
+│   │   │   ├── exportar_grafico_modulo.m
+│   │   │   ├── importar_aosdat.m
+│   │   │   ├── importar_aosrpt.m
+│   │   │   ├── importar_catalogo.m
+│   │   │   ├── importar_pozos.m
+│   │   │   ├── preguntar_exportar_aosrpt.m
+│   │   │   └── preguntar_exportar_grafico.m
+│   │   ├── nodal/
+│   │   │   ├── acople_eductor_vlp.m
+│   │   │   ├── aos_anexar_diagnostico.m
+│   │   │   ├── aos_imprimir_sla_intake_guard.m
+│   │   │   ├── aos_sla_intake_guard.m
+│   │   │   ├── aos_vlp_info.m
+│   │   │   ├── aos_vlp_model_info.m
+│   │   │   ├── aos_vlp_modelo_efectivo.m
+│   │   │   ├── calcular_columna_succion.m
+│   │   │   ├── compute_P_req.m
+│   │   │   ├── eductor_jgl.m
+│   │   │   ├── error_gl.m
+│   │   │   ├── error_presion_JGL.m
+│   │   │   ├── jgl_nodal_presiones.m
+│   │   │   ├── plot_nodal.m
+│   │   │   ├── plot_nodal_BES.m
+│   │   │   ├── presion_descarga_VLP_bajando.m
+│   │   │   └── presion_succion.m
+│   │   ├── semaforos/
+│   │   │   ├── aos_color_estado.m
+│   │   │   ├── aos_dibujar_spot.m
+│   │   │   ├── aos_exportar_semaforos.m
+│   │   │   ├── aos_imprimir_semaforos.m
+│   │   │   ├── aos_semaforo_operacion.m
+│   │   │   └── aos_spot_texto.m
+│   │   ├── varios/
+│   │   │   ├── aos_presion_burbuja_a_pa.m
+│   │   │   ├── aos_starts_with.m
+│   │   │   ├── calc_factor_declinacion.m
+│   │   │   ├── calcular_viscosidad_cinematica.m
+│   │   │   ├── calibrar.m
+│   │   │   ├── cargar_valvula.m
+│   │   │   ├── corregir_curva_viscosidad.m
+│   │   │   ├── dimensionar_choke.m
+│   │   │   ├── diseno_mandriles.m
+│   │   │   ├── GL_flow_at_depth.m
+│   │   │   ├── obtener_survey.m
+│   │   │   ├── ternario_txt.m
+│   │   │   └── validar_parametro.m
+│   │   ├── aos_formato_caudal_gas.m
+│   │   ├── aos_formato_caudal_liquido.m
+│   │   ├── aos_formato_longitud.m
+│   │   ├── aos_formato_presion.m
+│   │   ├── aos_m3s_a_mmscfd.m
+│   │   ├── aos_m3s_a_sm3d.m
+│   │   ├── aos_mmscfd_a_m3s.m
+│   │   ├── aos_opcion_modelo_ipr.m
+│   │   ├── aos_opcion_modelo_vlp.m
+│   │   ├── aos_presion_bar_a_pa.m
+│   │   ├── aos_qiny_configurada.m
+│   │   ├── aos_qiny_limite_m3s.m
+│   │   ├── aos_reparar_discontinuidad_local.m
+│   │   ├── aos_sla_intake_guard.m
+│   │   └── aos_sm3d_a_m3s.m
+│   └── iniciar_aos.m
+├── AOS.m
+├── AOS_VERSION.txt
+├── CARGAR_BENCHMARK_SUPATI_001.m
+├── generar_mapa_actual.m
+├── LEEME_PRIMERO.txt
+├── mapa_actual.txt
+├── README.md
+├── README_AOS_0_0_1.md
+├── README_AOS_0_0_11.md
+├── VERIFICACION_ESTATICA_AOS_0_0_11.txt
+└── VERIFICAR_AOS_0_0_11.m

@@ -1,0 +1,18 @@
+{
+  "status": "APROBADA_ESTATICAMENTE",
+  "files": 1044,
+  "folders_including_root": 168,
+  "m_files": 743,
+  "m_physical_lines": 58564,
+  "m_code_lines_approx": 51306,
+  "m_comment_lines": 2905,
+  "m_blank_lines": 4353,
+  "function_declarations": 2175,
+  "json_files": 17,
+  "json_invalid": [],
+  "mat_files": [],
+  "duplicate_m_basenames": {},
+  "missing_aos_calls": [],
+  "critical_missing": [],
+  "obsolete_runtime_files_present": []
+}

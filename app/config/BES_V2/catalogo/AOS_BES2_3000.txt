@@ -1,0 +1,12 @@
+# AOS BES V2 - bomba genérica de mayor caudal, 1 etapa a 60 Hz
+modelo = AOS_BES2_3000
+origen = GENERICO_AOS_SCREENING
+frecuencia_base_Hz = 60
+Q_m3_d = [0,100,200,300,400,500,600,700,800,900]
+head_m_etapa = [12.8,12.5,12.0,11.2,10.1,8.8,7.2,5.4,3.4,1.2]
+eficiencia = [0.12,0.30,0.50,0.66,0.76,0.81,0.78,0.68,0.47,0.18]
+Q_BEP_m3_d = 500
+Q_min_recomendado_m3_d = 300
+Q_max_recomendado_m3_d = 700
+diametro_exterior_m = 0.135
+rpm_base = 3600

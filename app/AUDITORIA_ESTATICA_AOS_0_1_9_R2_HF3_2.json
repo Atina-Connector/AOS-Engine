@@ -1,0 +1,95 @@
+{
+  "files_total": 1051,
+  "m_files": 745,
+  "mat_files": 0,
+  "json_files": 18,
+  "json_errors": [],
+  "duplicate_m_basenames": {},
+  "new_files": [
+    "AUDITORIA_CIERRE_AOS_0_1_9_R2_HF3_2.md",
+    "AUDITORIA_ESTATICA_AOS_0_1_9_R2_HF3_2.json",
+    "AUDITORIA_ESTATICA_AOS_0_1_9_R2_HF3_2.txt",
+    "CHANGELOG_AOS_0_1_9_R2_HF3_2.md",
+    "REGRESIONES_AOS_0_1_9_R2_HF3_2.md",
+    "VERIFICAR_AOS_0_1_9_R2_HF3_2.m",
+    "src/tests/test_aos_contratos_estructuras_hf3_2.m"
+  ],
+  "modified_files": [
+    "AOS_VERSION.txt",
+    "README.md",
+    "VERIFICAR_AOS_0_1_9.m",
+    "VERIFICAR_AOS_0_1_9_R2_HF3.m",
+    "VERIFICAR_AOS_0_1_9_R2_HF3_1.m",
+    "VERSION",
+    "src/geologia/aos_geologia_resolver_punzados.m",
+    "src/tests/test_aos_auditoria_interacciones_hf2.m",
+    "src/tests/test_aos_geologia_transaccional_hf2.m",
+    "src/utilidades/diagnostico/aos_auditar_interacciones.m"
+  ],
+  "deleted_files": [],
+  "m_function_balance": [
+    [
+      "VERIFICAR_AOS_0_1_9.m",
+      10,
+      10,
+      true
+    ],
+    [
+      "VERIFICAR_AOS_0_1_9_R2_HF3.m",
+      1,
+      1,
+      true
+    ],
+    [
+      "VERIFICAR_AOS_0_1_9_R2_HF3_1.m",
+      1,
+      1,
+      true
+    ],
+    [
+      "VERIFICAR_AOS_0_1_9_R2_HF3_2.m",
+      2,
+      2,
+      true
+    ],
+    [
+      "src/geologia/aos_geologia_resolver_punzados.m",
+      2,
+      2,
+      true
+    ],
+    [
+      "src/tests/test_aos_auditoria_interacciones_hf2.m",
+      1,
+      1,
+      true
+    ],
+    [
+      "src/tests/test_aos_contratos_estructuras_hf3_2.m",
+      2,
+      2,
+      true
+    ],
+    [
+      "src/tests/test_aos_geologia_transaccional_hf2.m",
+      2,
+      2,
+      true
+    ],
+    [
+      "src/utilidades/diagnostico/aos_auditar_interacciones.m",
+      5,
+      5,
+      true
+    ]
+  ],
+  "checks": {
+    "auditor_typed_empty": true,
+    "auditor_empty_guard": true,
+    "geo_n_salida": true,
+    "geo_alias": true,
+    "new_test": true,
+    "verifier_hf32": true
+  },
+  "status": "APROBADA_ESTATICAMENTE"
+}

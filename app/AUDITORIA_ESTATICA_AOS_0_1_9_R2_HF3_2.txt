@@ -1,0 +1,31 @@
+AUDITORIA ESTATICA AOS 0.1.9 R2 HF3.2
+========================================
+Archivos totales: 1051
+Archivos .m: 745
+Archivos .mat: 0
+JSON validos: 18 de 18
+Duplicados .m en src: 0
+Archivos nuevos vs HF3.1: 7
+Archivos modificados vs HF3.1: 10
+Archivos eliminados vs HF3.1: 0
+
+Controles:
+  auditor_typed_empty: OK
+  auditor_empty_guard: OK
+  geo_n_salida: OK
+  geo_alias: OK
+  new_test: OK
+  verifier_hf32: OK
+
+Balance function/endfunction en archivos nuevos/modificados:
+  VERIFICAR_AOS_0_1_9.m: function=10 endfunction=10 OK
+  VERIFICAR_AOS_0_1_9_R2_HF3.m: function=1 endfunction=1 OK
+  VERIFICAR_AOS_0_1_9_R2_HF3_1.m: function=1 endfunction=1 OK
+  VERIFICAR_AOS_0_1_9_R2_HF3_2.m: function=2 endfunction=2 OK
+  src/geologia/aos_geologia_resolver_punzados.m: function=2 endfunction=2 OK
+  src/tests/test_aos_auditoria_interacciones_hf2.m: function=1 endfunction=1 OK
+  src/tests/test_aos_contratos_estructuras_hf3_2.m: function=2 endfunction=2 OK
+  src/tests/test_aos_geologia_transaccional_hf2.m: function=2 endfunction=2 OK
+  src/utilidades/diagnostico/aos_auditar_interacciones.m: function=5 endfunction=5 OK
+
+RESULTADO: APROBADA_ESTATICAMENTE

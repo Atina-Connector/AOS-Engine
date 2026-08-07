@@ -1,0 +1,76 @@
+{
+  "version": "AOS 0.1.9 R2 HF3.4",
+  "status": "APROBADA_ESTATICAMENTE",
+  "root": "AOS_0_1_9_R2_HF3_4",
+  "metrics": {
+    "files": 1071,
+    "directories_including_root": 170,
+    "m_files": 753,
+    "m_physical_lines": 59319,
+    "m_effective_lines": 51948,
+    "m_comment_lines": 2965,
+    "m_blank_lines": 4406,
+    "function_declarations": 2193,
+    "json_files": 20,
+    "mat_files": 0,
+    "duplicate_m_basenames_in_src": 0
+  },
+  "comparison_to_hf3_3": {
+    "added_count": 10,
+    "changed_count": 18,
+    "removed_count": 0,
+    "added": [
+      "AUDITORIA_CIERRE_AOS_0_1_9_R2_HF3_4.md",
+      "AUDITORIA_ESTATICA_AOS_0_1_9_R2_HF3_4.json",
+      "AUDITORIA_ESTATICA_AOS_0_1_9_R2_HF3_4.txt",
+      "CHANGELOG_AOS_0_1_9_R2_HF3_4.md",
+      "REGRESIONES_AOS_0_1_9_R2_HF3_4.md",
+      "VERIFICAR_AOS_0_1_9_R2_HF3_4.m",
+      "VERIFICAR_GF3_CONTRATO_ESPACIAMIENTO_HF3_4.m",
+      "historial/HF3_3/README_HF3_3.md",
+      "src/tests/test_aos_geologia_idempotencia_hf3_4.m",
+      "src/tests/test_gf3_contrato_espaciamiento_hf3_4.m"
+    ],
+    "changed": [
+      "AOS_VERSION.txt",
+      "LEEME_PRIMERO.txt",
+      "MANIFEST_AOS_0_1_9_R2.txt",
+      "README.md",
+      "SHA256SUMS_AOS_0_1_9_R2.txt",
+      "VERIFICAR_AOS_0_1_9.m",
+      "VERIFICAR_AOS_0_1_9_R2_HF3.m",
+      "VERIFICAR_AOS_0_1_9_R2_HF3_1.m",
+      "VERIFICAR_AOS_0_1_9_R2_HF3_2.m",
+      "VERIFICAR_AOS_0_1_9_R2_HF3_3.m",
+      "VERSION",
+      "src/core/BM/gibbs_foundation3/gibbs3_report_context.m",
+      "src/core/BM/gibbs_foundation3/gibbs3_rod_spacing_design.m",
+      "src/core/BM/gibbs_foundation3/gibbs3_selftest.m",
+      "src/core/BM/gibbs_foundation3/gibbs3_upgrade_result_schema.m",
+      "src/core/BM/gibbs_foundation3/gibbs3_validate_result.m",
+      "src/geologia/aos_geologia_commit.m",
+      "src/menu/AOS_app.m"
+    ],
+    "removed": []
+  },
+  "checks": {
+    "geologia_usa_isequaln": true,
+    "geologia_no_usa_isequal_directo": true,
+    "spacing_publica_valido_calculo": true,
+    "spacing_publica_mensaje_validacion": true,
+    "migrador_reconstruye_aliases": true,
+    "validador_acepta_alias_historico": true,
+    "reporte_acepta_aliases": true,
+    "selftest_diagnostico_detallado": true,
+    "regresion_geologia_presente": true,
+    "regresion_gf3_presente": true,
+    "verificador_hf34_presente": true
+  },
+  "json_errors": [],
+  "duplicate_m_files": {},
+  "syntax_warnings": [],
+  "new_file_function_balance_issues": [],
+  "limitations": [
+    "No se ejecuto GNU Octave en el entorno de construccion; la aprobacion dinamica corresponde a la instalacion de destino."
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "info": {
+    "schema": "AOSBCK-0.1.9-R1",
+    "format": "ZIP_JSON_STEP"
+  },
+  "component": {
+    "component_id": "BCK-CPL-278-EUE-N80",
+    "component_type": "TUBING_COUPLING",
+    "part_number": "CPL-278-EUE-N80",
+    "description": "Cupla tubing 2 7/8 EUE",
+    "manufacturer_id": "MANUFACTURER-001",
+    "supplier_id": "SUPPLIER-001",
+    "material_id": "MAT-API5CT-N80"
+  },
+  "geometry": {
+    "format": "STEP",
+    "package_path": "geometry/coupling.step",
+    "units": "mm"
+  },
+  "ports": [],
+  "instances": [
+    {
+      "instance_id": "CUPLA-SUPX1-0001",
+      "component_id": "BCK-CPL-278-EUE-N80",
+      "placement": {
+        "source": "WELL_SURVEY",
+        "well_id": "SUPATI-X1",
+        "md_m": 120.35,
+        "position_m": [
+          0,
+          0,
+          -120.35
+        ],
+        "orientation_quaternion_wxyz": [
+          1,
+          0,
+          0,
+          0
+        ]
+      },
+      "status": "INSTALLED"
+    }
+  ]
+}

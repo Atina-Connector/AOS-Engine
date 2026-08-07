@@ -1,0 +1,208 @@
+{
+  "result": "PASS_STATIC",
+  "base": "/mnt/data/aos_sens02_review/AOS_0_2_0_DEV1_ENV02_SENS02",
+  "candidate": "/mnt/data/_sens03_release/AOS_0_2_0_DEV1_ENV02_SENS03",
+  "inventory": {
+    "base_files": 1315,
+    "candidate_files": 1342,
+    "added": 27,
+    "modified": 26,
+    "deleted": 0,
+    "json_count": 38,
+    "src_m_count": 841,
+    "changed_m_checked": 32
+  },
+  "added": [
+    "AUDITORIA_ESTATICA_SENS_GLJGL_03.json",
+    "AUDITORIA_ESTATICA_SENS_GLJGL_03.md",
+    "CHANGELOG_SENS_GLJGL_03.md",
+    "HOTFIX_SENS_GLJGL_03.txt",
+    "INSTRUCCIONES_APLICACION_SENS_GLJGL_03.md",
+    "LEEME_PARCHE_SENS_GLJGL_03.txt",
+    "MANIFEST_AOS_0_2_0_DEV1_ENV02_SENS03.txt",
+    "PATCH_FILE_LIST_SENS03.txt",
+    "REGRESIONES_SENS_GLJGL_03.md",
+    "REPORTE_EMPAQUETADO_SENS_GLJGL_03.md",
+    "VERIFICAR_SENS_GLJGL_03.m",
+    "src/core/JGL/jgl_condicion_motriz.m",
+    "src/core/JGL/jgl_deltaP_cinetica_qiny.m",
+    "src/core/JGL/jgl_modo_condicion_motriz.m",
+    "src/roadmap/aos_hotfix_sens_gljgl_03.json",
+    "src/sensibilidad/sens_jgl_construir_presiones.m",
+    "src/sensibilidad/sens_jgl_graficar_presiones.m",
+    "src/sensibilidad/sens_jgl_imprimir_presiones.m",
+    "src/sensibilidad/sens_jgl_limite_presion.m",
+    "src/sensibilidad/sens_menu_condicion_motriz_jgl.m",
+    "src/tests/test_sens_gljgl03_barrido_derivado_jgl.m",
+    "src/tests/test_sens_gljgl03_condicion_motriz_derivada.m",
+    "src/tests/test_sens_gljgl03_contrato_estatico.m",
+    "src/tests/test_sens_gljgl03_eductor_derivado_no_bloqueado.m",
+    "src/tests/test_sens_gljgl03_inversion_columna.m",
+    "src/tests/test_sens_gljgl03_limite_presion.m",
+    "src/tests/test_sens_gljgl03_presion_disponible.m"
+  ],
+  "modified": [
+    "AOS_0_2_0_DEV1_CONTEXTO_COMPLETO.md",
+    "AOS_VERSION.txt",
+    "CHANGELOG_AOS_0_2_0_DEV1.md",
+    "CONTEXTO_AOS_0_2_0_DEV1.md",
+    "LEEME_PRIMERO.txt",
+    "README.md",
+    "REGRESIONES_AOS_0_2_0_DEV1.md",
+    "VERIFICAR_AOS_0_2_0_DEV1.m",
+    "documentos/AOS_0_2_0_DEV1_CONTEXTO_COMPLETO.md",
+    "src/core/JGL/jgl_armar_solucion.m",
+    "src/core/JGL/jgl_defaults.m",
+    "src/core/JGL/jgl_eductor_comun.m",
+    "src/core/JGL/jgl_eductor_estado_aplicado.m",
+    "src/core/JGL/jgl_presion_motriz_fondo.m",
+    "src/core/JGL/jgl_sensibilidad_parametrica.m",
+    "src/menu/JGL_menu.m",
+    "src/roadmap/aos_release_0_2_0_dev1.json",
+    "src/roadmap/aos_solvers_0_2_0_dev1.json",
+    "src/sensibilidad/sens_Qiny.m",
+    "src/sensibilidad/sens_Qiny_JGL.m",
+    "src/sensibilidad/sens_exportar_resultados.m",
+    "src/sensibilidad/sens_firma_config_gl_jgl.m",
+    "src/sensibilidad/sens_jgl_evaluar_punto.m",
+    "src/sensibilidad/sens_jgl_gl_malla.m",
+    "src/sensibilidad/sens_validar_punto_jgl.m",
+    "src/utilidades/nodal/eductor_jgl.m"
+  ],
+  "deleted": [],
+  "protected_hashes": {
+    "src/core/GL/GL_sim.m": "e4ebbe948b8d41b7d2a64a55224a144fd7096ca6d6c30960c2c51758f0709f86",
+    "src/utilidades/nodal/aos_nodal_balance_gl.m": "c8cd8a616f8a225c716c131caadb4aa87720b660f403503f78b517bb49c06d0f",
+    "src/utilidades/nodal/aos_buscar_cruce_nodal.m": "038fae7cc180e50af0f226fb2a63d3a48f47aa4e9d94b7fecd071a8f00d80451",
+    "src/core/JGL/jgl_solver_directo.m": "f6c8cabeefd272722a8a9cce382be5459c8a5dae5e71cb10fcf05fd9c0e6654a",
+    "src/core/JGL/jgl_solver_iterativo.m": "d212c3d067ee45c16169a5122cac8a4fb1872425329153d6c130f217ed64c9c8"
+  },
+  "checks": [
+    {
+      "name": "candidate_exists",
+      "ok": true,
+      "detail": "/mnt/data/_sens03_release/AOS_0_2_0_DEV1_ENV02_SENS03"
+    },
+    {
+      "name": "no_removed_files_vs_sens02",
+      "ok": true,
+      "detail": "removed=0"
+    },
+    {
+      "name": "all_json_valid",
+      "ok": true,
+      "detail": "count=38; errors=[]"
+    },
+    {
+      "name": "no_mat_files",
+      "ok": true,
+      "detail": "count=0"
+    },
+    {
+      "name": "no_duplicate_m_basenames_in_src",
+      "ok": true,
+      "detail": "m_count=841; duplicates={}"
+    },
+    {
+      "name": "protected_physical_cores_unchanged",
+      "ok": true,
+      "detail": "src/core/GL/GL_sim.m=True; src/utilidades/nodal/aos_nodal_balance_gl.m=True; src/utilidades/nodal/aos_buscar_cruce_nodal.m=True; src/core/JGL/jgl_solver_directo.m=True; src/core/JGL/jgl_solver_iterativo.m=True"
+    },
+    {
+      "name": "required_sens03_files_present",
+      "ok": true,
+      "detail": "missing=[]"
+    },
+    {
+      "name": "changed_m_static_lexical_checks",
+      "ok": true,
+      "detail": "checked=32; issues=[]"
+    },
+    {
+      "name": "three_explicit_motive_modes_visible",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "point_jgl_uses_explicit_motive_menu",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "strict_default_no_hidden_derivation",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "required_pressure_formulas_present",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "imported_configured_available_required_effective_are_separate",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "derived_mode_does_not_overwrite_input_struct",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "motive_condition_precedes_block",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "pressure_graph_has_required_series",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "motive_pressure_reporting_present",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "menu_graph_reporting_sens_Qiny_JGL",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "menu_graph_reporting_sens_Qiny",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "sens02_polynomial_inherited",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "no_new_hidden_polyfit_in_sens03",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "deep_sweep_test_registered",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "independent_pressure_formula_check",
+      "ok": true,
+      "detail": "factor=1.13914232; dPbar=5.61012; Psupbar=75.1531; errPa=0"
+    },
+    {
+      "name": "independent_pressure_limit_check",
+      "ok": true,
+      "detail": "Qiny_limit=1500.0"
+    },
+    {
+      "name": "release_metadata_sens03",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "dynamic_validation": "NOT_RUN_GNU_OCTAVE_UNAVAILABLE"
+}

@@ -1,0 +1,130 @@
+ARCHIVO HISTORICO - NO EJECUTAR NI AGREGAR AL PATH
+Origen R1: src/modulos/cad_topo/aos_verificar_requisitos_plataforma.m
+Retirado en R2 por duplicar la interfaz publica src/menu/aos_verificar_requisitos_plataforma.m.
+El contenido se conserva para trazabilidad y no forma parte del path de GNU Octave.
+
+function estado = aos_verificar_requisitos_plataforma(imprimir)
+% Verifica GNU Octave y herramientas CAD externas.
+  if nargin < 1, imprimir = true; endif
+  estado = struct();
+  estado.octave = programa_path_local({'octave-cli', 'octave'});
+  estado.librecad = aos_cad_localizar_programa('LibreCAD');
+  estado.freecad = aos_cad_localizar_programa('FreeCAD');
+  estado.opencascade = opencascade_local();
+  estado.octave_flatpak = en_flatpak_local();
+  estado.motor_cientifico = estado.octave.encontrado;
+  estado.aos_core = estado.octave.encontrado;
+  estado.ingenieria_completa = estado.octave.encontrado && ...
+    estado.librecad.gui_disponible && estado.freecad.gui_disponible;
+  if imprimir
+    fprintf('\n--- REQUISITOS DE PLATAFORMA AOS ---\n');
+    imprimir_item_local('GNU Octave - motor oficial y obligatorio', estado.octave);
+    imprimir_item_local('LibreCAD - editor CAD 2D', estado.librecad);
+    imprimir_item_local('FreeCAD - editor CAD 3D', estado.freecad);
+    imprimir_item_local('Open CASCADE - motor futuro', estado.opencascade);
+    fprintf('Octave dentro de Flatpak         : %s\n', si_no_local(estado.octave_flatpak));
+    fprintf('AOS Core disponible              : %s\n', si_no_local(estado.aos_core));
+    fprintf('Integracion CAD grafica completa : %s\n', si_no_local(estado.ingenieria_completa));
+    fprintf('AOSCAD no usa motores cientificos alternativos ni formatos binarios paralelos.\n');
+  endif
+endfunction
+
+
+function tf = en_flatpak_local()
+  tf = false;
+  try
+    inv = '';
+    try, inv = program_invocation_name(); catch, end_try_catch
+    tf = (exist('/.flatpak-info', 'file') == 2) || ...
+         ~isempty(strtrim(getenv('FLATPAK_ID'))) || ...
+         strncmp(strtrim(char(inv)), '/app/', 5);
+  catch
+    tf = false;
+  end_try_catch
+endfunction
+
+function r = programa_path_local(nombres)
+  r = struct('encontrado', false, 'comando', '', 'ruta', '', ...
+             'metodo', '', 'gui_disponible', false, 'cli_disponible', false);
+  for i = 1:numel(nombres)
+    n = nombres{i};
+    if ispc()
+      [st, out] = system(sprintf('where %s 2>NUL', n));
+    else
+      [st, out] = system(sprintf('command -v %s 2>/dev/null', n));
+    endif
+    if st == 0 && ~isempty(strtrim(out))
+      r.encontrado = true;
+      r.comando = n;
+      r.ruta = strtrim(strtok(out, sprintf('\n')));
+      r.metodo = 'PATH';
+      r.cli_disponible = true;
+      return;
+    endif
+  endfor
+endfunction
+
+function r = opencascade_local()
+  r = struct('encontrado', false, 'comando', 'occt-draw', 'ruta', '', ...
+             'metodo', '', 'gui_disponible', false, 'cli_disponible', false, ...
+             'gui_cmd', '', 'detalle', '');
+  if ispc(), return; endif
+
+  % 1. Ejecutable visible en el entorno actual.
+  [st, out] = system('command -v occt-draw 2>/dev/null');
+  if st == 0 && ~isempty(strtrim(out))
+    r.encontrado = true;
+    r.ruta = strtrim(strtok(out, sprintf('\n')));
+    r.metodo = 'PATH';
+    r.cli_disponible = true;
+    r.comando = r.ruta;
+    r.detalle = 'Open CASCADE DRAWEXE localizado en el entorno actual.';
+    return;
+  endif
+
+  % 2. Octave Flatpak: consultar el sistema anfitrion.
+  if en_flatpak_local()
+    [st_spawn, out_spawn] = system('command -v flatpak-spawn 2>/dev/null');
+    if st_spawn == 0 && ~isempty(strtrim(out_spawn))
+      spawn = strtrim(strtok(out_spawn, sprintf('\n')));
+      cmd = sprintf('%s --host sh -lc ''command -v occt-draw 2>/dev/null''', spawn);
+      [st, out] = system(cmd);
+      if st == 0 && ~isempty(strtrim(out))
+        host_exe = strtrim(strtok(out, sprintf('\n')));
+        r.encontrado = true;
+        r.ruta = host_exe;
+        r.metodo = 'flatpak_spawn_host';
+        r.cli_disponible = true;
+        r.comando = sprintf('%s --host %s', spawn, host_exe);
+        r.detalle = 'Open CASCADE DRAWEXE localizado en el sistema anfitrion.';
+        return;
+      endif
+    endif
+  endif
+
+  % 3. Respaldo: bibliotecas OCCT, aunque DRAWEXE no este en PATH.
+  [st, out] = system('ldconfig -p 2>/dev/null | grep -E "libTK(BRep|GeomBase|STEP|V3d)" | head -1');
+  if st == 0 && ~isempty(strtrim(out))
+    r.encontrado = true;
+    r.ruta = strtrim(out);
+    r.metodo = 'ldconfig';
+    r.cli_disponible = false;
+    r.detalle = 'Bibliotecas Open CASCADE presentes; occt-draw no visible.';
+  endif
+endfunction
+
+function imprimir_item_local(nombre, r)
+  if r.encontrado
+    metodo = '';
+    if isfield(r, 'metodo') && ~isempty(r.metodo), metodo = [' [' r.metodo ']']; endif
+    comando = r.ruta;
+    if isfield(r, 'gui_cmd') && ~isempty(r.gui_cmd), comando = r.gui_cmd; endif
+    fprintf('%-44s : OK%s  %s\n', nombre, metodo, comando);
+  else
+    fprintf('%-44s : NO ENCONTRADO\n', nombre);
+  endif
+endfunction
+
+function s = si_no_local(v)
+  if v, s = 'SI'; else, s = 'NO'; endif
+endfunction
