@@ -82,6 +82,17 @@ int main(void) {
         return 1;
     }
 
+    /* AOS.m ya sabe suprimir ventanas de graficos si AOS_GRAPHICS_MODE=file
+     * (set(0,'defaultfigurevisible','off')) -- es como Docker se queda en
+     * modo CLI puro (headless ahi por no tener display en absoluto; en
+     * Windows el runtime de Octave si trae Qt/GUI, asi que hace falta
+     * pedirlo explicitamente). Se setea en el propio proceso del launcher
+     * y se hereda en el hijo al pasar lpEnvironment=NULL. */
+    if (!SetEnvironmentVariableW(L"AOS_GRAPHICS_MODE", L"file")) {
+        PrintLastError(L"no se pudo configurar el modo headless");
+        return 1;
+    }
+
     STARTUPINFOW si;
     PROCESS_INFORMATION pi;
     ZeroMemory(&si, sizeof(si));
@@ -98,7 +109,7 @@ int main(void) {
         NULL,
         TRUE,       /* bInheritHandles */
         0,          /* sin flags de creacion especiales */
-        NULL,       /* hereda el entorno del launcher, sin variables nuevas */
+        NULL,       /* hereda el entorno del launcher, incluido AOS_GRAPHICS_MODE */
         exeDir,     /* working directory; AOS.m igual hace cd(root_dir) solo */
         &si,
         &pi);

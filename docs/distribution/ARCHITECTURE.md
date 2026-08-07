@@ -45,16 +45,22 @@ C:\Program Files\AOS\
    `CreateProcessW` heredando la consola actual — sin redirigir stdio a
    mano, sin `CREATE_NEW_CONSOLE`. Esto es lo que permite que `AOS.exe`
    funcione igual desde un acceso directo, `cmd` o PowerShell, sin tocar el
-   `PATH` del usuario ni variables de entorno globales.
+   `PATH` del usuario ni variables de entorno globales. También fija
+   `AOS_GRAPHICS_MODE=file` antes de lanzar Octave (ver "Paridad con
+   Docker" abajo) para que no se abran ventanas de gráficos.
 4. **`packaging/windows/installer/AOS.iss`** (Inno Setup) empaqueta las
-   tres piezas de arriba. Su parte no trivial es el `[Code]` post-install:
-   migra el contenido semilla de `app\datos_usuario` y `app\intercambio` a
-   `Documents\AOS\` la primera vez, y deja esas dos carpetas dentro de la
-   instalación como junctions NTFS hacia esa ubicación real — el mismo
-   modelo mental que ya usan los bind-mounts de
-   `docker/docker-compose.yml`, pero sin ningún cambio en el código Octave
-   (que ya asume rutas relativas tipo `fullfile('intercambio', ...)`
-   confiando en que `AOS.m` hizo `cd(root_dir)` al arrancar).
+   tres piezas de arriba. Tiene dos partes no triviales en `[Code]`:
+   - Post-install migra el contenido semilla de `app\datos_usuario` y
+     `app\intercambio` a `Documents\AOS\` la primera vez, y deja esas dos
+     carpetas dentro de la instalación como junctions NTFS hacia esa
+     ubicación real — el mismo modelo mental que ya usan los bind-mounts de
+     `docker/docker-compose.yml`, pero sin ningún cambio en el código
+     Octave (que ya asume rutas relativas tipo
+     `fullfile('intercambio', ...)` confiando en que `AOS.m` hizo
+     `cd(root_dir)` al arrancar).
+   - También resetea el `LastWriteTime` de todo `app\` al momento de la
+     instalación (ver "Advertencias de timestamp" abajo), antes de crear
+     las junctions para no tocar nunca el dato real del usuario.
 
 ## Por qué `salida\` y `logs\` no son junctions
 
@@ -78,6 +84,34 @@ a investigar, no una diferencia de versión esperada. Si en el futuro se
 actualiza la versión de Octave en el Dockerfile, hay que agregar el hash
 correspondiente a `$KnownHashes` en `prepare-octave-runtime.ps1` y
 actualizar el default de `-Version`.
+
+**Modo gráfico:** Docker queda en CLI puro de forma estructural (el
+contenedor no tiene display en absoluto, más `GNUTERM=dumb` en
+`docker-compose.yml`), no porque `AOS_GRAPHICS_MODE=off` (el valor que de
+hecho está seteado ahí) dispare la lógica de `AOS.m` — esa lógica compara
+contra el string `"file"`, no `"off"`, así que en Docker ese chequeo nunca
+se ejercita realmente. El runtime de Octave para Windows sí trae Qt/GUI
+completo, así que sin pedir explícitamente el modo headless abriría
+ventanas de gráficos reales. `aos_launcher.c` fija `AOS_GRAPHICS_MODE=file`
+(el valor que `AOS.m` sí reconoce) antes de invocar Octave, logrando el
+mismo resultado de punta a punta (nunca se abre una ventana, los gráficos
+que se exportan a archivo siguen generándose) sin tocar `AOS.m` ni el
+`docker-compose.yml` existente.
+
+## Advertencias de timestamp ("time stamp for '...' is in the future")
+
+Octave compara el `mtime` de cada `.m` contra el reloj de la máquina que lo
+ejecuta. Los archivos que llegan al instalador conservan el `mtime` del
+checkout en el runner de GitHub Actions; si el reloj de la máquina de
+destino está atrasado respecto a ese momento (frecuente en VMs recién
+creadas, clonadas de una imagen, o sin sincronización horaria), Octave
+marca esos archivos como "del futuro" en cada arranque — es sólo
+cosmético, no cambia ningún resultado. `AOS.iss` lo resuelve reseteando el
+`LastWriteTime` de todo `app\` al momento de la instalación, usando el
+reloj local de esa misma máquina (nunca puede quedar en el futuro respecto
+de sí misma). Si el problema persiste después de instalar, es señal de que
+el reloj del sistema sigue mal configurado — vale la pena confirmarlo
+aparte (`Configuración → Hora e idioma → Sincronizar ahora`).
 
 ## Qué NO hace esta arquitectura (todavía)
 

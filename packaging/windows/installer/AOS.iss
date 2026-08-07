@@ -116,10 +116,36 @@ begin
   ForceDirectories(GetUserAOSRoot() + '\' + RelName);
 end;
 
+{ Octave avisa "time stamp for '...' is in the future" para cualquier .m
+  cuyo mtime quede por delante del reloj de la maquina que lo lee. Los
+  archivos instalados conservan el mtime del checkout de CI (build en
+  GitHub Actions); si el reloj de la maquina de destino esta atrasado
+  (comun en VMs recien creadas o sin sincronizar), Octave los ve como
+  "del futuro" en cada arranque. Se resetea el mtime de todo app\ al
+  momento de la instalacion -- usando el reloj LOCAL de esa misma
+  maquina, asi nunca puede quedar en el futuro respecto de si misma. }
+procedure NormalizeInstalledTimestamps();
+var
+  ResultCode: Integer;
+  Cmd: string;
+begin
+  Cmd := '-NoProfile -ExecutionPolicy Bypass -Command "Get-ChildItem -LiteralPath ''' +
+    ExpandConstant('{app}\app') +
+    ''' -Recurse -File | ForEach-Object { $_.LastWriteTime = Get-Date }"';
+  Exec(ExpandConstant('{sys}\WindowsPowerShell\v1.0\powershell.exe'), Cmd, '',
+    SW_HIDE, ewWaitUntilTerminated, ResultCode);
+end;
+
 procedure CurStepChanged(CurStep: TSetupStep);
 begin
   if CurStep = ssPostInstall then
   begin
+    { Antes de crear las junctions: Get-ChildItem -Recurse las atraviesa,
+      asi que si esto corriera despues tocaria el LastWriteTime de los
+      archivos reales del usuario en Documents\AOS en cada upgrade. Antes
+      de migrar, datos_usuario/intercambio todavia son la semilla recien
+      copiada por [Files], nunca el dato real del usuario. }
+    NormalizeInstalledTimestamps();
     MigrateToUserDataAndLink('datos_usuario');
     MigrateToUserDataAndLink('intercambio');
     EnsureEmptyUserFolder('salida');

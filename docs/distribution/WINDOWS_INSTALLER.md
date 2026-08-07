@@ -43,6 +43,10 @@ localmente. Copiarlo a la VM de prueba.
   `intercambio\cad\recibidos\demo_aos_wells.dxf`).
 - [ ] Confirmar que `%USERPROFILE%\Documents\AOS\salida` y `...\logs`
   existen (vacías).
+- [ ] Confirmar que el reloj de la máquina de prueba está correcto
+  (`Configuración → Hora e idioma`) — si está atrasado respecto al momento
+  real, aunque el fix de timestamps funcione bien, vale la pena anotarlo
+  como posible causa de otras rarezas.
 
 ## 3. Arranque sin herramientas de desarrollo
 
@@ -52,6 +56,9 @@ localmente. Copiarlo a la VM de prueba.
   "C:\Program Files\AOS\AOS.exe"
   ```
   Debe mostrar el menú principal de AOS (`AOS SUITE 0.2.0 DEV1 - ...`).
+- [ ] Confirmar que **no** aparecen warnings `time stamp for '...' is in
+  the future` en la salida. Si aparecen, revisar `NormalizeInstalledTimestamps`
+  en `AOS.iss` y el reloj de la máquina.
 - [ ] Confirmar que responde a la interacción normal: elegir una opción del
   menú, volver, etc.
 - [ ] Salir con `0`, confirmar con `s`. `AOS.exe` debe devolver el control a
@@ -75,10 +82,10 @@ localmente. Copiarlo a la VM de prueba.
   `%USERPROFILE%\Documents\AOS\intercambio\reportes\enviados\` — visible
   directamente desde el Explorador de Windows, sin tener que buscarlo
   dentro de Program Files.
-- [ ] Si el módulo generó algún gráfico, confirmar que se ve una ventana de
-  gráfico real (el build de Windows de Octave trae Qt/GUI, a diferencia del
-  Octave headless de Docker) o que el archivo de imagen se generó
-  correctamente si el flujo es a archivo.
+- [ ] Confirmar que **no se abre ninguna ventana de gráficos** (mismo
+  comportamiento CLI puro que Docker, ver `ARCHITECTURE.md` sección
+  "Paridad con Docker") y que, si el módulo exporta algún gráfico a
+  archivo, ese archivo se generó igual.
 
 ## 5. Upgrade
 
