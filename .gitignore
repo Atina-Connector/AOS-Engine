@@ -9,11 +9,6 @@ dist/*
 downloads/
 tmp/
 
-# Downloaded/extracted Windows Octave runtime (fetched by
-# packaging/windows/scripts/prepare-octave-runtime.ps1)
-packaging/windows/scripts/octave-runtime-cache/
-runtime/octave/
-
 # Release artifacts (built by CI, uploaded as artifacts/releases, not committed)
 *.exe
 *.msi
