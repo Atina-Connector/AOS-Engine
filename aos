@@ -1,0 +1,78 @@
+#!/usr/bin/env bash
+
+set -Eeuo pipefail
+
+CONTAINER_NAME="${AOS_CONTAINER_NAME:-aos}"
+
+if ! docker inspect "$CONTAINER_NAME" >/dev/null 2>&1; then
+    echo "ERROR: El contenedor '$CONTAINER_NAME' no existe." >&2
+    echo "Ejecutá primero: docker compose up -d" >&2
+    exit 1
+fi
+
+RUNNING="$(
+    docker inspect \
+        --format '{{.State.Running}}' \
+        "$CONTAINER_NAME"
+)"
+
+if [[ "$RUNNING" != "true" ]]; then
+    echo "Iniciando contenedor AOS..."
+    docker start "$CONTAINER_NAME" >/dev/null
+fi
+
+case "${1:-run}" in
+    run)
+        exec docker exec \
+            -it \
+            -w /opt/aos \
+            "$CONTAINER_NAME" \
+            /usr/local/bin/aos-internal run
+        ;;
+
+    verify)
+        exec docker exec \
+            -it \
+            -w /opt/aos \
+            "$CONTAINER_NAME" \
+            /usr/local/bin/aos-internal verify
+        ;;
+
+    octave)
+        shift
+
+        exec docker exec \
+            -it \
+            -w /opt/aos \
+            "$CONTAINER_NAME" \
+            /usr/local/bin/aos-internal octave "$@"
+        ;;
+
+    shell)
+        exec docker exec \
+            -it \
+            -w /opt/aos \
+            "$CONTAINER_NAME" \
+            /usr/local/bin/aos-internal shell
+        ;;
+
+    start)
+        docker start "$CONTAINER_NAME" >/dev/null
+        echo "AOS iniciado."
+        ;;
+
+    stop)
+        docker stop "$CONTAINER_NAME"
+        ;;
+
+    status)
+        docker inspect \
+            --format 'Estado={{.State.Status}} Inicio={{.State.StartedAt}}' \
+            "$CONTAINER_NAME"
+        ;;
+
+    *)
+        echo "Uso: aos [run|verify|octave|shell|start|stop|status]" >&2
+        exit 2
+        ;;
+esac

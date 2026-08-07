@@ -1,0 +1,26 @@
+
+services:
+  aos:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    image: aos:0.2.0-dev1
+    container_name: aos
+
+    restart: unless-stopped
+
+    environment:
+      AOS_GRAPHICS_MODE: "off"
+      LANG: C.UTF-8
+      LC_ALL: C.UTF-8
+      GNUTERM: dumb
+      AOS_ROOT: /opt/aos
+
+    volumes:
+      - ./runtime/datos_usuario:/opt/aos/datos_usuario
+      - ./runtime/intercambio:/opt/aos/intercambio
+      - ./runtime/salida:/opt/aos/salida
+      - ./runtime/logs:/opt/aos/logs
+
+    working_dir: /opt/aos

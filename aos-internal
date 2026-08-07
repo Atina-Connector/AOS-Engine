@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+
+set -Eeuo pipefail
+
+AOS_ROOT="${AOS_ROOT:-/opt/aos}"
+
+cd "$AOS_ROOT"
+
+if [[ ! -f "$AOS_ROOT/AOS.m" ]]; then
+    echo "ERROR: No se encontró $AOS_ROOT/AOS.m" >&2
+    exit 1
+fi
+
+case "${1:-run}" in
+    run)
+        exec 9>/tmp/aos.lock
+
+        if ! flock -n 9; then
+            echo "ERROR: Ya existe una sesión de AOS en ejecución." >&2
+            exit 1
+        fi
+
+        exec octave-cli \
+            --quiet \
+            --no-history \
+            --no-init-file \
+            "$AOS_ROOT/AOS.m"
+        ;;
+
+    verify)
+        exec octave-cli \
+            --quiet \
+            --no-history \
+            --no-init-file \
+            "$AOS_ROOT/VERIFICAR_AOS_0_2_0_DEV1.m"
+        ;;
+
+    octave)
+        shift
+        exec octave-cli \
+            --quiet \
+            --no-history \
+            --no-init-file \
+            "$@"
+        ;;
+
+    shell)
+        exec bash
+        ;;
+
+    *)
+        exec "$@"
+        ;;
+esac
