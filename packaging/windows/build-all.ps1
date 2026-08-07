@@ -127,16 +127,49 @@ Write-Host "[OK] Visual Studio Build Tools: $vcvarsall"
 
 if (-not (Test-Command "cl.exe")) {
     Write-Host "Importando el entorno de MSVC (vcvarsall.bat x64) al proceso actual..."
-    # vcvarsall.bat es un .bat: se lo corre en un cmd.exe hijo y se vuelca el
-    # "set" resultante para importar esas variables (PATH/INCLUDE/LIB, etc.)
-    # al proceso de PowerShell actual. Truco estandar para usar herramientas
-    # de MSVC desde afuera de un "Developer Command Prompt".
-    #
-    # "&" en vez de "&&", y sin silenciar la salida: con "&&" y ">nul 2>&1",
-    # si vcvarsall.bat devuelve un exit code no-cero por cualquier motivo
-    # (banners de primera ejecucion, warnings no fatales, etc.) el "set"
-    # nunca corre y no queda ningun rastro de por que fallo.
-    $envDump = & cmd.exe /c "`"$vcvarsall`" x64 & set"
+
+    # Si esta maquina ya tiene OTRA instalacion/edicion de Visual Studio
+    # (p.ej. VS Community junto con estas Build Tools) y la sesion actual
+    # ya trae variables de esa otra instalacion (VSINSTALLDIR, VCINSTALLDIR,
+    # VSCMD_VER, etc.), vcvarsall.bat/VsDevCmd.bat se confunde al intentar
+    # inicializar una instalacion DISTINTA sobre ese estado y falla con
+    # "VsDevCmd.bat encountered errors" -- no esta pensado para
+    # reinicializarse sobre un entorno ya inicializado por otra instalacion.
+    # Se lanza cmd.exe con una copia del entorno actual pero sin esas
+    # variables, para que vcvarsall.bat siempre parta de cero.
+    $vsEnvVarsToStrip = @(
+        "DevEnvDir", "ExtensionSdkDir", "EXTERNAL_INCLUDE",
+        "Framework40Version", "FrameworkDir", "FrameworkDir64",
+        "FrameworkVersion", "FrameworkVersion64", "FSHARPINSTALLDIR",
+        "INCLUDE", "LIB", "LIBPATH", "NETFXSDKDir", "UCRTVersion",
+        "UniversalCRTSdkDir", "VCIDEInstallDir", "VCINSTALLDIR",
+        "VCToolsInstallDir", "VCToolsRedistDir", "VCToolsVersion",
+        "VisualStudioVersion", "VS170COMNTOOLS", "VS180COMNTOOLS",
+        "VSCMD_ARG_app_plat", "VSCMD_ARG_HOST_ARCH", "VSCMD_ARG_TGT_ARCH",
+        "VSCMD_VER", "VSINSTALLDIR", "VSSDK150INSTALL", "VSSDKINSTALL",
+        "WindowsLibPath", "WindowsSdkBinPath", "WindowsSdkDir",
+        "WindowsSDKLibVersion", "WindowsSdkVerBinPath", "WindowsSDKVersion",
+        "WindowsSDK_ExecutablePath_x64", "WindowsSDK_ExecutablePath_x86",
+        "__DOTNET_ADD_64BIT", "__DOTNET_PREFERRED_BITNESS",
+        "__VSCMD_PREINIT_PATH", "CommandPromptType",
+        "llvmArm64", "llvmX64", "use_x64_llvm"
+    )
+
+    $psi = New-Object System.Diagnostics.ProcessStartInfo
+    $psi.FileName = "cmd.exe"
+    $psi.Arguments = "/c `"`"$vcvarsall`" x64 & set`""
+    $psi.UseShellExecute = $false
+    $psi.RedirectStandardOutput = $true
+    $psi.RedirectStandardError = $true
+    foreach ($varName in $vsEnvVarsToStrip) {
+        $psi.EnvironmentVariables.Remove($varName)
+    }
+
+    $proc = [System.Diagnostics.Process]::Start($psi)
+    $envDump = ($proc.StandardOutput.ReadToEnd() -split "`r?`n")
+    $stderrDump = $proc.StandardError.ReadToEnd()
+    $proc.WaitForExit()
+
     foreach ($line in $envDump) {
         if ($line -match '^([^=]+)=(.*)$') {
             [System.Environment]::SetEnvironmentVariable($Matches[1], $Matches[2], "Process")
@@ -145,6 +178,7 @@ if (-not (Test-Command "cl.exe")) {
     if (-not (Test-Command "cl.exe")) {
         Write-Host "Salida completa de vcvarsall.bat:"
         $envDump | ForEach-Object { Write-Host $_ }
+        if ($stderrDump) { Write-Host "STDERR:`n$stderrDump" }
         throw "No se pudo activar cl.exe en el entorno actual despues de correr vcvarsall.bat."
     }
 }
