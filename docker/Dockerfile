@@ -37,7 +37,7 @@ RUN useradd \
 WORKDIR /opt/aos
 
 COPY app/ /opt/aos/
-COPY aos-internal /usr/local/bin/aos-internal
+COPY docker/aos-internal /usr/local/bin/aos-internal
 
 RUN chmod +x /usr/local/bin/aos-internal \
     && mkdir -p \

@@ -2,8 +2,8 @@
 services:
   aos:
     build:
-      context: .
-      dockerfile: Dockerfile
+      context: ..
+      dockerfile: docker/Dockerfile
 
     image: aos:0.2.0-dev1
     container_name: aos
@@ -18,9 +18,9 @@ services:
       AOS_ROOT: /opt/aos
 
     volumes:
-      - ./runtime/datos_usuario:/opt/aos/datos_usuario
-      - ./runtime/intercambio:/opt/aos/intercambio
-      - ./runtime/salida:/opt/aos/salida
-      - ./runtime/logs:/opt/aos/logs
+      - ../runtime/datos_usuario:/opt/aos/datos_usuario
+      - ../runtime/intercambio:/opt/aos/intercambio
+      - ../runtime/salida:/opt/aos/salida
+      - ../runtime/logs:/opt/aos/logs
 
     working_dir: /opt/aos

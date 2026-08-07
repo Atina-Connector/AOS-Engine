@@ -6,7 +6,7 @@ CONTAINER_NAME="${AOS_CONTAINER_NAME:-aos}"
 
 if ! docker inspect "$CONTAINER_NAME" >/dev/null 2>&1; then
     echo "ERROR: El contenedor '$CONTAINER_NAME' no existe." >&2
-    echo "Ejecutá primero: docker compose up -d" >&2
+    echo "Ejecutá primero: docker compose -f docker/docker-compose.yml up -d" >&2
     exit 1
 fi
 
